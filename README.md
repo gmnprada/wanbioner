@@ -7,6 +7,6 @@ So many of users cannot play online games because Internet Provider NAT their ne
 
 if you use connection that did not has public IPv4 Address that casted to DMZ or port forwarded on the NET essentialy many of your packet is not deliver to other peers successfully an that behavior cause some lag between peers ,or ghosting behavior that they did not see the users they play with. the requirement is also hard and expensive to get in some Internet Service Provider. Games Online often need to provide server for their game so a Broker or server need to transport it.
 
-This Project AIM to provide that Wide Network for to be used on PI known APPS that relevant to use on Online Games or Multiplayer Games that need to communicate over the NET with aim of fast packet TRANSPORT that has LOW LATENCY and TUNNELED into SECURE NETWORKS that only the GAME PACKET allowed in the with the TOPIC and packet TYPE the Games Online Needs and IGNORE other UNRELEVANT PACKET that passing the NETWORKS.
+This Project AIM to provide that Wide Network for to be used on PI known APPS that relevant to use on Online Games or Multiplayer Games that need to communicate over the NET with aim of fast packet TRANSPORT that has LOW LATENCY and TUNNELED into SECURE NETWORKS that only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE the Games Online Needs and IGNORE other UNRELEVANT PACKET that passing the NETWORKS.
 
-Essentialy this project is a Shared or Indpenedent Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route that integrated to your PI account.
+Essentialy this project is a Shared Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route that integrated to your PI account.
