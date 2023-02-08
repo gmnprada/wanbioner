@@ -1,5 +1,5 @@
 # piwan
-PI Wide Area Network Broker for Games Online , Use your Untapped resource to computer game online packet.
+PI Wide Area Network Broker for Games Online , Use your Untapped resource to compute game online packet.
 
 Why its needed ?
 
