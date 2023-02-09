@@ -27,5 +27,5 @@ So the CONCLUSION IS Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR
 
 Sincere, Piwan Developer
 
--madepriambhada
+Gde Made Novan Priambhada -> sometimes people know me as (adenovan) or (shribrahmana)
 
