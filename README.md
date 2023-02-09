@@ -14,14 +14,14 @@ Only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE t
 Essentialy this project also become A NET Of Shared Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route and integrated to your PI account.
 
 The Focus and Scheme of the PROJECT
-- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , DEFINE a Constant of Latency DESIRED for the GAME and THIS used as PROMISE REQUEST.
-- The Broker That Run PIWAN Node with their public IP that acts as a Broker and transport facilitate Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS they play and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET share a PI Balance.
+- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST.
+- The Broker or HOST That Run PIWAN Node with their public IP and HAD GOOD BANDWITH that acts as a Broker and transport facilitate as Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS that play in the NETWORKS and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET a PI Balance.
 
-Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR DEVICE and UNTAPPED RESOURCE of the COMPUTER can ALSO DELIVER INTERNET BANDWITH RESOURCE to facilitate other as HOST of COMPUTING AND TRANSPORTING GAME PACKET NEEDS it will become CHALLENGE OF BUILDING MORE NETWORK NODE and GOOD TOPOLOGY to Meet the PROMISE REQUEST SPECIFICATION latency.
+Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR DEVICE and UNTAPPED RESOURCE of the COMPUTER can ALSO DELIVER INTERNET BANDWITH RESOURCE to facilitate other as HOST of COMPUTING AND TRANSPORTING GAME PACKET NEEDS it will become CHALLENGE OF BUILDING MORE NETWORK NODE to be as FAST as POSSIBLE and HAD GOOD TOPOLOGY to Meet the PROMISE REQUEST SPECIFICATION latency.
 
-Maintaining NETWORK INFRASTRUCTURE need alots of MONEY and PAYMENTS its undeniable cause USERS ALSO PAY their own ELECTRICITY and ISP BILLS to PROVIDE an ONLINE SERVICE and BECOME HOST to OTHER, SO WE BUILD This PROJECT so its AUTOMATE the REWARD of DOING PACKET TRANSFER OR BUILDING NETWORKS that FAST and HAS LOW LATENCY also SECURE TO USE.
+Maintaining NETWORK INFRASTRUCTURE need alots of MONEY and PAYMENTS its undeniable cause COMPANY ALSO PAY their own ELECTRICITY and ISP BILLS to PROVIDE an ONLINE SERVICE and BECOME HOST to OTHER, SO WE BUILD This PROJECT so its AUTOMATE the REWARD of DOING PACKET TRANSFER OR BUILDING NETWORKS that FAST and HAS LOW LATENCY also SECURE TO USE.
 
-ISP also has many WORK just the KEEP INTERNET GOING on BY MAINTAINING THE MACHINE or ROUTER THAT BROKER OUTDOOR so we need something to keep them MOTIVATED DOING THAT , WHAT IT IS IF IS NOT a CHALLENGE TO BE BETTER or a REWARDS to DOIT.
+ISP also has many WORK just the KEEP INTERNET GOING on BY MAINTAINING THE MACHINE or ROUTER THAT BROKER and ROUTER OUTDOOR OR INDOOR so we need something to keep them MOTIVATED DOING THAT , WHAT IT IS IF IS NOT a CHALLENGE TO BE BETTER or a REWARDS to DOIT.
 
 Sincere,Pi Wan Developer
 
