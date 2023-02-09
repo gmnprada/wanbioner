@@ -14,10 +14,10 @@ Only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE t
 Essentialy this project also become A NET Of Shared Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route and integrated to your PI account.
 
 The Focus and Scheme of the PROJECT
-- The PIWAN NODE MUST RUN ON TOP PRIORITY of NETWORK SHARING RESOURCE.
-- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST.
-- The Broker or HOST That Run PIWAN Node with their public IP and HAD GOOD BANDWITH that acts as a Broker and transport facilitate as Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS that play in the NETWORKS and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET a PI Balance.
-- The Project also HAS IMPACT to the ECOSYSTEM and VALUE of PI KEEP Running BY CLIENT TRANSFERING ITS PI By PAYING AND PLAYING GAME , AND HOST EARN PI for Facilitating THEIR GAME SESSION.
+- The PIWAN NODE PROGRAM as HOST MUST RUN ON TOP PRIORITY (-20).
+- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST, and PROOF OF SPEND. 
+- The Broker or HOST That Run PIWAN Node with their public IP and HAD UNLIMITED OR SOME BANDWITH that acts as a Broker and transport facilitate as Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS that play in the NETWORKS and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET a PI Balance.
+- The Project also HAS IMPACT to the ECOSYSTEM and VALUE of PI  BY PI USER TRANSFERING ITS PI By PAYING AND PLAYING GAME with GOOD EXPERIENCE BECAUSE IN TOP PRIORITY NETWORK , AND HOST EARN PI for Facilitating THEIR GAME SESSION with THEIR BANDWITH and NETWORK INFRASTRUCTURE.
 
 Maintaining NETWORK INFRASTRUCTURE need alots of MONEY and PAYMENTS its undeniable cause COMPANY ALSO PAY their own ELECTRICITY and ISP BILLS to PROVIDE an ONLINE SERVICE and BECOME HOST to OTHER, SO WE BUILD This PROJECT so its AUTOMATE the REWARD of DOING PACKET TRANSFER OR BUILDING NETWORKS that FAST and HAS LOW LATENCY also SECURE TO USE.
 
@@ -25,7 +25,7 @@ ISP also has many WORK just the KEEP INTERNET GOING on BY MAINTAINING THE MACHIN
 
 So the CONCLUSION IS Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR DEVICE and UNTAPPED RESOURCE of the COMPUTER can ALSO DELIVER INTERNET BANDWITH RESOURCE to facilitate other as HOST of COMPUTING AND TRANSPORTING GAME PACKET AS SPECIFIED LATENCY IN THE PROMISE REQUEST it will become CHALLENGE OF BUILDING MORE NETWORK NODE to be as FAST as POSSIBLE and HAD GOOD TOPOLOGY to Meet the PROMISE REQUEST SPECIFICATION latency.
 
-Sincere,Pi Wan Developer
+Sincere, Piwan Developer
 
 -madepriambhada
 
