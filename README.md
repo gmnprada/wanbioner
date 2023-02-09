@@ -15,9 +15,9 @@ Essentialy this project also become A NET Of Shared Broker to use in the purpose
 
 The Focus and Scheme of the PROJECT
 - The PIWAN NODE PROGRAM as HOST MUST RUN ON TOP PRIORITY (-20).
-- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST, and PROOF OF SPEND. 
+- Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST, and PROOF OF SPEND in SMART CONTRACT. 
 - The Broker or HOST That Run PIWAN Node with their public IP and HAD UNLIMITED OR SOME BANDWITH that acts as a Broker and transport facilitate as Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS that play in the NETWORKS and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET a PI Balance.
-- The Project also HAS IMPACT to the ECOSYSTEM and VALUE of PI  BY PI USER TRANSFERING ITS PI By PAYING AND PLAYING GAME with GOOD EXPERIENCE BECAUSE IN TOP PRIORITY NETWORK , AND HOST EARN PI for Facilitating THEIR GAME SESSION with THEIR BANDWITH and NETWORK INFRASTRUCTURE.
+- The Project also HAS IMPACT to the ECOSYSTEM and VALUE of PI  BY PI USER TRANSFERING ITS PI By PAYING AND PLAYING GAME with GOOD EXPERIENCE BECAUSE IN TOP PRIORITY NETWORK WITH SPECIFIED LATENCY NEEDED BY THE GAME , AND HOST EARN PI for Facilitating THEIR GAME SESSION with THEIR BANDWITH and NETWORK INFRASTRUCTURE.
 
 Maintaining NETWORK INFRASTRUCTURE need alots of MONEY and PAYMENTS its undeniable cause COMPANY ALSO PAY their own ELECTRICITY and ISP BILLS to PROVIDE an ONLINE SERVICE and BECOME HOST to OTHER, SO WE BUILD This PROJECT so its AUTOMATE the REWARD of DOING PACKET TRANSFER OR BUILDING NETWORKS that FAST and HAS LOW LATENCY also SECURE TO USE.
 
