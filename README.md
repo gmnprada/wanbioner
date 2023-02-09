@@ -9,7 +9,7 @@ if you use connection that did not has public IPv4 Address that casted to DMZ , 
 
 This Project AIM to provide that Wide Network for to be used on PI known APPS that relevant and FAST to use as Online Games or Multiplayer Games BASE NETWORK that need to communicate CLIENT data over the NET with aim of fast packet TRANSPORT that has LOW LATENCY OR SPECIFIED BY THE GAME and TUNNELED into SECURE NETWORKS.
 
-Only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE the Games Online Needs and IGNORE other UNRELEVANT PACKET that passing the NETWORKS. The Requirement is that machine must has public IPv4 address to be used as a Router / Broker of GAMEDATA to only be used for a SERVICE OF COMPUTING GAME packet just like becoming a CLOUD SERVICE PROVIDER or DO A JOB OF A PUBLIC ROUTER that AUTOME share of the PAYMENT if THE PROMISED PACKET LATENCY succesfuly DELIVERED.
+Only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE the Games Online Needs and IGNORE other UNRELEVANT PACKET that passing the NETWORKS. The Requirement is that machine must has public IPv4 address to be used as a Router / Broker of GAMEDATA to only be used for a SERVICE OF COMPUTING GAME packet just like becoming a CLOUD SERVICE PROVIDER or DO A JOB OF A PUBLIC ROUTER that AUTOMATE share of the PAYMENT if THE PROMISED PACKET LATENCY succesfuly DELIVERED.
 
 Essentialy this project also become A NET Of Shared Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route and integrated to your PI account.
 
