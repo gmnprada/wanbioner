@@ -24,6 +24,7 @@
     "ntp-time": "^2.0.1",
     "sequelize": "^6.28.0",
     "snappy": "^7.2.2",
-    "sqlite3": "^5.1.4"
+    "sqlite3": "^5.1.4",
+    "xxhash-wasm": "^1.0.2"
   }
 }

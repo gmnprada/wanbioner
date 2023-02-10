@@ -35,4 +35,4 @@ Instagram -> @gmnprada
 Youtube -> @gmnprada
 Mail me at -> madepriambhada@gmail.com 
 
-please dont contact above address if its not relevant to Code or Software Project Development
+please dont contact above address if its not relevant to Code , Learning , Project that include me as  maintainer, collaborator, or Software Development.
