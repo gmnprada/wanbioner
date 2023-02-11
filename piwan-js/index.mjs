@@ -1,7 +1,6 @@
 import express from 'express';
 import {WebSocketServer} from 'ws';
 import hbs from 'hbs';
-import * as TS from 'timesync';
 import { PROJECT_DIR } from './pathHelper.mjs';
 import { RouteIndex } from './routes/index.mjs';
 import { RouteAbout} from './routes/about.mjs';
@@ -73,7 +72,10 @@ hbs.registerPartial('header', `
         <!-- Navigation -->
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="/about">About</a>
-            <a class="mdl-navigation__link" href="/Network">Network</a>
+            <a class="mdl-navigation__link" href="/network">Network</a>
+            <a class="mdl-navigation__link" href="/network">Docs</a>
+            <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
+            <a class="mdl-navigation__link" href="/auth">Login</a>
         </nav>
     </div>
 </header>
@@ -93,7 +95,7 @@ hbs.registerPartial('header', `
 
 hbs.registerPartial('footer', `
 <div class="mdl-grid center-items">
-    <div class="mdl-cell mdl-cell--12-col text-white center-items">&#169; 2023 πwan Developer & Contributor</div>
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">&#169;2023 πwan Developer And Contributor | All Rights Reserved</div>
 </div>
 </main>
 </div>
@@ -112,9 +114,6 @@ app.engine('html', hbs.__express);
 app.get('/', RouteIndex);
 app.get('/about',RouteAbout);
 app.get('/network',RouteNetwork);
-app.get('/timesync',(req,res)=>{
-    res.json({time:timeSync.now()});
-});
 const server = app.listen(port, '0.0.0.0',1024);
 server.on('upgrade', (request, socket, head) => {
     wsServer.handleUpgrade(request, socket, head, socket => {

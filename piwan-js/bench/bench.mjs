@@ -2,8 +2,6 @@ import { BasePacket } from "../core/packet.mjs";
 import { performance, PerformanceObserver } from "node:perf_hooks";
 import { randomBytes } from 'crypto';
 
-
-
 const obs = new PerformanceObserver((items) => {
     console.log(items.getEntries()[0].duration);
     performance.clearMarks();

@@ -1,30 +1,40 @@
 import os from 'os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
-import {compress,uncompress} from 'snappy';
+import { compress, uncompress } from 'snappy';
+import TIME_SERVICE from './timeservice/timeservice.mjs';
 
+TIME_SERVICE.Start();
+var time_now = BigInt(new Date().getTime());
+TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
+    time_now = ut;
+});
+
+//PACKET OPCODE
 const OPCODE_PING = 0x00;
 const OPCODE_CONSTRUCT = 0x01;
 const OPCODE_ENCODE = 0x02;
-const OPCODE_DECODE = 0x03;
-const OPCODE_INTERMEDIATE = 0x04;
-const OPCODE_FORWARDED = 0x05;
-const OPCODE_RECEIVED = 0x06;
-const OPCODE_CONTROL = 0x07;
-const OPCODE_CONTROL_UDP_START = 0x08;
-const OPCODE_CONTROL_UDP_STOP = 0x09;
-const OPCODE_CONTROL_TCP_START = 0x10;
-const OPCODE_CONTROL_TCP_STOP = 0x11;
-const OPCODE_AUDIT_PACKET = 0x12;
+const OPCODE_FLIGHT = 0x03;
+const OPCODE_DECODE = 0x04;
+const OPCODE_INTERMEDIATE = 0x05;
+const OPCODE_FORWARD = 0x06;
+const OPCODE_RECEIVED = 0x07;
+const OPCODE_AUDIT = 0x08;
+
+const OPCODE_CONTROL_PING_ADD = 0x09;
+const OPCODE_CONTROL_UDP_START = 0x10;
+const OPCODE_CONTROL_UDP_STOP = 0x11;
+const OPCODE_CONTROL_TCP_START = 0x12;
+const OPCODE_CONTROL_TCP_STOP = 0x13;
 
 
 export class ControlPacket {
-    constructor(){
+    constructor() {
         this.packet = Buffer.alloc(8).fill(0);
-        this.packet.write("ΠWN","utf-8");
+        this.packet.write("ΠWN", "utf-8");
     }
 
-    DoOpcodeUdpStart(){
+    DoOpcodeUdpStart() {
         //opc
         this.packet[5] = OPCODE_CONTROL_UDP_START;
         this.packet[6] = 0x85;
@@ -76,11 +86,14 @@ export class BasePacket {
         this.packet = null;
     }
 
-
+    /*
+        Once Encoded a Packet cause we already timestamp it here
+    */
     async Encode() {
         this.p_opcode.writeUInt8(OPCODE_ENCODE, 0);
-        this.p_flight_time.writeBigUInt64LE(BigInt(date));
-
+        this.p_flight_time.writeBigUInt64LE(BigInt(time_now));
+        let t_calc = BigInt(this.p_timeout.readBigUInt64LE(0)) + BigInt(time_now);
+        this.p_timeout.writeBigUint64LE(t_calc, 0);
         let buf = Buffer.concat([
             this.header, // 4 Bytes
             this.p_opcode, //1 Bytes
@@ -88,10 +101,10 @@ export class BasePacket {
             this.requester, //120 Bytes Max 56 first is ip identifier , 64 rest hostname client
             this.recipient, //120 Bytes Max 56 first is ip identifier , 64 rest hostname recipient
             this.intermediate, //120 Bytes Max 56 first is ip identifier , 64 rest hostname intermediate
-            this.p_timeout, // 4 bytes
-            this.p_flight_time, // 4 bytes
-            this.p_intermediate_time, // 4 bytes
-            this.p_received_time, // 4 bytes
+            this.p_timeout, // 8 bytes
+            this.p_flight_time, // 8 bytes
+            this.p_intermediate_time, // 8 bytes
+            this.p_received_time, // 8 bytes
             this.p_auditor, // 1 bytes
             this.appid, // 64 bytes
             this.dataLength,
@@ -100,24 +113,35 @@ export class BasePacket {
         let hash = xxHash32(Buffer.from(buf, 'utf-8'), 0);
         let bufhash = Buffer.alloc(4);
         bufhash.writeUInt32LE(hash);
-        this.packet = Buffer.concat([buf,bufhash]);
+        this.packet = Buffer.concat([buf, bufhash]);
         return this.packet;
     }
 
-    async Decode(packet) {
-
-    }
-
-    async Compress(){
-        if(this.packet == null) throw Error("Packet did not arrange yet do you already run Encode?");
+    /*
+        Once Encoded Compress The Packet
+    */
+    async Compress() {
+        if (this.packet == null) throw Error("Packet did not arrange yet do you already run Encode?");
         let c = await compress(this.packet);
-        console.log("Compressed Packet:",c);
-        console.log("Packet Length",c.length);
         return c;
     }
 
-    async Uncompress(packet_buffer){
-
+    /*
+        Once Arrived Uncompress The Packet
+    */
+    async Uncompress(packet_buffer) {
+        if (this.packet != null) {
+            this.packet = null;
+        }
+        let u = await uncompress(packet_buffer);
+        this.packet = u;
+        return u;
     }
 
+    /*
+        Once Uncompress Decode The Packet and Stamp
+    */
+    async Decode(packet) {
+
+    }
 }

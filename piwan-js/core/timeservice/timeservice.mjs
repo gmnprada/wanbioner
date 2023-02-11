@@ -11,6 +11,7 @@ const OPCODE_FLIGHT = 0x01;
 const OPCODE_FLIGHT_RECEIVED = 0x02;
 const OPCODE_FLIGHT_BACK = 0x03;
 const OPCODE_FLIGHT_AUDIT = 0x04;
+const OPCODE_PING_ADD = 0x5;
 
 const _datagram = dgram.createSocket('udp4');
 const _datagram_host = { address: '0.0.0.0', family: 'IPv4', port: 1230, hostname: os.hostname() };
@@ -52,24 +53,24 @@ function _onMessage(message, remote_info) {
             case OPCODE_FLIGHT:
                 buf = formPacket(OPCODE_FLIGHT_RECEIVED, t0.readBigUint64LE(0));
                 _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
-                    if (!err) {
-
+                    if (err) {
+                        return;
                     }
                 });
                 break;
             case OPCODE_FLIGHT_RECEIVED:
                 buf = formPacket(OPCODE_FLIGHT_BACK, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
                 _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
-                    if (!err) {
-
+                    if (err) {
+                        return;
                     }
                 });
                 break;
             case OPCODE_FLIGHT_BACK:
                 buf = formPacket(OPCODE_FLIGHT_AUDIT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
                 _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
-                    if (!err) {
-
+                    if (err) {
+                        return;
                     }
                 });
                 break;
@@ -93,8 +94,8 @@ function _onMessage(message, remote_info) {
                 if(localnow == time_client_offset && localnow == time_server_offset){
                     NetworkTimeServiceEmitter.emit("unixsync",localnow);
                     NetworkTimeServiceEmitter.emit("datesync",new Date(Number(localnow)));
-                    console.log(`Network Time ${localnow}`);
-                    console.log(`Network Date ${new Date(Number(localnow))}`);
+                    //console.log(`Network Time ${localnow}`);
+                    //console.log(`Network Date ${new Date(Number(localnow))}`);
                 }
                 break;
             default:
@@ -152,7 +153,7 @@ function _onError(err) {
 }
 
 function _onListening() {
-    console.log("Time Service Server Is Now Listening");
+    console.log("ΠWN Network Time Service Is Now Listening");
     let obj = _datagram.address();
     _datagram_host.address = obj.address;
     _datagram.setBroadcast(true);
@@ -164,8 +165,8 @@ function _Tick() {
         try {
             let buf = formPacket(OPCODE_FLIGHT);
             _datagram.send(buf, 1230, '127.0.0.1', (err, bytes) => {
-                if (!err) {
-
+                if (err) {
+                    return;
                 }
             });
         } catch (e) {
@@ -176,6 +177,10 @@ function _Tick() {
 }
 
 function Start() {
+    if(_timeserver_running){
+        console.log("ΠWN Network Time Already Running")
+        return;
+    }
     _datagram.bind({ port: 1230, address: _datagram_host.address, exclusive: true });
     interval = setInterval(_Tick, _timetick);
 }
@@ -184,6 +189,9 @@ function Start() {
 function Stop(){
     clearInterval(interval);
     _datagram.close();
+    if(_timeserver_running){
+        _timeserver_running = false;
+    }
 }
 _datagram.on('message', _onMessage);
 _datagram.on('listening', _onListening);

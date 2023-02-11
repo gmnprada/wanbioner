@@ -1,4 +1,4 @@
-import TIME_SERVICE from './timeservice.mjs';
+import TIME_SERVICE from '../core/timeservice/timeservice.mjs';
 const { randomBytes} = await import('node:crypto');
 
 TIME_SERVICE.Start();

@@ -2,11 +2,7 @@ import dgram from 'node:dgram';
 
 export var UDPRUNNING = false;
 
-async function runUdp(){
-
-  if(UDPRUNNING == true) return;
-
-  UDPRUNNING = true;
+function runUdp(){
   const udpserver = dgram.createSocket('udp4');
 
   udpserver.on('error', (err) => {

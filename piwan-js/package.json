@@ -1,6 +1,6 @@
 {
   "name": "piwan",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PIWAN Javascript Implementation",
   "main": "index.mjs",
   "type": "module",
