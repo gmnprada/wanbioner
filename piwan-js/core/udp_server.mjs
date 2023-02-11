@@ -1,17 +1,25 @@
 import dgram from 'node:dgram';
 
-const server = dgram.createSocket('udp4');
+export var UDPRUNNING = false;
 
-server.on('error', (err) => {
-  console.error(`server error:\n${err.stack}`);
-  server.close();
-});
+async function runUdp(){
 
-server.on('message', (msg, rinfo) => {
-  console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-});
+  if(UDPRUNNING == true) return;
 
-server.on('listening', () => {
-  const address = server.address();
-  console.log(`server listening ${address.address}:${address.port}`);
-});
+  UDPRUNNING = true;
+  const udpserver = dgram.createSocket('udp4');
+
+  udpserver.on('error', (err) => {
+    console.error(`server error:\n${err.stack}`);
+    server.close();
+  });
+  
+  udpserver.on('message', (msg, rinfo) => {
+    console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+  });
+  
+  udpserver.on('listening', () => {
+    const address = server.address();
+    console.log(`server listening ${address.address}:${address.port}`);
+  });
+}

@@ -1,11 +1,11 @@
 {
   "name": "piwan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PIWAN Javascript Implementation",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "start": "node index.mjs",
+    "start": "nodemon index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,11 +20,11 @@
     "express": "^4.18.2",
     "handlebars": "^4.7.7",
     "hbs": "^4.2.0",
+    "js-xxhash": "^2.0.0",
     "moment": "^2.29.4",
-    "ntp-time": "^2.0.1",
     "sequelize": "^6.28.0",
     "snappy": "^7.2.2",
     "sqlite3": "^5.1.4",
-    "xxhash-wasm": "^1.0.2"
+    "ws": "^8.12.0"
   }
 }

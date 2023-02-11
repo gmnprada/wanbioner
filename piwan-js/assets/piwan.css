@@ -1,0 +1,81 @@
+body {
+    background-color: rgba(0,0,0,0.9);
+    color: white;
+  }
+  
+  /* fallback */
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://amultios.world/public/font/mdlfont139.woff2') format('woff2');
+  }
+  
+  /* fallback */
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('http://localhost/public/font/mdlfont139.woff2') format('woff2');
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .center-items {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  p {
+    color: white;
+  }
+  
+  .text-white{
+    color:white;
+  }
+
+  .text-black{
+    color:black;
+  }
+  
+  .logo{
+    border-radius: 1em;
+  }
+  
+  a-nostyle:link {
+    color: white;
+    font-style: normal;
+  }
+  
+  /* visited link */
+  a-nostyle:visited {
+    color: white;
+    font-style: normal;
+    text-decoration: none;
+  }
+  
+  /* mouse over link */
+  a-nostyle:hover {
+    color: white;
+    font-style: normal;
+  }
+  
+  /* selected link */
+  a-nostyle:active {
+    color: white;
+    font-style: normal;
+  }

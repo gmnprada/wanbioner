@@ -1,0 +1,50 @@
+{{> header title="Π Wide Area Network - Network"}}
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">
+        <h2>π Wide Area Network </h2>
+        <p>User Your Untapped Resource and Bandwith To Exchange for a PI</p>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col text-white">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <h4 class="text-black">Web Public IPv4 Address</h4>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div class="text-black">Machine Public IPv4 Address : {{client_ip}}</div>
+            </div>
+            <div class="mdl-card__actions">
+
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col text-white">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <h4 class="text-black">πwan-udp</h4>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div class="text-black">πwan-udp node address : {{client_ip}}</div>
+                <div class="text-black">πwan-udp node running : {{udp_running}}</div>
+            </div>
+            <div class="mdl-card__actions">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="mdl-cell mdl-cell--4-col text-white">
+        <div class="mdl-card">
+            <div class="mdl-card__title">
+                <h4 class="text-black">πwan-tcp</h4>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div class="text-black">πwan-tcp node address : {{client_ip}}</div>
+                <div class="text-black">πwan-tcp node running : {{udp_running}}</div>
+            </div>
+            <div class="mdl-card__actions">
+
+            </div>
+        </div>
+    </div>
+</div>
+{{> footer}}

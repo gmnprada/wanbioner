@@ -22,6 +22,6 @@ function getMetaDir(){
 export const FILEMETADIR = path.dirname(import.meta.url);
 export const META_DIR = getMetaDir();
 export const ROOT_DIR = META_DIR;
-export const PROJECT_DIR = ROOT_DIR.replace("/src","");
+export const PROJECT_DIR = ROOT_DIR.replace("/","");
 
 export default {FILEMETADIR,META_DIR,ROOT_DIR,PROJECT_DIR};
