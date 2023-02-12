@@ -19,13 +19,14 @@ body {
   src: url('https://piwan.net/assets/font/mdlfont139.woff2') format('woff2');
 }
 
-/* fallback */
+/* fallback 
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
   src: url('http://localhost/assets/font/mdlfont139.woff2') format('woff2');
 }
+*/
 
 .material-icons {
   font-family: 'Material Icons';
