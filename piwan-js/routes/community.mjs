@@ -15,6 +15,6 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 */
 
-export async function RouteDocs(req,res){
-    return res.render("get/docs.html");
+export async function RouteCommunity(req,res){
+    return res.render("get/community.html");
 }

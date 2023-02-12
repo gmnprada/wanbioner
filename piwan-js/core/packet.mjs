@@ -1,10 +1,26 @@
+/*
+***** THIS FILE IS PART OF Piwan Project *****
+
+PiOS License
+
+Copyright (C) <2023> <gdemadenovanpriambhada>
+
+Developer
+
+
+Contributor
+
+
+See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
+
+*/
+
 import os from 'os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';
 import TIME_SERVICE from './timeservice/timeservice.mjs';
 
-TIME_SERVICE.Start();
 var time_now = BigInt(new Date().getTime());
 TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
     time_now = ut;

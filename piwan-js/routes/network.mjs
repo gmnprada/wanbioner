@@ -1,6 +1,28 @@
+/*
+***** THIS FILE IS PART OF Piwan Project *****
+
+PiOS License
+
+Copyright (C) <2023> <gdemadenovanpriambhada>
+
+Developer
+
+
+Contributor
+
+
+See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
+
+*/
+
 import { BasePacket } from "../core/packet.mjs";
 import { UDPRUNNING } from "../core/udp_server.mjs";
+import TIME_SERVICE  from "../core/timeservice/timeservice.mjs";
 
+var tms_running = false;
+TIME_SERVICE.NetworkTimeServiceEmitter.on("running",(status)=>{
+    tms_running = status;
+})
 export async function RouteNetwork(req,res){
     let ips = (
         req.headers['cf-connecting-ip'] ||
@@ -20,6 +42,7 @@ export async function RouteNetwork(req,res){
 
     return res.render("get/network.html",{
         client_ip : ips[0],
-        udp_running : UDPRUNNING
+        udp_running : UDPRUNNING,
+        tms_running : tms_running
     });
 }

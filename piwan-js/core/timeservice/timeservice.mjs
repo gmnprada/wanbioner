@@ -1,3 +1,20 @@
+/*
+***** THIS FILE IS PART OF Piwan Project *****
+
+PiOS License
+
+Copyright (C) <2023> <gdemadenovanpriambhada>
+
+Developer
+
+
+Contributor
+
+
+See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
+
+*/
+
 import dgram from 'node:dgram';
 import os from 'node:os';
 import { EventEmitter } from 'node:events';
@@ -15,7 +32,7 @@ const OPCODE_PING_ADD = 0x5;
 
 const _datagram = dgram.createSocket('udp4');
 const _datagram_host = { address: '0.0.0.0', family: 'IPv4', port: 1230, hostname: os.hostname() };
-let _timeserver_running = false;
+var _timeserver_running = false;
 //10ms
 const _timetick = 10;
 var interval;
@@ -158,6 +175,7 @@ function _onListening() {
     _datagram_host.address = obj.address;
     _datagram.setBroadcast(true);
     _timeserver_running = true;
+    NetworkTimeServiceEmitter.emit("running",_timeserver_running);
 }
 
 function _Tick() {
@@ -181,7 +199,7 @@ function Start() {
         console.log("ΠWN Network Time Already Running")
         return;
     }
-    _datagram.bind({ port: 1230, address: _datagram_host.address, exclusive: true });
+    _datagram.bind({ port: 36123, address: _datagram_host.address, exclusive: true });
     interval = setInterval(_Tick, _timetick);
 }
 
@@ -191,12 +209,13 @@ function Stop(){
     _datagram.close();
     if(_timeserver_running){
         _timeserver_running = false;
+        NetworkTimeServiceEmitter.emit("running",_timeserver_running);
     }
 }
 _datagram.on('message', _onMessage);
 _datagram.on('listening', _onListening);
 _datagram.on('error', _onError);
 
-export const TIME_SERVICE = { _datagram, Start,Stop,NetworkTimeServiceEmitter };
+export const TIME_SERVICE = { _datagram, Start,Stop,NetworkTimeServiceEmitter ,_timeserver_running};
 
 export default TIME_SERVICE;

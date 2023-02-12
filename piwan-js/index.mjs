@@ -1,32 +1,13 @@
+import { PROJECT_DIR } from './pathHelper.mjs';
 import express from 'express';
 import {WebSocketServer} from 'ws';
 import hbs from 'hbs';
-import { PROJECT_DIR } from './pathHelper.mjs';
 import { RouteIndex } from './routes/index.mjs';
 import { RouteAbout} from './routes/about.mjs';
 import { RouteNetwork} from './routes/network.mjs';
-
+import TIME_SERVICE from './core/timeservice/timeservice.mjs';
+TIME_SERVICE.Start();
 const app = express();
-const wsServer = new WebSocketServer({noServer:true});
-
-wsServer.on('connection',socket=>{
-
-    socket.on("connection",(ws)=>{
-        console.log("got new client","new client");
-        ws.on("close",()=>{
-            console.log("wsclose","client dc");
-        });
-    });
-    socket.on("message",msg=>{
-        console.log("got message",msg);
-    });
-
-    socket.on("error",err=>{
-        console.log("ws error",err);
-    });
-});
-
-
 const port = 36980;
 
 hbs.registerPartial('header', `
@@ -37,6 +18,8 @@ hbs.registerPartial('header', `
     <title>{{title}}</title>
     <link rel="stylesheet" href="./assets/piwan.css">
     <link rel="stylesheet" href="./assets/mdl/material.min.css">
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <script>Pi.init({ version: "2.0" sanbox:true})</script>
     <script src="./assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/ico/apple-icon-57x57.png">
@@ -114,9 +97,49 @@ app.engine('html', hbs.__express);
 app.get('/', RouteIndex);
 app.get('/about',RouteAbout);
 app.get('/network',RouteNetwork);
-const server = app.listen(port, '0.0.0.0',1024);
+app.get('*', function(req, res){
+    res.status(404).render('get/404.html');
+  });
+const server = app.listen(port, '0.0.0.0',65535);
+
+
+const wss = new WebSocketServer({noServer:true});
+
+function heartbeat(){
+    this.isAlive = true;
+}
+
+wss.on('connection',ws=>{
+    ws.on("connection",(c)=>{
+        console.log("got new client",ws);
+    });
+    ws.on("message",msg=>{
+        console.log("got message",msg);
+    });
+
+    ws.on("error",err=>{
+        console.log("ws error",err);
+    });
+
+   ws.on('pong', heartbeat);
+});
+
+TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync',(time)=>{
+    let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
+    let t = Buffer.alloc(8);
+    t.writeBigUint64LE(time,0);
+    let conc = Buffer.concat([buffer,t]);
+    for(let ws of wss.clients){
+        if (ws.isAlive === false) return ws.terminate();
+        ws.isAlive = false;
+        ws.ping();
+        ws.send(conc.toString('hex'));
+    }
+});
+
 server.on('upgrade', (request, socket, head) => {
-    wsServer.handleUpgrade(request, socket, head, socket => {
-      wsServer.emit('connection', socket, request);
+    wss.handleUpgrade(request, socket, head, socket => {
+      wss.emit('connection', socket, request);
     });
 });
+
