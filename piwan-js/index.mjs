@@ -14,7 +14,7 @@ import TIME_SERVICE from './core/timeservice/timeservice.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
-import {debug_log} from './log.mjs';
+import {debug_log,info_log} from './log.mjs';
 
 
 const json = JSON.parse(
@@ -195,9 +195,9 @@ httpServer.on('upgrade', (request, socket, head) => {
 
 if(os.hostname() == "piwan.net"){
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
-    const privateKey = fs.readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
-    const certificate = fs.readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
-    const ca = fs.readFileSync('/etc/letsencrypt/live/piwan.net/chain.pem', 'utf8');
+    const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
+    const certificate = readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
+    const ca = readFileSync('/etc/letsencrypt/live/piwan.net/chain.pem', 'utf8');
     const credentials = {
         key: privateKey,
         cert: certificate,
