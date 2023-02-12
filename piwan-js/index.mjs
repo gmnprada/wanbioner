@@ -33,24 +33,22 @@ const httpsPort = Number(json.PWAN_HTTPS_PORT);
 
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'","localhost","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
+        defaultSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
         scriptSrc: [
             "'self'",
             "'unsafe-inline'",
-            "piwan.net",
-            "sdk.minepi.com",
-            "sandbox.minepi.com",
-            "localhost"
+            "'piwan.net'",
+            "'sdk.minepi.com'",
+            "'sandbox.minepi.com'",
         ],
         styleSrc: [
             "'self'",
             "'unsafe-inline'",
-            "localhost",
-            "piwan.net",
-            "fonts.googleapis.com",
-            "fonts.gstatic.com",
+            "'piwan.net'",
+            "'fonts.googleapis.com'",
+            "'fonts.gstatic.com'",
         ],
-        fontSrc: ["'self'", "localhost","piwan.net","fonts.googleapis.com", "fonts.gstatic.com"],
+        fontSrc: ["'self'","piwan.net","fonts.googleapis.com", "fonts.gstatic.com"],
         frameSrc: ["'self'"],
         manifestSrc: ["'self'"],
         connectSrc:["'self'"]
@@ -66,8 +64,8 @@ hbs.registerPartial('header', `
 <head>
     <title>{{title}}</title>
     <link rel="stylesheet" href="https://piwan.net/assets/piwan.css">
-    <link rel="stylesheet" href="https://piwan.net/assets/mdl/material.min.css">
-    <script src="./assets/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://piwan.net/assets/mdl/material.css">
+    <script src="https://piwan.net/assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="apple-touch-icon" sizes="57x57" href="https://piwan.net/assets/ico/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="https://piwan.net/assets/ico/apple-icon-60x60.png">
