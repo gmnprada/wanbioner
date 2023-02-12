@@ -192,7 +192,8 @@ httpServer.on('upgrade', (request, socket, head) => {
       wss.emit('connection', socket, request);
     });
 });
-if(os.hostname == "piwan.net"){
+
+if(os.hostname() == "piwan.net"){
     var privateKey  = readFileSync('/etc/letsencrypt/live/piwan.net/fullchain.pem', 'utf8');
     var certificate = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
     
