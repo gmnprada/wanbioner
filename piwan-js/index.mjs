@@ -1,4 +1,5 @@
-import { readFile, readFileSync } from 'fs/promises';
+import { readFile} from 'fs/promises';
+import { readFileSync } from 'fs';
 import os  from "node:os";
 import http from 'node:http';
 import https from 'node:https';
