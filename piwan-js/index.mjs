@@ -184,7 +184,6 @@ TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync',(time)=>{
     }
 });
 
-
 var httpServer = http.createServer(app);
 httpServer.listen(json.PWAN_HTTP_PORT);
 httpServer.on('upgrade', (request, socket, head) => {
@@ -205,7 +204,7 @@ if(os.hostname() == "piwan.net"){
     };
     var httpsServer = https.createServer(credentials, app);
     httpsServer.listen(json.PWAN_HTTPS_PORT);
-    httpServer.on('upgrade', (request, socket, head) => {
+    httpsServer.on('upgrade', (request, socket, head) => {
         wss.handleUpgrade(request, socket, head, socket => {
           wss.emit('connection', socket, request);
         });
