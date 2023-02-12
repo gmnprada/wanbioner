@@ -1,3 +1,6 @@
+import { readFile } from 'fs/promises';
+import http from 'node:http';
+import https from 'node:https';
 import { PROJECT_DIR } from './pathHelper.mjs';
 import express from 'express';
 import {WebSocketServer} from 'ws';
@@ -8,9 +11,51 @@ import { RouteNetwork} from './routes/network.mjs';
 import TIME_SERVICE from './core/timeservice/timeservice.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
+import helmet from 'helmet';
+import {debug_log} from './log.mjs';
+
+
+const json = JSON.parse(
+  await readFile(
+    new URL('./config.json', import.meta.url)
+  )
+);
+
+json.PWAN_ENVIRONMENT == "DEV"  ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
+
+
 TIME_SERVICE.Start();
 const app = express();
-const port = 36980;
+const port = Number(json.PWAN_HTTP_PORT);
+const httpsPort = Number(json.PWAN_HTTPS_PORT);
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'","localhost","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
+        scriptSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "piwan.net",
+            "sdk.minepi.com",
+            "sandbox.minepi.com",
+            "localhost"
+        ],
+        styleSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "localhost",
+            "piwan.net",
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+        ],
+        fontSrc: ["'self'", "localhost","piwan.net","fonts.googleapis.com", "fonts.gstatic.com"],
+        frameSrc: ["'self'"],
+        manifestSrc: ["'self'"],
+        connectSrc:["'self'"]
+    }
+}));
+app.use(helmet.xssFilter());
+app.disable('x-powered-by');
 
 hbs.registerPartial('header', `
 <!DOCTYPE html>
@@ -20,8 +65,6 @@ hbs.registerPartial('header', `
     <title>{{title}}</title>
     <link rel="stylesheet" href="./assets/piwan.css">
     <link rel="stylesheet" href="./assets/mdl/material.min.css">
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    <script>Pi.init({ version: "2.0" sanbox:true})</script>
     <script src="./assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/ico/apple-icon-57x57.png">
@@ -67,7 +110,7 @@ hbs.registerPartial('header', `
 <div class="mdl-layout__drawer">
     <img class="logo" src="/assets/piwan.png" alt="Logo">
     <span class="mdl-layout-title">
-        <a  href="/" class="a-nostyle">πwan</a>
+        <a href="/" class="a-nostyle">πwan</a>
     </span>
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/about">About</a>
@@ -104,7 +147,7 @@ app.get('/auth',RouteAuth);
 app.get('*', function(req, res){
     res.status(404).render('get/404.html');
   });
-const server = app.listen(port, '0.0.0.0',65535);
+
 
 
 const wss = new WebSocketServer({noServer:true});
@@ -115,14 +158,14 @@ function heartbeat(){
 
 wss.on('connection',ws=>{
     ws.on("connection",(c)=>{
-        console.log("got new client",ws);
+        debug_log("WS got new client",ws);
     });
     ws.on("message",msg=>{
-        console.log("got message",msg);
+        debug_log("WS message",msg);
     });
 
     ws.on("error",err=>{
-        console.log("ws error",err);
+        debug_log("ws error",err);
     });
 
    ws.on('pong', heartbeat);
@@ -141,9 +184,11 @@ TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync',(time)=>{
     }
 });
 
-server.on('upgrade', (request, socket, head) => {
+
+var httpServer = http.createServer(app);
+httpServer.listen(json.PWAN_HTTP_PORT);
+httpServer.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, socket => {
       wss.emit('connection', socket, request);
     });
 });
-

@@ -141,7 +141,7 @@
     }
 
     try {
-        const ws = new WebSocket('ws://localhost:36980');
+        const ws = new WebSocket('ws://localhost');
         ws.onopen = function (e) {
             console.log("Opened Yay");
         };
@@ -193,4 +193,6 @@
 
 
 </script>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<script>Pi.init({ version: "2.0",sandbox:true})</script>
 {{> footer}}

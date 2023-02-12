@@ -30,7 +30,15 @@ import utils from 'node:util';
 import chalk from "chalk";
 chalk.level = 1;
 
-const C_LOGGING_ENABLE = process.env.ENABLE_LOGGING == "TRUE" ? true : false;
+import { readFile } from 'fs/promises';
+const json = JSON.parse(
+  await readFile(
+    new URL('./config.json', import.meta.url)
+  )
+);
+
+
+const C_LOGGING_ENABLE = json.ENABLE_LOGGING == "TRUE" ? true : false;
 class AMULTIOS_LOG {
 
     db_log(...args){
