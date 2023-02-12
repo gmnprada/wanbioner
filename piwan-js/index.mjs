@@ -63,26 +63,26 @@ hbs.registerPartial('header', `
 
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="./assets/piwan.css">
-    <link rel="stylesheet" href="./assets/mdl/material.min.css">
+    <link rel="stylesheet" href="https://piwan.net/assets/piwan.css">
+    <link rel="stylesheet" href="https://piwan.net/assets/mdl/material.min.css">
     <script src="./assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="apple-touch-icon" sizes="57x57" href="/assets/ico/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/assets/ico/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/ico/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/ico/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/assets/ico/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/ico/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/asstes/ico/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/assets/ico/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/ico/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/ico/favicon-16x16.png">
-    <link rel="manifest" href="/assets/ico/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://piwan.net/assets/ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://piwan.net/assets/ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://piwan.net/assets/ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://piwan.net/assets/ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://piwan.net/assets/ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://piwan.net/assets/ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://piwan.net/assets/ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://piwan.net/assets/ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://piwan.net/assets/ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://piwan.net/assets/ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://piwan.net/assets/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://piwan.net/assets/ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://piwan.net/assets/ico/favicon-16x16.png">
+    <link rel="manifest" href="https://piwan.net/assets/ico/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/assets/ico/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="https://piwan.net/assets/ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
@@ -99,22 +99,22 @@ hbs.registerPartial('header', `
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/about">About</a>
-            <a class="mdl-navigation__link" href="/network">Network</a>
-            <a class="mdl-navigation__link" href="/network">Docs</a>
+            <a class="mdl-navigation__link" href="https://piwan.net/about">About</a>
+            <a class="mdl-navigation__link" href="https://piwan.net/network">Network</a>
+            <a class="mdl-navigation__link" href="https://piwan.net/network">Docs</a>
             <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
-            <a class="mdl-navigation__link" href="/auth">Login</a>
+            <a class="mdl-navigation__link" href="https://piwan.net/auth">Login</a>
         </nav>
     </div>
 </header>
 <div class="mdl-layout__drawer">
-    <img class="logo" src="/assets/piwan.png" alt="Logo">
+    <img class="logo" src="https://piwan.net/assets/piwan.png" alt="Logo">
     <span class="mdl-layout-title">
         <a href="/" class="a-nostyle">πwan</a>
     </span>
     <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="/about">About</a>
-        <a class="mdl-navigation__link" href="/network">Network</a>
+        <a class="mdl-navigation__link" href="https://piwan.net/about">About</a>
+        <a class="mdl-navigation__link" href="https://piwan.net/network">Network</a>
     </nav>
 </div>
 <main class="mdl-layout__content">
