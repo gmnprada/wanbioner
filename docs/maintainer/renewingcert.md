@@ -1,8 +1,33 @@
 HTTPS Ceritificate
 
+Maitaning Renewal of Secure Certificate is a burden i know it we must auto renew it for 3 months if we use open source solution.
+
+This is also essential for service keep going on so we decide the all the team of Piwan attending an EVENT before decision being MAKE.
+
+- Ownership Board
+- Developer
+- Admin
+- Contributor
+- Marketing
+- Community
+- End Users
+
+MEETING can be attending the HOSTED EVENT on PLACE or coordinate a agreements with VIRTUAL EVENTS before renewing it.
+
+Piwan Domain is registered on INDONESIA and as i live as citizen so the best place for a DOMAIN Keys related problems should arranged on INDONESIA specific region , preferably that HAS good hospitality SERVICE and SECURE place.
+
+The Commands
+
+```
+certbot certonly –manual -d *.piwan.net -d piwan.net –manual-public-ip-logging-ok –preferred-challenges dns-01
+
 is on this directory
 /etc/letsencrypt/live/piwan.net/fullchain.pem
 /etc/letsencrypt/live/piwan.net/privkey.pem
 
-
 certbot certonly -d piwan.net -d www.piwan.net
+```
+
+DNS Ownership is also currently just me its need to be shared with creating OWNERSHIP LEADERBOARD till at least to 13 Person in Ownership of Board Managements.
+
+To be in BOARD MANAGEMENTS its weighted and calculated not just by a NUMBER in FIAT or CRYPTO ASSETS buts the Overall IMPACT of the PERSON into the CONTRIBUTION to the PROJECTS. ITS ESSENTIAL to KEEP the CHAIN OF TRUST especially ON CYBER TEAM that mainly MAINTAINING service on INTERNET.
