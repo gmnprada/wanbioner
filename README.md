@@ -1,6 +1,6 @@
 # piwan
 
-This Project Braninstrom address
+This Project Brainstrom address
 Visit it With Pi Browser on your mobile phone to Join the Team
 pi://brainstorm.pi/project/63e454a29c1c1218be3e15db
 
