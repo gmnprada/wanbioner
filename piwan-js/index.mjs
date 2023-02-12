@@ -6,6 +6,8 @@ import { RouteIndex } from './routes/index.mjs';
 import { RouteAbout} from './routes/about.mjs';
 import { RouteNetwork} from './routes/network.mjs';
 import TIME_SERVICE from './core/timeservice/timeservice.mjs';
+import { RouteDocs } from './routes/docs.mjs';
+import { RouteAuth } from './routes/auth.mjs';
 TIME_SERVICE.Start();
 const app = express();
 const port = 36980;
@@ -97,6 +99,8 @@ app.engine('html', hbs.__express);
 app.get('/', RouteIndex);
 app.get('/about',RouteAbout);
 app.get('/network',RouteNetwork);
+app.get('/docs',RouteDocs);
+app.get('/auth',RouteAuth);
 app.get('*', function(req, res){
     res.status(404).render('get/404.html');
   });
