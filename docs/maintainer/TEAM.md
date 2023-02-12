@@ -21,7 +21,7 @@ The Commands
 ```
 certbot certonly –manual -d *.piwan.net -d piwan.net –manual-public-ip-logging-ok –preferred-challenges dns-01
 
-is on this directory
+certificate is on this directory
 /etc/letsencrypt/live/piwan.net/fullchain.pem
 /etc/letsencrypt/live/piwan.net/privkey.pem
 
@@ -31,3 +31,6 @@ certbot certonly -d piwan.net -d www.piwan.net
 DNS Ownership is also currently just me its need to be shared with creating OWNERSHIP LEADERBOARD till at least to 13 Person in Ownership of Board Managements.
 
 To be in BOARD MANAGEMENTS its weighted and calculated not just by a NUMBER in FIAT or CRYPTO ASSETS buts the Overall IMPACT of the PERSON into the CONTRIBUTION to the PROJECTS. ITS ESSENTIAL to KEEP the CHAIN OF TRUST especially ON CYBER TEAM that mainly MAINTAINING service on INTERNET.
+
+THE TIMED EVENT of DNS RELATED solution preferably around 
+DAYS 10-20 every 3 MONTHS
