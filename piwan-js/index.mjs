@@ -1,4 +1,5 @@
-import { readFile } from 'fs/promises';
+import { readFile, readFileSync } from 'fs/promises';
+import os  from "node:os";
 import http from 'node:http';
 import https from 'node:https';
 import { PROJECT_DIR } from './pathHelper.mjs';
@@ -192,3 +193,16 @@ httpServer.on('upgrade', (request, socket, head) => {
       wss.emit('connection', socket, request);
     });
 });
+if(os.hostname == "piwan.net"){
+    var privateKey  = readFileSync('/etc/letsencrypt/live/piwan.net/fullchain.pem', 'utf8');
+    var certificate = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
+    
+    var credentials = {key: privateKey, cert: certificate};
+    var httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(json.PWAN_HTTPS_PORT);
+    httpServer.on('upgrade', (request, socket, head) => {
+        wss.handleUpgrade(request, socket, head, socket => {
+          wss.emit('connection', socket, request);
+        });
+    });
+}
