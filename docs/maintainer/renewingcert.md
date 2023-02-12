@@ -1,0 +1,1 @@
+certbot certonly -d piwan.net -d www.piwan.net
