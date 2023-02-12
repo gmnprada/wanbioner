@@ -195,10 +195,14 @@ httpServer.on('upgrade', (request, socket, head) => {
 
 if(os.hostname() == "piwan.net"){
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
-    var privateKey  = readFileSync('/etc/letsencrypt/live/piwan.net/fullchain.pem', 'utf8');
-    var certificate = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
-    
-    var credentials = {key: privateKey, cert: certificate};
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
+    const ca = fs.readFileSync('/etc/letsencrypt/live/piwan.net/chain.pem', 'utf8');
+    const credentials = {
+        key: privateKey,
+        cert: certificate,
+        ca: ca
+    };
     var httpsServer = https.createServer(credentials, app);
     httpsServer.listen(json.PWAN_HTTPS_PORT);
     httpServer.on('upgrade', (request, socket, head) => {
