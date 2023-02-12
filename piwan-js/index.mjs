@@ -194,6 +194,7 @@ httpServer.on('upgrade', (request, socket, head) => {
 });
 
 if(os.hostname() == "piwan.net"){
+    info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
     var privateKey  = readFileSync('/etc/letsencrypt/live/piwan.net/fullchain.pem', 'utf8');
     var certificate = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
     
@@ -205,4 +206,6 @@ if(os.hostname() == "piwan.net"){
           wss.emit('connection', socket, request);
         });
     });
+}else{
+    warn_log("Https May Not Running Wells, Do Fix The Environments");
 }
