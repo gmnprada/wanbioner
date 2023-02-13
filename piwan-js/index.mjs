@@ -14,7 +14,7 @@ import TIME_SERVICE from './core/timeservice/timeservice.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
-import {debug_log,info_log} from './log.mjs';
+import {debug_log,info_log,warn_log} from './log.mjs';
 
 
 const json = JSON.parse(
