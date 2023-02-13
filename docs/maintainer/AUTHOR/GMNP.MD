@@ -1,0 +1,60 @@
+AUTHOR
+A bit story of Live Experience
+
+Since Child Every Year On My Birthday im gratefull as SON that always gifted latest Electronic Based Device on MY BIRTHDAY , Either its a Game Console or A Phone basicly that has GAME ON IT.
+
+That Things Make Me Learn so many things fast by reading what is inside that DEVICE and where do that DEVICE Communicate if im bored with that things and the development of it PROPIERTARY or closed source then i break the DEVICE itself to learn HOW ITS WORKS its my HOBBY since 8 YEARS OLD.
+
+IM NOT INTERESTED on LEARNING at High Schools its a GENERAL SCHOOLS , so im often GO to NET at that TIME CALLED WARNET playing so many ANCIENT GAMES or HANGING OUT WITH MY FRIEND that TIME BUT mostly I prefer just to TINKER my PHONE or HACK SOMETHING THAT MAKE ME CURIOUS at HOME and SHOW MY FRIENDS AROUND WOULD YOU PLAY THIS GAME WITH ME. DOING THAT THINGS make me LEARN so many about SDK ,OS DOCUMENTATION , LOW LEVEL LANGUAGE , INTEPRETER, RUNTIME ENVIRONMENT , ADAPTER , TRANSMITER , RECEIVER and know much GRANDPA AND GRANDMA that do a RESEARCH ON WHATEVER IS THE UNIVERSTIY.
+
+Many of THAT ELECTRONIC CHIPS AND DOCUMENTATIONS of OLD UNUSED DEVICE is get burried on FORM of SOURCE CODE or IN FORM OF PAPER at THAT TIME, GIT is still not arrived ITS just on that x86 MACHINE whatever the OS WAS and its NOT LIKE WHAT WE KNOW TODAY as a SERVER. That TIME also we did not has TOUCH SCREEN like in today WORLDS where SMARTPHONE ERA HITS and that you know FAMOUS 2009 WHITE PAPER published.
+
+TILL I GROW much OLDER go STUDY a bit about SYSTEM COMPUTER in college for about 3 and half years its broaden my VIEW on General Computing Device , System Computer , Operating System and Information Technology but also make me work at UNIVERSITY as a software developer. 
+
+I learn so many things at Works , How managing a team , a chain of trust , why DIRECTOR is important and so many things about how COLLECTIVE working MANAGING A COMMUNITY , COMPANY or ITS SERVICE. the LEADER in TEAM always SUPPORT Me in case im not attend a MEETING because WORKING on TECHICAL SIDE of the DEVELOPMENT that INTEGRATE so many of OS and SYSTEM to make IT SMART , IT make me had a less sleeps working at 18 hours a DAY.
+
+if a same things point into the things that i already KNOWN and scarce on the INTERNET mainly i have no interest on THAT because I Already EXPERIENCE HOW it WAS the DEVELOPMENT EXPERIENCE, The BURNOUT , The HANGOUT at CANTEEN on TEAM the CELEBRATION , The ENTERTAINMENT and A BRAINSTORM on HARDWARE DEVELOPMENT of SOFTWARE DEVELOPMENT THINK and THE LAST BORED THINGS BEING ALONE FOR AUTHOR THAT DOIT FOR A LIVING like THE SCIENTIST SONGS.
+
+SO I Go into Vacation by WALKING wherever I WANT to See THE WORLD, I Meet So Many People of Different Backgrounds at that VACATION , AND SEEING the IMPLEMENTATION arounds THE FIELDS,and I LEARN oh THAT GRANDPA and GRANDMA still use that OLD NOKIA Phone to CALL, and LEARN Again oh that WALKY TALKIE is STILL used by My FRIENDS at MANAGING EVENT , Oh My THAT OFFICER and SECURITY need A BROOM to make GLASS CLEAN its more IMPORTANT, oh A STREET LIGHT in the SIDE ROAD is IMPORTANT for BLIND PEOPLE and OLDER GENERATION, OH LACKING a WELL and SOURCE OF WATER can make ME DEHYDRATE ON LONG RUN and I JUST WALKING AROUND preferably 30km till 100km AROUND THE PLACE I NEVER VISIT and That is what i called VACATIONS and JOURNEY For A LONG TRIPS.
+
+Seeing That Also make me REALIZE not ALL PEOPLE BORN LIKE ME , THE DEVICE THEY HAD , THE ACCESS OF INFORMATION THEY HAD , and HOW TIED IS A GENERATION into THEIR DEVICE and DATA because THATS WHAT THEY LEARN TO USE BACK IN THEIR LIFETIME . NOT ALL PEOPLE WANT A NEW THINGS INSTEAD they WANT it JUST WORKING AND WITH THAT TECHNOLOGY ADVANCEMENT, Make LIFE ENJOYABLE. SO KNOWING THAT MAKE ME HAVE A POINT OF VIEW HOW NOT TO INNOVATE A SAME THINGS , REIMPLEMENT THE WHEELS and SO MANY OTHER GREAT MEME , Maitaining BACKWARD COMPABILITY IS IMPORTANT.
+
+I FOUND SOMETHING Also that OUTDOOR WORK is needed, ON LATEST YEAR im not WORKING TOUCHING MY PC at ALL but SPEND MY TIME PUNCHING a NETWORK BOX THAT HAS no DEVICE and RUSTED SO TECHNICALLY MY FIST OR 5 hands Fingerprint STAMPED on the IRON where I LIVE AROUNDS. WHY i PUNCH that BOX insted of FIXING IT, just as we know the reality is the OLD INFRASTRUCTURE OUTDOOR need to REPLACED and LESS and LESS PEOPLE DOING THAT,EITHER LACKS OF FUNDS on a MAINTENANCE PROJECT and REPLACEMENT or The Device Become RUSTY because of WEATHER or its is broken by an EVENTS, LACK OF MAINTENANCE BUDGET or SOME PEOPLE just not LOVE to SEE THAT because the PLACEMENT is NOT BEAUTIFUL TO SEE. Thats The Reality Buddy.
+
+if you come by to this DOCUMENTATIONS because you're a past working on INFORMATION TECHNOLOGY as an IT SUPPORT or whatever the industry on ENGINNERING THINGS then this story is for you. sometimes wearing that HELMET on BUILD A INFRASTRUCTURE AS ENGINEER or cut the CABLE OUTDOOR is a lazy task im doing IT SUPPORT JOB for almost 3 month on COLLEGE, even just CRIMPING that Ethernet Cable Arounds THE CAT4 and CAT6 or open the CABLE box with TOOLBOX not EVERYONE has the ability and STAMINA doing that jobs. if its still has 1ms latency on peers just keeps using it. Sometimes im fixing that DSL cable or ADSL Router in my Home that is more ANCIENT than you know the first gen of WLAN ROUTER that still connected to FIBER ROUTER networks or MEET my ANCIENT NGAGE QD that the browser still use GPRS CONNECTION. of its GOODS the QD has TONY HAWK GAMES ON IT.
+
+WITHOUT doing that we cannot COMMUNICATE THE INFORMATION FAST ENOUGH so dont be LAZY and Make Ease Other UNIT and ORGANIZATIONS works and even just to PLAY a GAMES COMFORTABLY or do A LIVE STREAM, JUST LIKE When I SPOT PEOPLE who dig the grounds , CUT THE FIBER OPTICS CABLE , place THE ROUTER on the PUBLIC PLACE and see the pings on terminal do the NODES of that ROUTER even there and WORKS , WILL IT be Connected to INTERNET ? or The things we place on that STATIONARY ROUTER , HUB , SATELLITE become more EXPENSIVE to EVERYDAY PEOPLE to access its ? That Was what i thinks when the FIBER OPTIC CABLE I SEE ITS BURIED ON THE GROUNDS because NOT ALL COUNTRY HAS SAME ACCESS of MACHINERY DOING THAT.
+
+That Leads Me to so many QUESTION so i DECIDE to get out from the UNIVERSITY LIVE and find more PRACTICAL PEOPLE on the FIELDS who MAINLY FIX COMPUTER , OPEN A NET , or SOLDERING the CHIPS of Electronic DEVICE. its give me ALOT of FRIENDS that working in STARTUP and FRIENDS on CREATIVE INDUSTRY.
+
+I Also got a FUND to FORM a COMPANY from GOVERNMENTS THROUGH UNIVERSTIY PROGRAM and have a new TEAM but it just CONSIST as BOARD DIRECTOR on that PROJECT , WE TECHNICALY HAVE NO DIRECT EMPLOYEE AND OUTSOURCE ALL THE TASK GIVEN TO SOME WORKING CONTRACT and WE are ALSO STILL PRETTY YOUNG, ALSO I LEARN so MANY THINGS is not BACKWARD COMPATIBLE either FOR A SECURITY PURPOSE or new ENCRYPTION is holding the NET, it has so many difficulty to solve because SMALL CHIPS THAT WE KNOW 30 years BACKWARD and THAT SMALL CHIPS CPU WE KNOW TODAY has so many DIFFERENT on the ENVIRONMENTS and the ARCHITECTURE OF HOW THATS PCB BOARD FORMING A DEVICE as a UNIT. IN THAT STORY I ALSO MAKE A RULE FOR THE THINGS HOW WE MANAGE WORKS. THE RULE NUMBER ONE IS DONT GO TO WORK IF YOU STILL NOT FIND YOUR HAPPINESS. The Rules is created from a BURNOUT COMPLAINT of so MANY MARKETING WORK Either OUTDOOR by TRIPPING OR FOUND a POTENTIAL CLIENT and TALK TO A STRANGER. ITS IMPORTANT TO MANAGE YOUR SELF become YOU CAN MANAGE OTHER. DOING A WORK WITH A FOCUS YIELD BETTER OUTCOME THAN FORCED WORK.
+
+When Discuss that with my FATHER what he said that 
+
+Timed on 2020 at Abian Seka before im diving into another jobs and leave Engineering JOBS.
+
+Father   : Why You need to Work?
+Me       : (Im not answering it i just say HMM...)
+Father   : If you did not know the answer yet then sitdown MEDITATE on this ROOM.
+Me       : im try to talking to my minds alot why do i need it , why its needed , as a son my FIGURE is always DAD,FATHER and GRANDPA who give me DEVICE EACH YEAR before HE PASS AWAY, Grandpa told me you are generation that not always working for money,  INSTEAD we just SERVE what people NEEDS who come to US need to share their thoughts, what is the ANSWER there is so many in minds passing by.
+Father   : do meditate until morning till you find the answer why you need to work.
+
+There is no answer for that at that days till the next day some other people known as PELAKON on the MEDITATION CENTER is coming by visiting FATHER also , that time there is a SQ disccusion happening on that day from so many PEOPLE that FATHER TEACH his TEACHING. its such a great discussion the conclusion of that DISCUSSION is JUST.
+
+MINDS NEED SOMETHING TO DO its like OUR SMARTPHONE . if its process something that We DIDNT aware and MONITOR its OVERLOADED or MAYBE used by others you re not AWARE OF so WORK NEEDED TO MAKE US BUSY WITH THAT what OUR MINDS NEEDS.
+
+Father just answering with indonesian word : (pekerjaan Hanya dibutuhkan untuk menyibukkan PIKIRAN)
+
+ANOTHER DAY OF PROBLEM , SO I JUST DIVE INTO IT BECOME A PRODUCER AND SEE HOW ENTERTAINMENT INDUSTRY WORKS TODAY, I GO TO THAT FUN PLACE Whatever IT IS , HOTEL , VILLA , BEACH , OR MY FRIENDS HOME NOT AS A GUESS BUT AS A WORKER EITHER AS DJ , DO A DANCE , BRING A FLASH DRIVE , FIXING THAT SPEAKER BY CALLING SOUNDSMAN OR  ENGINEER , or just BRING A CDJ TO THE EVENT PLACE, ITS POINT ME INTO SAME THINGS AGAIN AND AGAIN. SO IM HAD THE EXPERIENCE WHAT IS THE PROBLEM OF Working OUTDOOR.
+
+LACKING KNOWLEDGE on the DOCUMENTATION of ANCIENT DEVICE is a HEADACHE so DOCUMENT its on the FORM PEOPLE CAN READ , WHATEVER is the ROUTINE on MAINTAINING . IN CASE we CANNOT WORK on that TASK. OTHER PEOPLE CAN LEARN FROM IT and THAT WILL BE ADOPTED as a WORK FLOW in the FUTURE to MAINTAIN THE NET KEEP GOING ON. or a CHILD that JUST CURIOUS LIKE me will be TALKING IN THE FORUM or WHATEVER THE CHAT APPS WAS with some GRANDPA AND GRANDMA who LOVE CODE and READ ITS NOTE ALSO.
+
+NOTE SOMETHING IMPORTANT THAT IS THE FIRST TASK , WE did not know who read our NOTES or CODE , if ITS become something THAT USEFULL FOR THEM and GIVE HAPPINESS ITS JUST ENOUGH. BECAUSE if YOU ARE a AUTHOR and TELLING YOUR STORY You NEVER know who READ THE BOOKS and INSPIRE OTHER to EXPERIENCE THE SAME THINGS. 
+
+NOT EVERYONE HAS THE LIVE YOU EXPERIENCE SO DONT BE AFRAID TO BE YOURSELF. SHARE THE BURDEN.
+
+
+2023 Sincere,
+GMNP
+
+

@@ -1,0 +1,44 @@
+WHY DOCS
+
+ONCE UPON A TIME ON MY LIFE I HAVE MSI GAMING NOTEBOOK.
+
+ONCE UPON A TIME ON MY LIFE I BORED WITH IT.
+
+ONCE UPON A TIME ON MY LIFE I TRIPLE BOOT IT WITH 
+
+WINDOWS 10, HACKINTOSH , and FEDORA 
+
+Thats it the story i use all of its at my MBP2012 SCREEN IS BROKEN on 2020 and NOW THE MSI IS BROKEN on 2023.
+
+This is about LINUX either you meet them on windows accessing on the cloud , inside the kernel of your android SMARTPHONE with SSH , or virtually. whatever the computer is if it has SSH you can use it to maintain some things REMOTE.
+
+
+This DOCS is still on going.
+
+Working in Android
+
+Working in OSX
+
+
+Working In Fedora
+
+Maintaining a Fedora Clouds
+
+
+SSH
+Its will ask your ecdsa or rsa SSH PRIVATE KEYS so go into Terminal and create on
+
+
+```
+ssh piwan.net
+
+```
+
+or Installing Nodejs
+
+```
+yum update
+yum install node
+
+```
+
