@@ -1,4 +1,4 @@
-AUTHOR
+AUTHOR 
 A bit story of Life Experience
 
 Since Child Every Year On My Birthday im gratefull as SON that always gifted latest Electronic Based Device on MY BIRTHDAY , Either its a Game Console or A Phone basicly that has GAME ON IT.
@@ -37,7 +37,7 @@ Father   : If you did not know the answer yet then sitdown MEDITATE on this ROOM
 Me       : im try to talking to my minds alot why do i need it , why its needed , as a son my FIGURE is always DAD,FATHER and GRANDPA who give me DEVICE EACH YEAR before HE PASS AWAY, Grandpa told me you are generation that not always working for money,  INSTEAD we just SERVE what people NEEDS who come to US need to share their thoughts, what is the ANSWER there is so many in minds passing by.
 Father   : do meditate until morning till you find the answer why you need to work.
 
-There is no answer for that at that days till the next day some other people known as PELAKON on the MEDITATION CENTER is coming by visiting FATHER also , that time there is a SQ disccusion happening on that day from so many PEOPLE that FATHER TEACH his TEACHING. its such a great discussion the conclusion of that DISCUSSION is JUST.
+There is no answer for that at that days till the next day some other people known as PELAKON on the MEDITATION CENTER is coming by visiting FATHER also , that time there is a SQ disccusion happening on that day from so many PEOPLE that FATHER TEACH his TEACHING. its such a great discussion the conclusion of that DISCUSSION.
 
 MINDS NEED SOMETHING TO DO its like OUR SMARTPHONE . if its process something that We DIDNT aware and MONITOR its OVERLOADED or MAYBE used by others you re not AWARE OF so WORK NEEDED TO MAKE US BUSY WITH THAT what OUR MINDS NEEDS.
 
