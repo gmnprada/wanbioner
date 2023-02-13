@@ -149,9 +149,7 @@ app.get('/auth',RouteAuth);
 app.get('*', function(req, res){
     res.status(404).render('get/404.html');
   });
-
-
-
+  
 const wss = new WebSocketServer({noServer:true});
 
 function heartbeat(){
