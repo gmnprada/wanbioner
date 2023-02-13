@@ -1,5 +1,5 @@
 AUTHOR
-A bit story of Live Experience
+A bit story of Life Experience
 
 Since Child Every Year On My Birthday im gratefull as SON that always gifted latest Electronic Based Device on MY BIRTHDAY , Either its a Game Console or A Phone basicly that has GAME ON IT.
 
