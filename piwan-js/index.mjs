@@ -25,6 +25,8 @@ const json = JSON.parse(
 
 json.PWAN_ENVIRONMENT == "DEV"  ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
 
+process.env.PWAN_UDP_PORT = 36980;
+process.env.PITM_PORT = 36123;
 
 TIME_SERVICE.Start();
 const app = express();

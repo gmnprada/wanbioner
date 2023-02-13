@@ -182,11 +182,18 @@ function _Tick() {
     if (_timeserver_running) {
         try {
             let buf = formPacket(OPCODE_FLIGHT);
-            _datagram.send(buf, 1230, '127.0.0.1', (err, bytes) => {
+
+            // FLIGHT a PACKET To LOOPBACK FIRST checking The Protocol HAS A CONNCTION OR NOT
+            _datagram.send(buf, process.env.PITM_PORT, '127.0.0.1', (err, bytes) => {
                 if (err) {
                     return;
                 }
             });
+
+            // NEED TO LOOP OTHER THAT PING US
+
+
+
         } catch (e) {
             console.error("Error In Running Tick ", e);
         }
@@ -199,7 +206,7 @@ function Start() {
         console.log("ΠWN Network Time Already Running")
         return;
     }
-    _datagram.bind({ port: 36123, address: _datagram_host.address, exclusive: true });
+    _datagram.bind({ port: process.env.PITM_PORT, address: _datagram_host.address, exclusive: true });
     interval = setInterval(_Tick, _timetick);
 }
 
