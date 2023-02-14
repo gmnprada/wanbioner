@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
-import {WebSocketServer} from 'ws';
+import { WebSocketServer } from 'ws';
 import { PROJECT_DIR } from './pathHelper.mjs';
 import express from 'express';
 import hbs from 'hbs';
@@ -150,15 +150,16 @@ app.get('*', function (req, res) {
     res.status(404).render('get/404.html');
 });
 
-var httpServer = http.createServer(app);
-httpServer.listen(json.PWAN_HTTP_PORT);
-httpServer.on('upgrade', (request, socket, head) => {
-    wss.handleUpgrade(request, socket, head, socket => {
-        wss.emit('connection', socket, request);
-    });
-});
-
 if (os.hostname() == "piwan.net") {
+    debug_log(`Host name`,os.hostname());
+    var httpServer = http.createServer(app);
+    httpServer.listen(json.PWAN_HTTP_PORT);
+    httpServer.on('upgrade', (request, socket, head) => {
+        wss.handleUpgrade(request, socket, head, socket => {
+            wss.emit('connection', socket, request);
+        });
+    });
+
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
     const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
     const certificate = readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
@@ -176,7 +177,7 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
-    const wss = new WebSocketServer({"server":httpsServer});
+    const wss = new WebSocketServer({ "server": httpsServer });
 
     function heartbeat() {
         this.isAlive = true;
