@@ -2,3 +2,5 @@
 .vscode
 piwan/target
 piwan-js/node_modules
+piwan-js/config.json
+

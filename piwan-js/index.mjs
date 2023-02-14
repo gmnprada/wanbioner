@@ -1,41 +1,38 @@
-import { readFile} from 'fs/promises';
+import { readFile } from 'fs/promises';
 import { readFileSync } from 'fs';
-import os  from "node:os";
+import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
 import { PROJECT_DIR } from './pathHelper.mjs';
 import express from 'express';
-import {WebSocketServer} from 'ws';
 import hbs from 'hbs';
 import { RouteIndex } from './routes/index.mjs';
-import { RouteAbout} from './routes/about.mjs';
-import { RouteNetwork} from './routes/network.mjs';
+import { RouteAbout } from './routes/about.mjs';
+import { RouteNetwork } from './routes/network.mjs';
 import TIME_SERVICE from './core/timeservice/timeservice.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
-import {debug_log,info_log,warn_log} from './log.mjs';
+import { debug_log, info_log, warn_log } from './log.mjs';
 
 
 const json = JSON.parse(
-  await readFile(
-    new URL('./config.json', import.meta.url)
-  )
+    await readFile(
+        new URL('./config.json', import.meta.url)
+    )
 );
 
-json.PWAN_ENVIRONMENT == "DEV"  ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
+json.PWAN_ENVIRONMENT == "DEV" ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
 
 process.env.PWAN_UDP_PORT = 36980;
 process.env.PITM_PORT = 36123;
 
 TIME_SERVICE.Start();
 const app = express();
-const port = Number(json.PWAN_HTTP_PORT);
-const httpsPort = Number(json.PWAN_HTTPS_PORT);
 
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
+        defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
         scriptSrc: [
             "'self'",
             "'unsafe-inline'",
@@ -50,10 +47,10 @@ app.use(helmet.contentSecurityPolicy({
             "fonts.googleapis.com",
             "fonts.gstatic.com",
         ],
-        fontSrc: ["'self'","piwan.net","fonts.googleapis.com", "fonts.gstatic.com"],
+        fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com"],
         frameSrc: ["'self'"],
         manifestSrc: ["'self'"],
-        connectSrc:["'self'"]
+        connectSrc: ["'self'"]
     }
 }));
 app.use(helmet.xssFilter());
@@ -142,57 +139,23 @@ app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
 app.get('/', RouteIndex);
-app.get('/about',RouteAbout);
-app.get('/network',RouteNetwork);
-app.get('/docs',RouteDocs);
-app.get('/auth',RouteAuth);
-app.get('*', function(req, res){
+app.get('/about', RouteAbout);
+app.get('/network', RouteNetwork);
+app.get('/docs', RouteDocs);
+app.get('/auth', RouteAuth);
+app.get('*', function (req, res) {
     res.status(404).render('get/404.html');
-  });
-  
-const wss = new WebSocketServer({noServer:true});
-
-function heartbeat(){
-    this.isAlive = true;
-}
-
-wss.on('connection',ws=>{
-    ws.on("connection",(c)=>{
-        debug_log("WS got new client",ws);
-    });
-    ws.on("message",msg=>{
-        debug_log("WS message",msg);
-    });
-
-    ws.on("error",err=>{
-        debug_log("ws error",err);
-    });
-
-   ws.on('pong', heartbeat);
-});
-
-TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync',(time)=>{
-    let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
-    let t = Buffer.alloc(8);
-    t.writeBigUint64LE(time,0);
-    let conc = Buffer.concat([buffer,t]);
-    for(let ws of wss.clients){
-        if (ws.isAlive === false) return ws.terminate();
-        ws.isAlive = false;
-        ws.ping();
-        ws.send(conc.toString('hex'));
-    }
 });
 
 var httpServer = http.createServer(app);
 httpServer.listen(json.PWAN_HTTP_PORT);
 httpServer.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, socket => {
-      wss.emit('connection', socket, request);
+        wss.emit('connection', socket, request);
     });
 });
 
-if(os.hostname() == "piwan.net"){
+if (os.hostname() == "piwan.net") {
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
     const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
     const certificate = readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
@@ -206,9 +169,76 @@ if(os.hostname() == "piwan.net"){
     httpsServer.listen(json.PWAN_HTTPS_PORT);
     httpsServer.on('upgrade', (request, socket, head) => {
         wss.handleUpgrade(request, socket, head, socket => {
-          wss.emit('connection', socket, request);
+            wss.emit('connection', socket, request);
         });
     });
-}else{
+
+    const wss = new WebSocketServer({ noServer: true });
+
+    function heartbeat() {
+        this.isAlive = true;
+    }
+
+    wss.on('connection', ws => {
+        ws.on("connection", (c) => {
+            debug_log("WS got new client", ws);
+        });
+        ws.on("message", msg => {
+            debug_log("WS message", msg);
+        });
+
+        ws.on("error", err => {
+            debug_log("ws error", err);
+        });
+
+        ws.on('pong', heartbeat);
+    });
+
+    TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
+        let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
+        let t = Buffer.alloc(8);
+        t.writeBigUint64LE(time, 0);
+        let conc = Buffer.concat([buffer, t]);
+        for (let ws of wss.clients) {
+            if (ws.isAlive === false) return ws.terminate();
+            ws.isAlive = false;
+            ws.ping();
+            ws.send(conc.toString('hex'));
+        }
+    });
+} else {
     warn_log("Https May Not Running Wells, Do Fix The Environments");
+    const wss = new WebSocketServer({ noServer: true });
+
+    function heartbeat() {
+        this.isAlive = true;
+    }
+
+    wss.on('connection', ws => {
+        ws.on("connection", (c) => {
+            debug_log("WS got new client", ws);
+        });
+        ws.on("message", msg => {
+            debug_log("WS message", msg);
+        });
+
+        ws.on("error", err => {
+            debug_log("ws error", err);
+        });
+
+        ws.on('pong', heartbeat);
+    });
+
+    TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
+        let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
+        let t = Buffer.alloc(8);
+        t.writeBigUint64LE(time, 0);
+        let conc = Buffer.concat([buffer, t]);
+        for (let ws of wss.clients) {
+            if (ws.isAlive === false) return ws.terminate();
+            ws.isAlive = false;
+            ws.ping();
+            ws.send(conc.toString('hex'));
+        }
+    });
 }
