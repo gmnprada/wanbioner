@@ -18,6 +18,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 import dgram from 'node:dgram';
 import os from 'node:os';
 import { EventEmitter } from 'node:events';
+import {debug_log} from '../../log.mjs';
 
 class NetworkTimeService extends EventEmitter{};
 
@@ -171,12 +172,12 @@ function _onError(err) {
 }
 
 function _onListening() {
-    console.log("ΠWN Network Time Service Is Now Listening");
     let obj = _datagram.address();
     _datagram_host.address = obj.address;
     _datagram.setBroadcast(true);
     _timeserver_running = true;
     NetworkTimeServiceEmitter.emit("running",_timeserver_running);
+    debug_log(`ΠWN Network Time Service Is Now Listening on port ${process.env.PITM_PORT} addr: ${_datagram_host.address}`);
 }
 
 function _Tick() {
