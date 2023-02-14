@@ -176,7 +176,7 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
-    const wss = new WebSocketServer({httpsServer});
+    const wss = new WebSocketServer({"server":httpsServer});
 
     function heartbeat() {
         this.isAlive = true;
