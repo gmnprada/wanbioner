@@ -19,6 +19,7 @@ import dgram from 'node:dgram';
 import os from 'node:os';
 import { EventEmitter } from 'node:events';
 import {debug_log, error_log} from '../../log.mjs';
+import os from 'os';
 
 class NetworkTimeService extends EventEmitter{};
 
@@ -39,9 +40,8 @@ const _timetick = 10;
 var interval;
 const network = [];
 
-import { networkInterfaces } from 'os';
 
-const interfaces = networkInterfaces();
+const interfaces = os.networkInterfaces();
 for(let iface of interfaces){
     iface.push(interfaces.address);
 }
