@@ -39,6 +39,13 @@ const _timetick = 10;
 var interval;
 const network = [];
 
+import { networkInterfaces } from 'os';
+
+const interfaces = networkInterfaces();
+for(let iface of networkInterfaces){
+    iface.push(interfaces.address);
+}
+
 function _onMessage(message, remote_info) {
     if (message instanceof Buffer) {
         let header = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
@@ -186,12 +193,16 @@ function _Tick() {
             let buf = formPacket(OPCODE_FLIGHT);
 
             // FLIGHT a PACKET To LOOPBACK FIRST checking The Protocol HAS A CONNCTION OR NOT
-            _datagram.send(buf, process.env.PITM_PORT, '127.0.0.1', (err, bytes) => {
-                if (err) {
-                    error_log(err);
-                    return;
-                }
-            });
+
+            for(let addr of network){
+                _datagram.send(buf, process.env.PITM_PORT, addr, (err, bytes) => {
+                    if (err) {
+                        error_log(err);
+                        return;
+                    }
+                    debug_log(`send packet ${buf} to ${bytes}`);
+                });
+            }
 
             // NEED TO LOOP OTHER THAT PING US
 
