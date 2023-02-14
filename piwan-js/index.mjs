@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
+import {WebSocketServer} from 'ws';
 import { PROJECT_DIR } from './pathHelper.mjs';
 import express from 'express';
 import hbs from 'hbs';
