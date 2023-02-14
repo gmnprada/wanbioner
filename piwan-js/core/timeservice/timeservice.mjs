@@ -222,6 +222,7 @@ function Start() {
     }
     _datagram.bind({ port: process.env.PITM_PORT, address: _datagram_host.address, exclusive: true });
     interval = setInterval(_Tick, _timetick);
+    debug_log("ΠWN Started");
 }
 
 
