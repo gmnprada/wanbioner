@@ -42,7 +42,7 @@ const network = [];
 import { networkInterfaces } from 'os';
 
 const interfaces = networkInterfaces();
-for(let iface of networkInterfaces){
+for(let iface of interfaces){
     iface.push(interfaces.address);
 }
 
