@@ -113,6 +113,7 @@ function _onMessage(message, remote_info) {
                     NetworkTimeServiceEmitter.emit("datesync",new Date(Number(localnow)));
                     //console.log(`Network Time ${localnow}`);
                     //console.log(`Network Date ${new Date(Number(localnow))}`);
+                    debug_log(`Network time ${localnow}`);
                 }
                 break;
             default:

@@ -56,6 +56,8 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.xssFilter());
 app.disable('x-powered-by');
 
+
+
 hbs.registerPartial('header', `
 <!DOCTYPE html>
 <html lang="en">
@@ -173,7 +175,7 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
-    const wss = new WebSocketServer({ noServer: true });
+    const wss = new WebSocketServer({httpsServer});
 
     function heartbeat() {
         this.isAlive = true;
