@@ -31,7 +31,7 @@ const OPCODE_FLIGHT_AUDIT = 0x04;
 const OPCODE_PING_ADD = 0x5;
 
 const _datagram = dgram.createSocket('udp4');
-const _datagram_host = { address: '0.0.0.0', family: 'IPv4', port: 1230, hostname: os.hostname() };
+const _datagram_host = { address: '0.0.0.0', family: 'IPv4', port: process.env.PITM_PORT, hostname: os.hostname() };
 var _timeserver_running = false;
 //10ms
 const _timetick = 10;
@@ -187,6 +187,7 @@ function _Tick() {
             // FLIGHT a PACKET To LOOPBACK FIRST checking The Protocol HAS A CONNCTION OR NOT
             _datagram.send(buf, process.env.PITM_PORT, '127.0.0.1', (err, bytes) => {
                 if (err) {
+                    error_log(err);
                     return;
                 }
             });
