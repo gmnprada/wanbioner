@@ -18,7 +18,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 import dgram from 'node:dgram';
 import os from 'node:os';
 import { EventEmitter } from 'node:events';
-import {debug_log} from '../../log.mjs';
+import {debug_log, error_log} from '../../log.mjs';
 
 class NetworkTimeService extends EventEmitter{};
 
@@ -175,7 +175,7 @@ function formPacket(opcode, ft0, ft1, ft2) {
 }
 
 function _onError(err) {
-    console.log(err);
+    error_log(err);
 }
 
 function _onListening() {
@@ -206,10 +206,8 @@ function _Tick() {
 
             // NEED TO LOOP OTHER THAT PING US
 
-
-
         } catch (e) {
-            console.error("Error In Running Tick ", e);
+            error_log("Error In Running Tick ", e);
         }
 
     }
