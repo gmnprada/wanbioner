@@ -221,10 +221,8 @@ if (os.hostname() == "piwan.net") {
         let conc = Buffer.concat([buffer, t]);
         for (let ws of wss.clients) {
             if (ws.isAlive === false) return ws.terminate();
-
             if(ws.readyState == 1){
                 info_log(`Sending packet to WebSocket Client ${ws}`);
-                ws.isAlive = false;
                 ws.ping();
                 ws.send(conc.toString('hex'));
             }
@@ -260,7 +258,6 @@ if (os.hostname() == "piwan.net") {
         let conc = Buffer.concat([buffer, t]);
         for (let ws of wss.clients) {
             if (ws.isAlive === false) return ws.terminate();
-            ws.isAlive = false;
             ws.ping();
             ws.send(conc.toString('hex'));
         }
