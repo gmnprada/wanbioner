@@ -153,13 +153,6 @@ app.get('*', function (req, res) {
 
 if (os.hostname() == "piwan.net") {
     debug_log(`Host name`,os.hostname());
-    var httpServer = http.createServer(app);
-    httpServer.listen(json.PWAN_HTTP_PORT);
-    httpServer.on('upgrade', (request, socket, head) => {
-        wss.handleUpgrade(request, socket, head, socket => {
-            wss.emit('connection', socket, request);
-        });
-    });
 
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
     const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
