@@ -182,7 +182,6 @@ if (os.hostname() == "piwan.net") {
     };
     
     var httpsServer = https.createServer(credentials, app);
-    httpsServer.listen(app)
     httpsServer.listen(json.PWAN_HTTPS_PORT);
     const wss = new WebSocketServer({ noServer: true });
 
