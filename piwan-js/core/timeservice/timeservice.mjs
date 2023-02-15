@@ -45,6 +45,7 @@ const interfaces = os.networkInterfaces();
 debug_log(interfaces);
 Object.values(interfaces).forEach((iface)=>{
     for(let ip of iface){
+        if(ip.family)
         network.push(ip.address);
     }
 })
@@ -203,7 +204,7 @@ function _Tick() {
                         error_log(err);
                         return;
                     }
-                    debug_log(`send packet ${buf} to ${bytes}`);
+                    //debug_log(`send packet ${buf} to ${bytes}`);
                 });
             }
 
