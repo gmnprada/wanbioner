@@ -95,6 +95,6 @@ a-nostyle:active {
   display: block;
 }
 
-.mdl-layout__header .mdl-layout__drawer-button i {
-  color: #ffffff;
+.material-icons {
+  color: #ffffff !important;
 }
