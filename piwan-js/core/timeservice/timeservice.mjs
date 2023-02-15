@@ -46,7 +46,7 @@ debug_log(interfaces);
 Object.values(interfaces).forEach((iface)=>{
     for(let ip of iface){
         if(ip.family == 'IPv4'){
-            debug_log(`pushing IpV4  ${IpV4} to networks`);
+            debug_log(`pushing IpV4  ${ip.address} to networks`);
             network.push(ip.address);
         }
     }
