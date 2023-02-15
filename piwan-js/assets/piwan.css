@@ -88,3 +88,9 @@ a-nostyle:active {
   color: white;
   font-style: normal;
 }
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

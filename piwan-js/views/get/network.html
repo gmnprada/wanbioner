@@ -99,6 +99,7 @@
         LogArr.push(str);
         Render();
     }
+
     function hexToBytes(hex) {
         let bytes = [];
         for (let c = 0; c < hex.length; c += 2)
@@ -116,7 +117,7 @@
         // sends out pings plus a conservative assumption of the latency.
         this.pingTimeout = setTimeout(() => {
             this.terminate();
-        }, 1000 + 1000);
+        }, 1000 * 30000);
     }
 
     const secondHand = document.querySelector('.second-hand');
@@ -168,11 +169,11 @@
         ws.onclose = function (event) {
             clearTimeout(this.pingTimeout);
             if (event.wasClean) {
-
+                console.log("Ws closed",event);
             } else {
                 // e.g. server process killed or network down
                 // event.code is usually 1006 in this case
-
+                console.log("Ws Terminated unclean");
             }
         };
 
@@ -187,10 +188,5 @@
     } catch (e) {
         console.log(e);
     }
-
-
-
-
-
 </script>
 {{> footer}}

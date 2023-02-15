@@ -97,7 +97,7 @@ hbs.registerPartial('header', `
     <div class="mdl-layout__header-row">
         <!-- Title -->
         <div class="mdl-layout-title">
-        <img class="logo" src="/assets/ico/android-icon-36x36.png" alt="Logo">
+        <img class="logo" src="https://piwan.net/assets/ico/android-icon-36x36.png" alt="Logo">
         <span>πwan</span>
         </div>
         <!-- Add spacer, to align navigation to the right -->
@@ -197,6 +197,8 @@ if (os.hostname() == "piwan.net") {
     }
 
     wss.on('connection', ws => {
+        ws.isAlive = true;
+
         ws.on("connection", (c) => {
             debug_log("WS got new client", ws);
         });
@@ -212,15 +214,20 @@ if (os.hostname() == "piwan.net") {
     });
 
     TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
+
         let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
         let t = Buffer.alloc(8);
         t.writeBigUint64LE(time, 0);
         let conc = Buffer.concat([buffer, t]);
         for (let ws of wss.clients) {
             if (ws.isAlive === false) return ws.terminate();
-            ws.isAlive = false;
-            ws.ping();
-            ws.send(conc.toString('hex'));
+
+            if(ws.readyState == 1){
+                info_log(`Sending packet to WebSocket Client ${ws}`);
+                ws.isAlive = false;
+                ws.ping();
+                ws.send(conc.toString('hex'));
+            }
         }
     });
 } else {
