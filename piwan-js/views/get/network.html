@@ -1,5 +1,5 @@
 {{> header title="Π Wide Area Network - Network"}}
-<link rel="stylesheet" href="./assets/clock.css">
+<link rel="stylesheet" href="https://piwan.net/assets/clock.css">
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col text-white center-items">
         <h3 class="text-white">π Wide Area Network - Control Panel</h3>
@@ -141,7 +141,7 @@
     }
 
     try {
-        const ws = new WebSocket('ws://piwan.net');
+        const ws = new WebSocket('wss://piwan.net');
         ws.onopen = function (e) {
             console.log("Opened Yay");
         };
