@@ -166,7 +166,7 @@ app.get('/validation-key.txt', function (req, res) {
 
 if (os.hostname() == "piwan.net") {
     debug_log(`Host name`,os.hostname());
-    httpServer = http.createServer(APP);
+    httpServer = http.createServer(app);
     httpServer.listen(json.PWAN_HTTP_PORT, () => {
         info_log(`Piwan HTTP Server running on port ${json.PWAN_HTTP_PORT}`);
     });
