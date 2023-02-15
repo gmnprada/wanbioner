@@ -127,7 +127,15 @@ function _onMessage(message, remote_info) {
                     NetworkTimeServiceEmitter.emit("datesync",new Date(Number(localnow)));
                     //console.log(`Network Time ${localnow}`);
                     //console.log(`Network Date ${new Date(Number(localnow))}`);
-                   // debug_log(`Network time ${localnow}`);
+                    let time = {
+                        addr:remote_info.address,
+                        localnow : localnow,
+                        theta : theta,
+                        delta:delta,
+                        time_client_offset:time_client_offset,
+                        time_server_offset:time_server_offset,
+                    }
+                    debug_log(time);
                 }
                 break;
             default:
