@@ -83,7 +83,7 @@ function _onMessage(message, remote_info) {
         switch (opcode) {
             case OPCODE_FLIGHT:
                 buf = formPacket(OPCODE_FLIGHT_RECEIVED, t0.readBigUint64LE(0));
-                _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
+                _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
@@ -91,7 +91,7 @@ function _onMessage(message, remote_info) {
                 break;
             case OPCODE_FLIGHT_RECEIVED:
                 buf = formPacket(OPCODE_FLIGHT_BACK, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
-                _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
+                _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
@@ -99,7 +99,7 @@ function _onMessage(message, remote_info) {
                 break;
             case OPCODE_FLIGHT_BACK:
                 buf = formPacket(OPCODE_FLIGHT_AUDIT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
-                _datagram.send(buf, 1230, remote_info.address, (err, bytes) => {
+                _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
