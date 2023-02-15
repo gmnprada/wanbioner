@@ -41,6 +41,8 @@ const network = [];
 
 
 const interfaces = os.networkInterfaces();
+
+debug_log(interfaces);
 for(let iface of interfaces){
     iface.push(interfaces.address);
 }
