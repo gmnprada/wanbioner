@@ -32,6 +32,7 @@ process.env.PITM_PORT = 36123;
 TIME_SERVICE.Start();
 const app = express();
 
+/*
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -56,6 +57,7 @@ app.use(helmet.contentSecurityPolicy({
     }
 }));
 app.use(helmet.xssFilter());
+*/
 app.disable('x-powered-by');
 
 
