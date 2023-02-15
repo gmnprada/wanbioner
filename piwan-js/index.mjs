@@ -4,7 +4,7 @@ import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
 import { WebSocketServer } from 'ws';
-import { PROJECT_DIR } from './pathHelper.mjs';
+import { PROJECT_DIR, ROOT_DIR } from './pathHelper.mjs';
 import express from 'express';
 import hbs from 'hbs';
 import { RouteIndex } from './routes/index.mjs';
@@ -139,6 +139,17 @@ hbs.registerPartial('footer', `
 
 
 let dir = "/" + PROJECT_DIR + "/assets";
+
+app.use((req, res, next) => {
+    if (req.secure) {
+        debug_log(`user running from secure context user ip ${req.ip}`);
+        next();
+    } else {
+        debug_log("redirecting request from user to https");
+        return res.redirect('https://' + "piwan.net" + req.url);
+    }
+});
+
 app.use("/assets", express.static(dir));
 app.set('view engine', 'html');
 
@@ -149,12 +160,16 @@ app.get('/about', RouteAbout);
 app.get('/network', RouteNetwork);
 app.get('/docs', RouteDocs);
 app.get('/auth', RouteAuth);
-app.get('*', function (req, res) {
-    res.status(404).render('get/404.html');
+app.get('/validation-key.txt', function (req, res) {
+    return res.sendFile(ROOT_DIR+"/validation-key.txt");
 });
 
 if (os.hostname() == "piwan.net") {
     debug_log(`Host name`,os.hostname());
+    httpServer = http.createServer(APP);
+    httpServer.listen(json.PWAN_HTTP_PORT, () => {
+        info_log(`Piwan HTTP Server running on port ${json.PWAN_HTTP_PORT}`);
+    });
 
     info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
     const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
@@ -165,7 +180,9 @@ if (os.hostname() == "piwan.net") {
         cert: certificate,
         ca: ca
     };
+    
     var httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(app)
     httpsServer.listen(json.PWAN_HTTPS_PORT);
     const wss = new WebSocketServer({ noServer: true });
 
