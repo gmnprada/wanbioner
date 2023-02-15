@@ -68,8 +68,8 @@ hbs.registerPartial('header', `
 
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://piwan.net/assets/piwan.css">
     <link rel="stylesheet" href="https://piwan.net/assets/mdl/material.css">
+    <link rel="stylesheet" href="https://piwan.net/assets/piwan.css">
     <script src="https://piwan.net/assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="apple-touch-icon" sizes="57x57" href="https://piwan.net/assets/ico/apple-icon-57x57.png">
@@ -120,6 +120,9 @@ hbs.registerPartial('header', `
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="https://piwan.net/about">About</a>
         <a class="mdl-navigation__link" href="https://piwan.net/network">Network</a>
+        <a class="mdl-navigation__link" href="https://piwan.net/docs">Docs</a>
+        <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
+        <a class="mdl-navigation__link" href="https://piwan.net/auth">Login</a>
     </nav>
 </div>
 <main class="mdl-layout__content">

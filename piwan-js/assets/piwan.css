@@ -94,3 +94,7 @@ a-nostyle:active {
   height: auto;
   display: block;
 }
+
+.mdl-layout__header .mdl-layout__drawer-button i {
+  color: #ffffff;
+}
