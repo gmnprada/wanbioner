@@ -43,9 +43,11 @@ const network = [];
 const interfaces = os.networkInterfaces();
 
 debug_log(interfaces);
-for(let iface of interfaces){
-    iface.push(interfaces.address);
-}
+Object.values(interfaces).forEach((iface)=>{
+    for(let ip of iface){
+        network.push(ip.address);
+    }
+})
 
 function _onMessage(message, remote_info) {
     if (message instanceof Buffer) {
