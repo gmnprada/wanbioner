@@ -167,8 +167,8 @@ if (os.hostname() == "piwan.net") {
     };
     var httpsServer = https.createServer(credentials, app);
     httpsServer.listen(json.PWAN_HTTPS_PORT);
-    const wss = new WebSocketServer({ "server": httpsServer });
-    
+    const wss = new WebSocketServer({ noServer: true });
+
     httpsServer.on('upgrade', (request, socket, head) => {
         wss.handleUpgrade(request, socket, head, socket => {
             wss.emit('connection', socket, request);
