@@ -108,7 +108,7 @@ hbs.registerPartial('header', `
             <a class="mdl-navigation__link" href="https://piwan.net/network">Network</a>
             <a class="mdl-navigation__link" href="https://piwan.net/docs">Docs</a>
             <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
-            <a class="mdl-navigation__link" href="https://piwan.net/auth">Pi Authentication</a>
+            <a class="mdl-navigation__link" href="https://piwan.net/auth">Login</a>
         </nav>
     </div>
 </header>
