@@ -20,14 +20,15 @@ import { debug_log, info_log, warn_log } from './log.mjs';
 
 const json = JSON.parse(
     await readFile(
-        new URL('./config.json', import.meta.url)
+        new URL('./.config.json', import.meta.url)
     )
 );
 
+// Add Info From Config
 json.PWAN_ENVIRONMENT == "DEV" ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
-
-process.env.PWAN_UDP_PORT = 36980;
-process.env.PITM_PORT = 36123;
+process.env.PIWAN_UDP_PORT = json.PIWAN_UDP_PORT;
+process.env.PITM_PORT = json.PITM_PORT;
+process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 
 TIME_SERVICE.Start();
 const app = express();
@@ -171,10 +172,10 @@ if (os.hostname() == "piwan.net") {
     debug_log(`Host name`,os.hostname());
     var httpServer = http.createServer(app);
     httpServer.listen(json.PWAN_HTTP_PORT, () => {
-        info_log(`Piwan HTTP Server running on port ${json.PWAN_HTTP_PORT}`);
+        info_log(`Piwan HTTP Server running on port ${json.PIWAN_HTTP_PORT}`);
     });
 
-    info_log(`Piwan Https is Running on port ${json.PWAN_HTTPS_PORT}`);
+    info_log(`Piwan Https is Running on port ${json.PIWAN_HTTPS_PORT}`);
     const privateKey = readFileSync('/etc/letsencrypt/live/piwan.net/privkey.pem', 'utf8');
     const certificate = readFileSync('/etc/letsencrypt/live/piwan.net/cert.pem', 'utf8');
     const ca = readFileSync('/etc/letsencrypt/live/piwan.net/chain.pem', 'utf8');
@@ -185,7 +186,7 @@ if (os.hostname() == "piwan.net") {
     };
     
     var httpsServer = https.createServer(credentials, app);
-    httpsServer.listen(json.PWAN_HTTPS_PORT);
+    httpsServer.listen(json.PIWAN_HTTPS_PORT);
     const wss = new WebSocketServer({ noServer: true });
 
     httpsServer.on('upgrade', (request, socket, head) => {
