@@ -217,9 +217,6 @@ function _Tick() {
                     //debug_log(`send packet ${buf} to ${bytes}`);
                 });
             }
-
-            // NEED TO LOOP OTHER THAT PING US
-
         } catch (e) {
             error_log("Error In Running Tick ", e);
         }
