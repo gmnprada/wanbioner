@@ -2,5 +2,6 @@
 .vscode
 piwan/target
 piwan-js/node_modules
+piwan-js/.config.json
+piwan-js/.DS_STORE
 .config.json
-
