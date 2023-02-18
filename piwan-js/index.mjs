@@ -238,5 +238,5 @@ if (os.hostname() == "piwan.net") {
     //extends PITM node info
 
 } else {
-    warn_log(`Try To Run at https://${process.env.DOMAIN} Not Tested yet`);
+    warn_log(`Try To Run at https://${process.env.PIWAN_DOMAIN} Not Tested yet`);
 }
