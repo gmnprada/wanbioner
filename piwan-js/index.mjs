@@ -142,7 +142,7 @@ let dataFooter = `
     </div>
     <div class="mdl-cell mdl-cell--12-col text-white centers item">
         <div>Social Media</div>
-        <img src="https://${process.env.PIWAN_DOMAIN}/assets/third_party/twitter.png" href="https://twitter/piwannet" alt="Piwan Twitter">
+        <img src="https://${process.env.PIWAN_DOMAIN}/assets/third_party/twitter.png" href="https://twitter/piwannet" alt="Piwan Twitter" width="192" height="192" >
     </div>
 </div>
 </main>
