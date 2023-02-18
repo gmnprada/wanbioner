@@ -1,4 +1,4 @@
-import fs, { fstat, fstatSync } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 let RootDir = import.meta.url;

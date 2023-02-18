@@ -1,10 +1,10 @@
 import { readFile } from 'fs/promises';
-import { readFileSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
 import { WebSocketServer } from 'ws';
-import { PROJECT_DIR, ROOT_DIR } from './pathHelper.mjs';
+import { PROJECT_DIR, ROOT_DIR, SUPER_REPO_DIR } from './pathHelper.mjs';
 import express from 'express';
 import hbs from 'hbs';
 import { RouteIndex } from './routes/index.mjs';
@@ -17,12 +17,22 @@ import helmet from 'helmet';
 import { debug_log, info_log, warn_log } from './log.mjs';
 
 
+let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
+let DocsHtmlDir = SUPER_REPO_DIR + "/docs/html";
+
+let txt = readdirSync(DocsTxtDir,{encoding:"ascii"});
+for(let fileTxt of txt){
+    if(fileTxt.includes(".txt")){
+        let readData = readFileSync(DocsTxtDir + "/" + fileTxt);
+        writeFileSync(ROOT_DIR + "/assets/txt/" + fileTxt,readData);
+    }
+}
+
 
 const json = JSON.parse(
-    await readFile(
-        new URL('./.config.json', import.meta.url)
-    )
+    await readFile(new URL('./.config.json', import.meta.url))
 );
+
 
 // Add Info From Config
 json.PWAN_ENVIRONMENT == "DEV" ? process.env.NODE_ENV = 'development' : process.env.NODE_ENV = 'production';
@@ -129,6 +139,10 @@ let dataFooter = `
 <div class="mdl-grid center-items">
     <div class="mdl-cell mdl-cell--12-col text-white center-items">
         &#169;2023 πwan Developer And Contributor | All Rights Reserved | <a href="https://${process.env.PIWAN_DOMAIN}/tos">Terms Of Service</a> | <a href="https://${process.env.PIWAN_DOMAIN}/privacy"> Privacy Policy </a>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col text-white centers item">
+        <div>Social Media</div>
+        <img src="https://${process.env.PIWAN_DOMAIN}/assets/third_party/twitter.png" href="https://twitter/piwannet" alt="Piwan Twitter">
     </div>
 </div>
 </main>
