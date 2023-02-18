@@ -224,7 +224,7 @@ if (os.hostname() == "piwan.net") {
         for (let ws of wss.clients) {
             if (ws.isAlive === false) return ws.terminate();
             if(ws.readyState == 1){
-                info_log(`Sending packet to WebSocket Client ${ws}`);
+                //info_log(`Sending packet to WebSocket Client ${ws}`);
                 ws.ping();
                 ws.send(conc.toString('hex'));
             }

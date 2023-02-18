@@ -1,6 +1,6 @@
 {
   "name": "piwan",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "PIWAN Javascript Implementation",
   "main": "index.mjs",
   "type": "module",
@@ -12,7 +12,8 @@
     "Networking",
     "Broker",
     "Wan",
-    "Packet"
+    "Packet",
+    "ISP"
   ],
   "author": "Gde Made Novan Priambhada",
   "license": "PiOS",
