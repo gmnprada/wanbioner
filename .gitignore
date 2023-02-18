@@ -1,7 +1,6 @@
 .vscode
-piwan/target
+.config.json
+.DS_Store
+piwan-rust/target
 piwan-js/node_modules
 piwan-js/.config.json
-.config.json
-piwan-js/.DS_Store
-.DS_Store
