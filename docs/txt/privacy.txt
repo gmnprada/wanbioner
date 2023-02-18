@@ -1,12 +1,88 @@
 Privacy Policy
 
 This Document is purely written on the format of old computer can read easily encoded on ascii character
-As Piwan.net From its Developer , Collaborator , And Team
+As Piwan.net From its Developer , Collaborator , Contributor And Team
 
 PiTM Network Time
 This Time is copied from https://piwan.net/network
 
 Written On     : 2023-02-18T05:30:04.195Z
 Written By     : GMNP
-Last Update On :
+Last Update On : 2023-02-18T08:54:17.476Z
 Last Update By : GMNP
+
+We re abide to Pi Network Privacy Policy so Technically if you do something that violate their Network, Service and Privacy Policy
+This Privacy Policy has no much use cause your is not in Pi Network.
+
+1. What Type of Data and Information We Collect From you
+
+- Public IPv4 Address you use to access piwan.net
+- Anonymous Nickname you use to play game in the networks 
+- Pi Network Wallet Address
+- Pi Network Users Hash 
+- Pi Apps ID / App Hash
+- Operating System Hostname or Machine Name
+
+2. What for that data used
+
+- IPv4 its used to block or add you into piwan.net collective networks
+- Anonymous Nickname is used purely for Game purpose as your character name in the game and matchmaking
+- Pi Network Wallet Address is used to charge for a Pi payment or distribute Piwan Node Earning.
+- Pi Network Users Hash this data is linked to your nickname so we know your game sessions in the purpose of matchmaking
+- Pi Apps ID / App Hash this data is used if you develop Pi Apps with our Piwan SDK as Game Dev
+- Operating System Hostname is used to see if the Pi Apps Game Data Packet Delivered on Peer to Peer basis or through Intermediate
+
+3. Disclosure Information
+
+Any Information you provide to us either by email or access piwan.net through your browser
+is stored through piwan.net networks accross trusted nodes it can be CLOUD SERVICE PROVIDER
+ISP or PERSONAL Maintaining the Distributed Database , so keep in mind please don't put IMPORTANT or
+Sensitive Information on this Service as the Database is secured by COLLECTIVE in the networks.
+
+Any Deletion Request on such information will be processed through piwan.net data deletion request 
+and we cannot guarantee that everyone is keeping the same type of database on the piwan.net
+so deletion of any record on our database or our networks will take time according to the Networks that Running
+Piwan Node.
+
+4. Third Party Links
+We As Collective in Piwan.net from Time To Time 
+May Contain third party links that the right of use and license is belong to them who create
+the game under or Site under Piwan SDK.
+
+Please Note that Website , Game , Or Service we linked may have
+their own Privacy Policy and that we do not accept any responsibility or liability for these policies. 
+Please check these policies before you submit any personal data to these websites or Game
+under Piwan SDK.
+
+5. User Generated Content
+
+Any users generated content that using piwan.net service or game that use piwan SDK as long its
+license is not for commercial purpose like stated by Third Party or piwan.net is Users Rights.
+Users also has right to record their gameplay footage on game that use Piwan SDK
+as long the game played by users did not contains any COPYRIGHT material such as Sound Effects, 
+Animation , Logo , Image , that Trademark specificed or belong to Third Party that use Piwan SDK or Piwan.net Service.
+So read the License on the Game or Publisher who use this SDK as their Base Networks.
+
+6. Your Rights - Access To Data
+You have the right to ensure that your personal data is being processed lawfully (Subject Access Right). 
+Your subject access right can be exercised in accordance with data protection laws and regulations belong to piwan node address.
+Any subject access request must be made in writing to piwan.net contact information. 
+We will provide your personal data to you within the statutory time frames. 
+To enable us to trace any of your personal data that we may be holding, 
+we may need to request further information from you. 
+If you have a complaint about how we have used your information, 
+you have the right to complain to the Information Commissioner's Office (ICO) on your area.
+and contact the person in charge of Maitaining Piwan Node for the request.
+
+7. Changes Of Privacy Policy
+Any changes we may make to our privacy policy in the future will written on this privacy txt  
+and, where appropriate, notified to you by e-mail , generated to Html or Markdown and Posted On piwan.net 
+Website so Please check back frequently to see any updates or changes to our privacy policy.
+
+8. Contact
+Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to
+https://piwan.net/contact
+
+current available public address shared to Piwan Developer , Team , and Contributor
+
+Email : piwannet@gmail.com
