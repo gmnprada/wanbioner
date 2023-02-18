@@ -10,7 +10,7 @@ import hbs from 'hbs';
 import { RouteIndex } from './routes/index.mjs';
 import { RouteAbout } from './routes/about.mjs';
 import { RouteNetwork } from './routes/network.mjs';
-import TIME_SERVICE from './core/timeservice/timeservice.mjs';
+import PITM from './core/timeservice/timeservice.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
@@ -30,10 +30,8 @@ process.env.PIWAN_UDP_PORT = json.PIWAN_UDP_PORT;
 process.env.PITM_PORT = json.PITM_PORT;
 process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 
-TIME_SERVICE.Start();
+PITM.Start();
 const app = express();
-
-/*
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -58,7 +56,7 @@ app.use(helmet.contentSecurityPolicy({
     }
 }));
 app.use(helmet.xssFilter());
-*/
+
 app.disable('x-powered-by');
 
 
@@ -195,7 +193,6 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
-
     function heartbeat() {
         this.isAlive = true;
     }
@@ -217,9 +214,8 @@ if (os.hostname() == "piwan.net") {
         ws.on('pong', heartbeat);
     });
 
-
     //extends unix sync events
-    TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
+    PITM.NetworkTimeServiceEmitter.on('unixsync', (time) => {
 
         let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
         let t = Buffer.alloc(8);
@@ -236,39 +232,7 @@ if (os.hostname() == "piwan.net") {
     });
 
     //extends PITM node info
-    
+
 } else {
-    warn_log("Https May Not Running Wells, Do Fix The Environments");
-    const wss = new WebSocketServer({ noServer: true });
-
-    function heartbeat() {
-        this.isAlive = true;
-    }
-
-    wss.on('connection', ws => {
-        ws.on("connection", (c) => {
-            debug_log("WS got new client", ws);
-        });
-        ws.on("message", msg => {
-            debug_log("WS message", msg);
-        });
-
-        ws.on("error", err => {
-            debug_log("ws error", err);
-        });
-
-        ws.on('pong', heartbeat);
-    });
-
-    TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
-        let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
-        let t = Buffer.alloc(8);
-        t.writeBigUint64LE(time, 0);
-        let conc = Buffer.concat([buffer, t]);
-        for (let ws of wss.clients) {
-            if (ws.isAlive === false) return ws.terminate();
-            ws.ping();
-            ws.send(conc.toString('hex'));
-        }
-    });
+    warn_log(`Try To Run at https://${process.env.DOMAIN} Not Tested yet`);
 }
