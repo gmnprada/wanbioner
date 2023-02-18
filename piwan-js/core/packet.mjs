@@ -26,7 +26,7 @@ TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
     time_now = ut;
 });
 
-//PACKET OPCODE
+// PACKET OPCODE
 const OPCODE_PING = 0x00;
 const OPCODE_CONSTRUCT = 0x01;
 const OPCODE_ENCODE = 0x02;

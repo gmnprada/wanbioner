@@ -13,26 +13,27 @@ Contributor
 
 See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
+ The Focus on this file is running Piwan on udp network protocol
+
 */
 
 import dgram from 'node:dgram';
 
-export var UDPRUNNING = false;
+import TIME_SERVICE from './timeservice/timeservice.mjs';
 
-function runUdp(){
-  const udpserver = dgram.createSocket('udp4');
+export var PIWAN_UDP_RUNNING = false;
 
-  udpserver.on('error', (err) => {
-    console.error(`server error:\n${err.stack}`);
-    server.close();
-  });
-  
-  udpserver.on('message', (msg, rinfo) => {
-    console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-  });
-  
-  udpserver.on('listening', () => {
-    const address = server.address();
-    console.log(`server listening ${address.address}:${address.port}`);
-  });
+// must be acgquired through PITM network time
+var PITM_TIME = null;
+
+function _onListening(){
+
+}
+
+function _onMessage(){
+
+}
+
+function _onError(){
+
 }

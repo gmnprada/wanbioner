@@ -217,6 +217,8 @@ if (os.hostname() == "piwan.net") {
         ws.on('pong', heartbeat);
     });
 
+
+    //extends unix sync events
     TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (time) => {
 
         let buffer = Buffer.from([0xcf, 0x80, 0x54, 0x4d]);
@@ -232,6 +234,9 @@ if (os.hostname() == "piwan.net") {
             }
         }
     });
+
+    //extends PITM node info
+    
 } else {
     warn_log("Https May Not Running Wells, Do Fix The Environments");
     const wss = new WebSocketServer({ noServer: true });

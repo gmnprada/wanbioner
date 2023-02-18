@@ -20,7 +20,6 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 */
 
 import { BasePacket } from "../core/packet.mjs";
-import { UDPRUNNING } from "../core/udp_server.mjs";
 import TIME_SERVICE  from "../core/timeservice/timeservice.mjs";
 
 var tms_running = false;

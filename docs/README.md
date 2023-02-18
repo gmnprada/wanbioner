@@ -28,6 +28,6 @@ COMPRESSED PACKET STRUCTURE
 
 - Still on Development
 
-PIWAN base network is not contains any encyrption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
+PIWAN base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
 
 The Specification also subject to change according to benchmark and test on the test net passed
