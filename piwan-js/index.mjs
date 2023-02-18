@@ -3,6 +3,7 @@ import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import os from "node:os";
 import http from 'node:http';
 import https from 'node:https';
+import IpAddr from 'ipaddr.js';
 import { WebSocketServer } from 'ws';
 import { PROJECT_DIR, ROOT_DIR, SUPER_REPO_DIR } from './pathHelper.mjs';
 import express from 'express';
@@ -15,6 +16,8 @@ import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
 import { debug_log, info_log, warn_log } from './log.mjs';
+import { RouteTos } from './routes/tos.mjs';
+import { RoutePrivacy } from './routes/privacy.mjs';
 
 
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
@@ -25,6 +28,15 @@ for(let fileTxt of txt){
     if(fileTxt.includes(".txt")){
         let readData = readFileSync(DocsTxtDir + "/" + fileTxt);
         writeFileSync(ROOT_DIR + "/assets/txt/" + fileTxt,readData);
+    }
+}
+
+
+let GenHtml = readdirSync(DocsHtmlDir,{encoding:"ascii"});
+for(let htmlFile of GenHtml){
+    if(htmlFile.includes(".html")){
+        let readData = readFileSync(DocsHtmlDir + "/" + htmlFile);
+        writeFileSync(ROOT_DIR + "/views/gen/" + htmlFile,readData);
     }
 }
 
@@ -161,7 +173,8 @@ let dir = "/" + PROJECT_DIR + "/assets";
 app.use((req, res, next) => {
     if (req.secure) {
         debug_log(`Express Got A Visit From ${req.ip}`);
-        debug_log(`Sokcet Ip  From ${req.socket?.remoteAddress}`);
+        debug_log(`Socket Ip  From ${req.socket?.remoteAddress}`);
+        debug_log(IpAddr.process(req.ip));
         next();
     } else {
         debug_log("redirecting request from user to https");
@@ -179,6 +192,8 @@ app.get('/about', RouteAbout);
 app.get('/network', RouteNetwork);
 app.get('/docs', RouteDocs);
 app.get('/auth', RouteAuth);
+app.get('/tos',RouteTos);
+app.get('/privacy',RoutePrivacy);
 app.get('/validation-key.txt', function (req, res) {
     return res.sendFile(ROOT_DIR+"/validation-key.txt");
 });

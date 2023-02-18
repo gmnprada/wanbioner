@@ -23,6 +23,7 @@
     "handlebars": "^4.7.7",
     "hbs": "^4.2.0",
     "helmet": "^6.0.1",
+    "ipaddr.js": "^2.0.1",
     "js-xxhash": "^2.0.0",
     "moment": "^2.29.4",
     "pi-backend": "^0.1.3",
