@@ -59,34 +59,32 @@ app.use(helmet.xssFilter());
 
 app.disable('x-powered-by');
 
-
-
-hbs.registerPartial('header', `
+let headerData = `
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://${{process.env.PIWAN_DOMAIN}}/assets/mdl/material.css">
-    <link rel="stylesheet" href="https://${{process.env.PIWAN_DOMAIN}}/assets/piwan.css">
-    <script src="https://${{process.env.PIWAN_DOMAIN}}/assets/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://{{PIWAN_DOMAIN}}/assets/mdl/material.css">
+    <link rel="stylesheet" href="https://{{PIWAN_DOMAIN}}/assets/piwan.css">
+    <script src="https://{{PIWAN_DOMAIN}}/assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/favicon-16x16.png">
-    <link rel="manifest" href="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://{{PIWAN_DOMAIN}}/assets/ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://{{PIWAN_DOMAIN}}/assets/ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://{{PIWAN_DOMAIN}}/assets/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://{{PIWAN_DOMAIN}}/assets/ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://{{PIWAN_DOMAIN}}/assets/ico/favicon-16x16.png">
+    <link rel="manifest" href="https://{{PIWAN_DOMAIN}}/assets/ico/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="https://{{PIWAN_DOMAIN}}/assets/ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
@@ -96,59 +94,65 @@ hbs.registerPartial('header', `
     <div class="mdl-layout__header-row">
         <!-- Title -->
         <div class="mdl-layout-title">
-        <img class="logo" src="https://${{process.env.PIWAN_DOMAIN}}/assets/ico/android-icon-36x36.png" alt="Logo">
+        <img class="logo" src="https://{{PIWAN_DOMAIN}}/assets/ico/android-icon-36x36.png" alt="Logo">
         <span>πwan</span>
         </div>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/about">About</a>
-            <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/network">Network</a>
-            <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/docs">Docs</a>
+            <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/about">About</a>
+            <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/network">Network</a>
+            <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/docs">Docs</a>
             <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
-            <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/auth">Pi Authentication</a>
+            <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/auth">Pi Authentication</a>
         </nav>
     </div>
 </header>
 <div class="mdl-layout__drawer">
-    <img class="logo" src="https://${{process.env.PIWAN_DOMAIN}}/assets/piwan.png" alt="Logo">
+    <img class="logo" src="https://{{PIWAN_DOMAIN}}/assets/piwan.png" alt="Logo">
     <span class="mdl-layout-title">
         <a href="/" class="a-nostyle">πwan</a>
     </span>
     <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/about">About</a>
-        <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/network">Network</a>
-        <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/docs">Docs</a>
+        <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/about">About</a>
+        <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/network">Network</a>
+        <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/docs">Docs</a>
         <a class="mdl-navigation__link" href="https://github.com/madepriambhada/piwan" target="blank">Github</a>
-        <a class="mdl-navigation__link" href="https://${{process.env.PIWAN_DOMAIN}}/auth">Pi Authentication</a>
+        <a class="mdl-navigation__link" href="https://{{PIWAN_DOMAIN}}/auth">Pi Authentication</a>
     </nav>
 </div>
-<main class="mdl-layout__content">
-`
-);
+<main class="mdl-layout__content">`;
 
-hbs.registerPartial('footer', `
+let dataHtmlHeader = hbs.handlebars.compile(headerData,{PIWAN_DOMAIN : process.env.PIWAN_DOMAIN});
+hbs.registerPartial('header',dataHtmlHeader );
+
+let dataFooter = `
 <div class="mdl-grid center-items">
-    <div class="mdl-cell mdl-cell--12-col text-white center-items">&#169;2023 πwan Developer And Contributor | All Rights Reserved</div>
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">
+        &#169;2023 πwan Developer And Contributor | All Rights Reserved | <a href="https://{{PIWAN_DOMAIN}}/tos">Terms Of Service</a> | <a href="https://${process.env.PIWAN_DOMAIN}/privacy"> Privacy Policy </a>
+    </div>
 </div>
 </main>
 </div>
 </body>
 </html>
-`
-);
+`;
+
+let footerHtmlData = hbs.handlebars.compile(dataFooter,{PIWAN_DOMAIN:process.env.PIWAN_DOMAIN});
+hbs.registerPartial('footer',footerHtmlData);
 
 
 let dir = "/" + PROJECT_DIR + "/assets";
 
 app.use((req, res, next) => {
     if (req.secure) {
-        debug_log(`user running from secure context user ip ${req.ip}`);
+        debug_log(`Express Got A Visit From ${req.ip}`);
+        debug_log(`Sokcet Ip  From ${req.socket?.remoteAddress}`);
         next();
     } else {
         debug_log("redirecting request from user to https");
-        return res.redirect('https://' + `${{process.env.PIWAN_DOMAIN}}` + req.url);
+        return res.redirect('https://' + process.env.PIWAN_DOMAIN + req.url);
     }
 });
 

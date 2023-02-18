@@ -19,6 +19,9 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 
 */
 
+import PITM from "../core/timeservice/timeservice.mjs";
+
 export async function RouteIndex(req,res){
+    let data = PITM.Networks();
     return res.render("get/index.html");
 }
