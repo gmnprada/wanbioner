@@ -23,20 +23,20 @@ import { RoutePrivacy } from './routes/privacy.mjs';
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
 let DocsHtmlDir = SUPER_REPO_DIR + "/docs/html";
 
-let txt = readdirSync(DocsTxtDir,{encoding:"ascii"});
-for(let fileTxt of txt){
-    if(fileTxt.includes(".txt")){
+let txt = readdirSync(DocsTxtDir, { encoding: "ascii" });
+for (let fileTxt of txt) {
+    if (fileTxt.includes(".txt")) {
         let readData = readFileSync(DocsTxtDir + "/" + fileTxt);
-        writeFileSync(ROOT_DIR + "/assets/txt/" + fileTxt,readData);
+        writeFileSync(ROOT_DIR + "/assets/txt/" + fileTxt, readData);
     }
 }
 
 
-let GenHtml = readdirSync(DocsHtmlDir,{encoding:"ascii"});
-for(let htmlFile of GenHtml){
-    if(htmlFile.includes(".html")){
+let GenHtml = readdirSync(DocsHtmlDir, { encoding: "ascii" });
+for (let htmlFile of GenHtml) {
+    if (htmlFile.includes(".html")) {
         let readData = readFileSync(DocsHtmlDir + "/" + htmlFile);
-        writeFileSync(ROOT_DIR + "/views/gen/" + htmlFile,readData);
+        writeFileSync(ROOT_DIR + "/views/gen/" + htmlFile, readData);
     }
 }
 
@@ -54,6 +54,7 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 
 PITM.Start();
 const app = express();
+app.use(helmet.frameguard({action:"deny"}));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -74,11 +75,19 @@ app.use(helmet.contentSecurityPolicy({
         fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com"],
         frameSrc: ["'self'"],
         manifestSrc: ["'self'"],
-        connectSrc: ["'self'"]
+        connectSrc: ["'self'"],
+        upgradeInsecureRequests: []
     }
 }));
-app.use(helmet.xssFilter());
 
+app.use(helmet.crossOriginEmbedderPolicy());
+app.use(helmet({ crossOriginOpenerPolicy: true }));
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
+app.use(helmet.hsts({maxAge:63072000}));
+app.use(helmet.frameguard({action: "sameorigin",}));
+app.use(helmet.permittedCrossDomainPolicies({permittedPolicies: "by-content-type",}));
+app.use(helmet.noSniff());
+app.use(helmet.xssFilter());
 app.disable('x-powered-by');
 
 let headerData = `
@@ -145,7 +154,7 @@ let headerData = `
     </nav>
 </div>
 <main class="mdl-layout__content">`;
-hbs.registerPartial('header',headerData );
+hbs.registerPartial('header', headerData);
 
 let dataFooter = `
 <div class="mdl-grid center-items">
@@ -165,7 +174,7 @@ let dataFooter = `
 </html>
 `;
 
-hbs.registerPartial('footer',dataFooter);
+hbs.registerPartial('footer', dataFooter);
 
 
 let dir = "/" + PROJECT_DIR + "/assets";
@@ -192,14 +201,14 @@ app.get('/about', RouteAbout);
 app.get('/network', RouteNetwork);
 app.get('/docs', RouteDocs);
 app.get('/auth', RouteAuth);
-app.get('/tos',RouteTos);
-app.get('/privacy',RoutePrivacy);
+app.get('/tos', RouteTos);
+app.get('/privacy', RoutePrivacy);
 app.get('/validation-key.txt', function (req, res) {
-    return res.sendFile(ROOT_DIR+"/validation-key.txt");
+    return res.sendFile(ROOT_DIR + "/validation-key.txt");
 });
 
 if (os.hostname() == "piwan.net") {
-    debug_log(`Host name`,os.hostname());
+    debug_log(`Host name`, os.hostname());
     var httpServer = http.createServer(app);
     httpServer.listen(json.PWAN_HTTP_PORT, () => {
         info_log(`Piwan HTTP Server running on port ${json.PIWAN_HTTP_PORT}`);
@@ -214,7 +223,7 @@ if (os.hostname() == "piwan.net") {
         cert: certificate,
         ca: ca
     };
-    
+
     var httpsServer = https.createServer(credentials, app);
     httpsServer.listen(json.PIWAN_HTTPS_PORT);
     const wss = new WebSocketServer({ noServer: true });
@@ -255,7 +264,7 @@ if (os.hostname() == "piwan.net") {
         let conc = Buffer.concat([buffer, t]);
         for (let ws of wss.clients) {
             if (ws.isAlive === false) return ws.terminate();
-            if(ws.readyState == 1){
+            if (ws.readyState == 1) {
                 //info_log(`Sending packet to WebSocket Client ${ws}`);
                 ws.ping();
                 ws.send(conc.toString('hex'));
