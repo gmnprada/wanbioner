@@ -55,11 +55,27 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 PITM.Start();
 const app = express();
 
+// Send Nonce 
 app.use((req, res, next) => {
     res.locals.nonce = randomBytes(16).toString("hex");
     next();
 })
 
+//set cors policy
+app.use( (req, res, next) => {
+    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
+
+// set csp policy
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -87,19 +103,6 @@ app.use(helmet.contentSecurityPolicy({
     }
 }));
 
-//set header
-app.use(function (req, res, next) {
-    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    next();
-});
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet({ crossOriginOpenerPolicy: true }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
@@ -230,7 +233,7 @@ app.get('/docs', RouteDocs);
 app.get('/auth', RouteAuth);
 app.get('/tos', RouteTos);
 app.get('/privacy', RoutePrivacy);
-app.get('/validation-key.txt', function (req, res) {
+app.get('/validation-key.txt', (req, res) => {
     return res.sendFile(ROOT_DIR + "/validation-key.txt");
 });
 
