@@ -181,9 +181,11 @@ let dir = "/" + PROJECT_DIR + "/assets";
 
 app.use((req, res, next) => {
     if (req.secure) {
-        const IpAddrDetail = IpAddr.process(req.ip).toIPv4Address();
-
-        req.IPv4 = IpAddrDetail;
+        let IpAddrDetail = IpAddr.process(req.ip);
+        
+        if(IpAddr.IPv4.isValid(IpAddrDetail)){
+            req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
+        }
         next();
     } else {
         debug_log("redirecting request from user to https");
