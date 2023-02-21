@@ -14,7 +14,6 @@ import { RouteNetwork } from './routes/network.mjs';
 import PITM from './core/pitm/pitm.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
-import helmet from 'helmet';
 import { debug_log, info_log, warn_log } from './log.mjs';
 import { RouteTos } from './routes/tos.mjs';
 import { RoutePrivacy } from './routes/privacy.mjs';
@@ -62,7 +61,7 @@ app.use((req, res, next) => {
 })
 
 app.use( (req, res, next) => {
-    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com","https://app-cdn.minepi.com/"];
+    const allowedOrigins = ["piwan.net","minepi.com","sandbox.minepi.com","fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
@@ -70,43 +69,11 @@ app.use( (req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin");
-
     next();
 });
 
 
-//set cors policy
-// set csp policy
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com","app-cdn.minepi.com"],
-//         scriptSrc: [
-//             "'self'",
-//             "'unsafe-inline'",
-//             "piwan.net",
-//             "sdk.minepi.com",
-//             "sandbox.minepi.com",
-//             "app-cdn.minepi.com",
-//             (req, res) => `'nonce-${res.locals.nonce}'`
-//         ],
-//         styleSrc: [
-//             "'self'",
-//             "'unsafe-inline'",
-//             "piwan.net",
-//             "fonts.googleapis.com",
-//             "fonts.gstatic.com",
-//             "app-cdn.minepi.com"
-//         ],
-//         fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"],
-//         frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com","app-cdn.minepi.com"],
-//         manifestSrc: ["'self'"],
-//         connectSrc: ["'self'"]
-//     },
-//     reportOnly:true
-// }));
-app.use(helmet.hsts({ maxAge: 63072000 }));
-app.use(helmet.xssFilter());
+
 app.disable('x-powered-by');
 
 
