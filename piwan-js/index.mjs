@@ -184,7 +184,9 @@ let dataFooter = `
 hbs.registerPartial('footer', dataFooter);
 
 
-let dir = "/" + PROJECT_DIR + "/assets";
+let AssetsDirs = "/" + PROJECT_DIR + "/assets";
+let JavaScriptDirs = "/" + PROJECT_DIR + "/js";
+
 
 app.use((req, res, next) => {
     if (req.secure) {
@@ -201,7 +203,9 @@ app.use((req, res, next) => {
     }
 });
 
-app.use("/assets", express.static(dir));
+app.use("/assets", express.static(AssetsDirs));
+app.use("/js",express.static(JavaScriptDirs));
+
 app.set('view engine', 'html');
 
 app.engine('html', hbs.__express);
