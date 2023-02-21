@@ -30,7 +30,6 @@ for (let fileTxt of txt) {
     }
 }
 
-
 let GenHtml = readdirSync(DocsHtmlDir, { encoding: "ascii" });
 for (let htmlFile of GenHtml) {
     if (htmlFile.includes(".html")) {
@@ -228,15 +227,6 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
-    var devServer = https.createServer(credentials,app);
-    devServer.listen(8080);
-    devServer.on('upgrade', (request, socket, head) => {
-        wss.handleUpgrade(request, socket, head, socket => {
-            wss.emit('connection', socket, request);
-        });
-    });
-
-
     function heartbeat() {
         this.isAlive = true;
     }
@@ -279,4 +269,20 @@ if (os.hostname() == "piwan.net") {
 
 } else {
     warn_log(`Try To Run at https://${process.env.PIWAN_DOMAIN} Not Tested yet`);
+
+    const privateKey = readFileSync(ROOT_DIR+'/dev/localhost-key.pem', 'utf8');
+    const certificate = readFileSync(ROOT_DIR+'/dev/localhost.pem', 'utf8');
+    const credentials = {
+        key: privateKey,
+        cert: certificate
+    };
+    var devhttpServer = http.createServer(app);
+    devhttpServer.listen(json.PWAN_HTTP_PORT);
+    var devServer = https.createServer(credentials,app);
+    devServer.listen(json.PIWAN_HTTPS_PORT);
+    devServer.on('upgrade', (request, socket, head) => {
+        wss.handleUpgrade(request, socket, head, socket => {
+            wss.emit('connection', socket, request);
+        });
+    });
 }
