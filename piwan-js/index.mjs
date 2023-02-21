@@ -228,6 +228,15 @@ if (os.hostname() == "piwan.net") {
         });
     });
 
+    var devServer = https.createServer(credentials,app);
+    devServer.listen(8080);
+    devServer.on('upgrade', (request, socket, head) => {
+        wss.handleUpgrade(request, socket, head, socket => {
+            wss.emit('connection', socket, request);
+        });
+    });
+
+
     function heartbeat() {
         this.isAlive = true;
     }
