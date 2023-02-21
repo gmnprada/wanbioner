@@ -67,7 +67,6 @@ app.use( (req, res, next) => {
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
     }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -79,7 +78,6 @@ app.use( (req, res, next) => {
 
 //set cors policy
 // set csp policy
-app.use(helmet.frameguard({action:"sameorigin"}));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com","app-cdn.minepi.com"],
@@ -105,14 +103,10 @@ app.use(helmet.contentSecurityPolicy({
         manifestSrc: ["'self'"],
         connectSrc: ["'self'"],
         upgradeInsecureRequests: []
-    }
+    },
+    reportOnly:true
 }));
-app.use(helmet.crossOriginEmbedderPolicy({policy:"credentialless"}));
-app.use(helmet({ crossOriginOpenerPolicy: true }));
-app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(helmet.hsts({ maxAge: 63072000 }));
-app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "by-content-type", }));
-app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
 app.disable('x-powered-by');
 
