@@ -78,34 +78,33 @@ app.use( (req, res, next) => {
 
 //set cors policy
 // set csp policy
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com","app-cdn.minepi.com"],
-        scriptSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "piwan.net",
-            "sdk.minepi.com",
-            "sandbox.minepi.com",
-            "app-cdn.minepi.com",
-            (req, res) => `'nonce-${res.locals.nonce}'`
-        ],
-        styleSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "piwan.net",
-            "fonts.googleapis.com",
-            "fonts.gstatic.com",
-            "app-cdn.minepi.com"
-        ],
-        fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"],
-        frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com","app-cdn.minepi.com"],
-        manifestSrc: ["'self'"],
-        connectSrc: ["'self'"],
-        upgradeInsecureRequests: []
-    },
-    reportOnly:true
-}));
+// app.use(helmet.contentSecurityPolicy({
+//     directives: {
+//         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com","app-cdn.minepi.com"],
+//         scriptSrc: [
+//             "'self'",
+//             "'unsafe-inline'",
+//             "piwan.net",
+//             "sdk.minepi.com",
+//             "sandbox.minepi.com",
+//             "app-cdn.minepi.com",
+//             (req, res) => `'nonce-${res.locals.nonce}'`
+//         ],
+//         styleSrc: [
+//             "'self'",
+//             "'unsafe-inline'",
+//             "piwan.net",
+//             "fonts.googleapis.com",
+//             "fonts.gstatic.com",
+//             "app-cdn.minepi.com"
+//         ],
+//         fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"],
+//         frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com","app-cdn.minepi.com"],
+//         manifestSrc: ["'self'"],
+//         connectSrc: ["'self'"]
+//     },
+//     reportOnly:true
+// }));
 app.use(helmet.hsts({ maxAge: 63072000 }));
 app.use(helmet.xssFilter());
 app.disable('x-powered-by');
