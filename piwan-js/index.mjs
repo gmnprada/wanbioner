@@ -175,9 +175,11 @@ hbs.registerPartial('footer', dataFooter);
 
 let AssetsDirs = "/" + PROJECT_DIR + "/assets";
 let JavaScriptDirs = "/" + PROJECT_DIR + "/js";
+let GameRepoDirs = "/" + PROJECT_DIR + "/game";
 
 app.use("/assets", express.static(AssetsDirs));
 app.use("/js", express.static(JavaScriptDirs));
+app.use("/game",express.static(GameRepoDirs));
 
 app.set('view engine', 'html');
 
