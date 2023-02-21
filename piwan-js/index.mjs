@@ -56,7 +56,7 @@ PITM.Start();
 const app = express();
 
 app.use((req,res,next)=>{
-    res.locals.cspNonce = crypto.randomBytes(32).toString("hex");
+    res.locals.cspNonce = randomBytes(32).toString("hex");
     next();
 })
 
