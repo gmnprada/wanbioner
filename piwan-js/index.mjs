@@ -185,6 +185,7 @@ app.use((req, res, next) => {
         
         if(IpAddr.IPv4.isValid(IpAddrDetail)){
             req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
+            info_log(`Got A Visit From ${req.IPv4}`);
         }
         next();
     } else {
