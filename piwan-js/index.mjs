@@ -56,7 +56,7 @@ PITM.Start();
 const app = express();
 
 app.use((req,res,next)=>{
-    res.locals.cspNonce = randomBytes(32).toString("hex");
+    res.locals.nonce = randomBytes(16).toString("hex");
     next();
 })
 
@@ -70,7 +70,7 @@ app.use(helmet.contentSecurityPolicy({
             "piwan.net",
             "sdk.minepi.com",
             "sandbox.minepi.com",
-            (req, res) => `'nonce-${res.locals.cspNonce}'`
+            (req, res) => `'nonce-${res.locals.nonce}'`
         ],
         styleSrc: [
             "'self'",

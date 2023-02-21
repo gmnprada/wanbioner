@@ -47,6 +47,6 @@ export async function RouteNetwork(req,res){
         client_ip : ips[0],
         udp_running : false,
         tms_running : tms_running,
-        nonce : res.locals.cspNonce 
+        nonce : res.locals.nonce 
     });
 }
