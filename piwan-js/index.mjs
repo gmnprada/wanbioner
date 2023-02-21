@@ -96,13 +96,13 @@ app.use(helmet.contentSecurityPolicy({
             "fonts.gstatic.com",
         ],
         fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com"],
-        frameSrc: ["'self'"],
+        frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
         manifestSrc: ["'self'"],
         connectSrc: ["'self'"],
         upgradeInsecureRequests: []
     }
 }));
-app.use(helmet.crossOriginEmbedderPolicy());
+//app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet({ crossOriginOpenerPolicy: true }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(helmet.hsts({ maxAge: 63072000 }));

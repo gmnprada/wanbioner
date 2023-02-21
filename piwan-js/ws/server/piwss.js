@@ -5,9 +5,9 @@ import { error_log,info_log,debug_log } from '../../log.mjs';
 export default class PiwanWS {
 
     https;
-    wss;
-    isAlive = false;
-    PiTM;
+    #wss;
+    #isAlive = false;
+    #PiTM;
 
     constructor(){
         this.wss = new WebSocketServer({noServer:true})
@@ -21,7 +21,7 @@ export default class PiwanWS {
     }
 
     _httpsUpgrade(req,socket,header){
-        this.wss.handleUpgrade(this._wssHandleUpgrade);
+        this.wss.handleUpgrade(this._wssHandleUpgrade(req,socket,header));
     }
 
     _heartbeat(){

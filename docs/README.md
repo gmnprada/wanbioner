@@ -9,11 +9,42 @@ There is a substansial difference of a ROUTER and Your Mobile Phone , Router is 
 
 which one is your choice let the worlds see it!
 
-Documentations
+Piwan Documentations
 
-BASE PACKET EXCHANGE DATATYPE
+π-tm Time Message Structure,
 
-RAW PACKET STRUCTURE 
+Purpose
+- clock sync between computer node (custom ntp)
+- measure latency and detecting internet connection on broker / backend / server
+- time value for time stamping client - broker - client connection
+- time value for stamping p2p connection
+
+Packet Structure
+```
+const PITM_HEADER 4 bytes 
+const MESSAGE_OPCODE 4 bytes
+var t0 8 bytes , u64 
+var t1 8 bytes , u64
+var t2 8 bytes , u64
+var t3 8 bytes , u64 
+var hostname , 64 bytes // Hostname of the Computer
+
+```
+
+π-tm Relay Packet 
+
+Purpose
+-  time for the client with no need of latency measurement
+Packet Structure
+```
+
+```
+
+
+πwan Base Packet for data exchange
+```
+
+Base Packet 
 - CONST HEADER 8 bytes , 4 bytes const header ,1 bytes packet opcode identifier, 3 bytes reserved  
 - REQUESTER 120 bytes , string or hash of requester aka host client machine
 - RECIPIENT 120 bytes , string or hash of requester aka host recipient machine
@@ -22,7 +53,7 @@ RAW PACKET STRUCTURE
 - PROMISE FLIGHT TIMESTAMP 8 bytes , u64 time stamp of this packet flight or sended
 - PROMISE INTERMEDIATE TIMESTAMP 8 bytes , u64 timestamp of this packet arrived 
 - PROMISE RECEIVED TIMESTAMP 8 bytes , u64 time stamp of this packet arrived at recipient
-
+```
 
 COMPRESSED PACKET STRUCTURE
 
