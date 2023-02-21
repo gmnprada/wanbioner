@@ -18,7 +18,7 @@ import helmet from 'helmet';
 import { debug_log, info_log, warn_log } from './log.mjs';
 import { RouteTos } from './routes/tos.mjs';
 import { RoutePrivacy } from './routes/privacy.mjs';
-
+const { randomBytes} = await import('node:crypto');
 
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
 let DocsHtmlDir = SUPER_REPO_DIR + "/docs/html";
@@ -54,6 +54,12 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 
 PITM.Start();
 const app = express();
+
+app.use((req,res,next)=>{
+    res.locals.cspNonce = crypto.randomBytes(32).toString("hex");
+    next();
+})
+
 app.use(helmet.frameguard({action:"deny"}));
 app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -64,6 +70,7 @@ app.use(helmet.contentSecurityPolicy({
             "piwan.net",
             "sdk.minepi.com",
             "sandbox.minepi.com",
+            (req, res) => `'nonce-${res.locals.cspNonce}'`
         ],
         styleSrc: [
             "'self'",
