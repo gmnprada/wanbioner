@@ -42,6 +42,7 @@ const secondHand = document.querySelector('.second-hand');
 const minsHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
 const digitalclock = document.querySelector('.digital-clock');
+
 function setDate() {
     const seconds = now.getSeconds();
     const secondsDegrees = ((seconds / 60) * 360) + 90;
@@ -59,51 +60,56 @@ function setDate() {
     LOG_HTML("Sync Clock To Network Time");
 }
 
-try {
-    const ws = new WebSocket('wss://piwan.net');
-    ws.onopen = (e) => {
-        LOG_HTML(`Web Socket Initialized to piwan.net`);
-        console.log("Web Socket Initialized to piwan.net");
-    };
+if (document) {
+    document.addEventListener('DOMContentLoaded', () => {
+        try {
+            const ws = new WebSocket('wss://piwan.net');
+            ws.onopen = (e) => {
+                LOG_HTML(`Web Socket Initialized to piwan.net`);
+                console.log("Web Socket Initialized to piwan.net");
+            };
 
-    ws.onmessage = (event) => {
-        let buf = hexToBytes(String(event.data));
-        let header = new Uint8Array(4);
-        for (i = 0; i < 4; i++) {
-            header[i] = buf[i];
+            ws.onmessage = (event) => {
+                let buf = hexToBytes(String(event.data));
+                let header = new Uint8Array(4);
+                for (let i = 0; i < 4; i++) {
+                    header[i] = buf[i];
+                }
+                var str = String.fromCharCode.apply(null, header);
+
+                LOG_HTML(`Receive Packet Header ${str}, lenght : ${event.data.length}`);
+                let arr = new Uint8Array(8);
+                for (let i = 0; i < 8; i++) {
+                    arr[i] = buf[i + 4];
+                }
+                let view = new DataView(arr.buffer, 0);
+                let result = view.getBigUint64(0, true);
+                now = new Date(Number(result));
+                setDate();
+            };
+
+            ws.onclose = (event) => {
+                clearTimeout(this.pingTimeout);
+                if (event.wasClean) {
+                    console.log("Ws closed", event);
+                } else {
+                    // e.g. server process killed or network down
+                    // event.code is usually 1006 in this case
+                    console.log("Ws Terminated unclean");
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.log(error);
+            };
+
+            ws.onping = () => {
+                LOG_HTML("WebSocket HeartBeat pinging");
+                heartbeat();
+            }
+        } catch (e) {
+            console.error(e);
         }
-        var str = String.fromCharCode.apply(null, header);
-
-        LOG_HTML(`Receive Packet Header ${str}, lenght : ${event.data.length}`);
-        let arr = new Uint8Array(8);
-        for (i = 0; i < 8; i++) {
-            arr[i] = buf[i + 4];
-        }
-        let view = new DataView(arr.buffer, 0);
-        let result = view.getBigUint64(0, true);
-        now = new Date(Number(result));
-        setDate();
-    };
-
-    ws.onclose = (event) => {
-        clearTimeout(this.pingTimeout);
-        if (event.wasClean) {
-            console.log("Ws closed",event);
-        } else {
-            // e.g. server process killed or network down
-            // event.code is usually 1006 in this case
-            console.log("Ws Terminated unclean");
-        }
-    };
-
-    ws.onerror = (error) => {
-        console.log(error);
-    };
-
-    ws.onping = ()=>{
-        LOG_HTML("WebSocket HeartBeat pinging");
-        heartbeat();
-    }
-} catch (e) {
-    console.error(e);
+    });
 }
+
