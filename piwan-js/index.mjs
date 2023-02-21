@@ -76,7 +76,7 @@ app.use( (req, res, next) => {
 });
 
 // set csp policy
-app.use(helmet.frameguard({ action: "deny" }));
+app.use(helmet.frameguard({ action: "sameorigin" }));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -102,12 +102,10 @@ app.use(helmet.contentSecurityPolicy({
         upgradeInsecureRequests: []
     }
 }));
-
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet({ crossOriginOpenerPolicy: true }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(helmet.hsts({ maxAge: 63072000 }));
-app.use(helmet.frameguard({ action: "sameorigin", }));
 app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "by-content-type", }));
 app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
