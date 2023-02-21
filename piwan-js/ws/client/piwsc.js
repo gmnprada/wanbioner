@@ -1,6 +1,6 @@
 import { error_log,info_log,debug_log } from '../../log.mjs';
 
-export default function PiWSC(){
+export default function PiwanWSC(){
     debug_log(navigator);
     debug_log(window);
 
@@ -8,4 +8,6 @@ export default function PiWSC(){
         info_log("This is not a browser environment");
         return;
     }
+
+
 }
