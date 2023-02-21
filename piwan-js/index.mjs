@@ -62,16 +62,18 @@ app.use((req, res, next) => {
 })
 
 app.use( (req, res, next) => {
+    console.log(req);
     const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
     }
     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header("Cross-Origin-Embedder-Policy", "cross-origin")
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin");
+
     next();
 });
 
@@ -104,7 +106,7 @@ app.use(helmet.contentSecurityPolicy({
         upgradeInsecureRequests: []
     }
 }));
-//app.use(helmet.crossOriginEmbedderPolicy());
+app.use(helmet.crossOriginEmbedderPolicy({policy:"credentialless"}));
 app.use(helmet({ crossOriginOpenerPolicy: true }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(helmet.hsts({ maxAge: 63072000 }));
