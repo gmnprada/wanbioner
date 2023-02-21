@@ -62,8 +62,7 @@ app.use((req, res, next) => {
 })
 
 app.use( (req, res, next) => {
-    console.log(req);
-    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
+    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com","https://app-cdn.minepi.com/"];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
@@ -83,13 +82,14 @@ app.use( (req, res, next) => {
 app.use(helmet.frameguard({action:"sameorigin"}));
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
+        defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com","app-cdn.minepi.com"],
         scriptSrc: [
             "'self'",
             "'unsafe-inline'",
             "piwan.net",
             "sdk.minepi.com",
             "sandbox.minepi.com",
+            "app-cdn.minepi.com",
             (req, res) => `'nonce-${res.locals.nonce}'`
         ],
         styleSrc: [
@@ -98,9 +98,10 @@ app.use(helmet.contentSecurityPolicy({
             "piwan.net",
             "fonts.googleapis.com",
             "fonts.gstatic.com",
+            "app-cdn.minepi.com"
         ],
-        fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com"],
-        frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com"],
+        fontSrc: ["'self'", "piwan.net", "fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"],
+        frameSrc: ["'self'","piwan.net","minepi.com","sandbox.minepi.com","sdk.minepi.com","app-cdn.minepi.com"],
         manifestSrc: ["'self'"],
         connectSrc: ["'self'"],
         upgradeInsecureRequests: []
