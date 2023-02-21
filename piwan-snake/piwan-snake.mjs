@@ -1,4 +1,4 @@
-/*
+/*!
 ***** THIS FILE IS PART OF Piwan Project *****
 
 PiOS License
@@ -15,18 +15,24 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 */
 
-import { Application, Sprite, Container, Graphics, Text } from './pixi.mjs';
+import { Application, Sprite, Container, Graphics,Text} from './pixi.mjs';
 
 let WorldWide = 800;
 let WorldHeight = 600;
 var lastRandomId;
 
+// const eating = PIXI.sound.Sound.from('sound/sfx/eating.mp3');
+// const hishing = PIXI.sound.Sound.from('sound/sfx/hishing.mp3');
+// const rattle = PIXI.sound.Sound.from('sound/sfx/rattle.mp3');
+
 // Create the application
 const app = new Application({
     width: 800,
     height: 600,
+    view: document.getElementById("game"),
     backgroundColor: 0xdedede,
     resolution: window.devicePixelRatio || 1,
+    
 });
 
 function getRandomInt(max) {
@@ -46,6 +52,7 @@ function getRandomGridId() {
     return lastRandomId;
 }
 
+
 class PiwanMap {
     constructor() {
         this.fps = 0;
@@ -57,7 +64,7 @@ class PiwanMap {
         this.map_alpha = 0.6;
         this.selected_alpha = 1;
         this.selected = 0;
-        this.snake = Sprite.from('snake/snakehead.png');
+        this.snake = Sprite.from('assets/snakehead.png');
         //head position
         this.snake.gid = "0,0";
         this.snake.gix = 0;
@@ -106,15 +113,7 @@ class PiwanMap {
                 //graphics.on('mousehover', (evt) => { this.gridBoxClick(evt, graphics.id, graphics) })
                 this.container.addChild(graphics);
 
-                let text = new Text(graphics.id, {
-                    fontFamily: 'Arial',
-                    fontSize: 8,
-                    fill: 0x000000,
-                    align: 'center'
-                });
-                text.position.x = 10 + (this.grid * j)
-                text.position.y = 10 + (this.grid * i)
-                this.textContainer.addChild(text);
+
             }
         }
     }
@@ -226,8 +225,6 @@ app.stage.addChild(map.getTextContainer());
 app.stage.addChild(map.food);
 app.stage.addChild(map.defood);
 app.stage.addChild(map.snake);
-// Add the view to the DOM
-document.body.appendChild(app.view);
 
 map.foodSetPositionByGridId(getRandomGridId());
 map.defoodSetPositionByGridId(getRandomGridId());
@@ -347,21 +344,25 @@ setInterval(() => {
             if (index == 0) snake.direction = "LEFT";
             if (index == 1) snake.direction = "RIGHT";
             if (index == 2) snake.direction = "DOWN";
+            //rattle.load((sound)=>{sound.play()});
         } else if (snake.direction == "UP") {
             let index = map.control_allowed.findIndex((allowed) => { return allowed == map.control });
             if (index == 0) snake.direction = "LEFT";
             if (index == 1) snake.direction = "RIGHT";
             if (index == 2) snake.direction = "UP";
+            //rattle.load((sound)=>{sound.play()});
         } else if (snake.direction == "LEFT") {
             let index = map.control_allowed.findIndex((allowed) => { return allowed == map.control });
             if (index == 0) snake.direction = "UP";
             if (index == 1) snake.direction = "DOWN";
             if (index == 2) snake.direction = "LEFT";
+            //rattle.load((sound)=>{sound.play()});
         } else if (snake.direction == "RIGHT") {
             let index = map.control_allowed.findIndex((allowed) => { return allowed == map.control });
             if (index == 0) snake.direction = "UP";
             if (index == 1) snake.direction = "DOWN";
             if (index == 2) snake.direction = "RIGHT";
+            //rattle.load((sound)=>{sound.play()});
         } else {
             map.control = '-1,-1';
         }
@@ -401,6 +402,7 @@ setInterval(() => {
         if(snake.bodyCounter <= 192){
             snake.bodyCounter = snake.bodyCounter +1;
         }
+        //eating.load().then((sound)=>{sound.play()});
     }
 
     if(currentGrid.id == map.defood.gid){
@@ -409,5 +411,6 @@ setInterval(() => {
         if(snake.bodyCounter >1){
             snake.bodyCounter = snake.bodyCounter -1;
         }
+        //hishing.load().then((sound)=>{sound.play()});
     }
 }, 400);
