@@ -18,7 +18,7 @@ import helmet from 'helmet';
 import { debug_log, info_log, warn_log } from './log.mjs';
 import { RouteTos } from './routes/tos.mjs';
 import { RoutePrivacy } from './routes/privacy.mjs';
-const { randomBytes} = await import('node:crypto');
+const { randomBytes } = await import('node:crypto');
 
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
 let DocsHtmlDir = SUPER_REPO_DIR + "/docs/html";
@@ -55,12 +55,12 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 PITM.Start();
 const app = express();
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     res.locals.nonce = randomBytes(16).toString("hex");
     next();
 })
 
-app.use(helmet.frameguard({action:"deny"}));
+app.use(helmet.frameguard({ action: "deny" }));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -87,12 +87,25 @@ app.use(helmet.contentSecurityPolicy({
     }
 }));
 
+//set header
+app.use(function (req, res, next) {
+    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet({ crossOriginOpenerPolicy: true }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
-app.use(helmet.hsts({maxAge:63072000}));
-app.use(helmet.frameguard({action: "sameorigin",}));
-app.use(helmet.permittedCrossDomainPolicies({permittedPolicies: "by-content-type",}));
+app.use(helmet.hsts({ maxAge: 63072000 }));
+app.use(helmet.frameguard({ action: "sameorigin", }));
+app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "by-content-type", }));
 app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
 app.disable('x-powered-by');
@@ -191,8 +204,8 @@ let JavaScriptDirs = "/" + PROJECT_DIR + "/js";
 app.use((req, res, next) => {
     if (req.secure) {
         let IpAddrDetail = IpAddr.process(req.ip);
-        
-        if(IpAddr.IPv4.isValid(IpAddrDetail)){
+
+        if (IpAddr.IPv4.isValid(IpAddrDetail)) {
             req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
             info_log(`Got A Visit From ${req.IPv4}`);
         }
@@ -204,7 +217,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/assets", express.static(AssetsDirs));
-app.use("/js",express.static(JavaScriptDirs));
+app.use("/js", express.static(JavaScriptDirs));
 
 app.set('view engine', 'html');
 
