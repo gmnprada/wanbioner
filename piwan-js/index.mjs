@@ -53,11 +53,21 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 PITM.Start();
 const app = express();
 
-// Send Nonce 
 app.use((req, res, next) => {
-    res.locals.nonce = randomBytes(16).toString("hex");
-    next();
-})
+    if (req.secure) {
+        let IpAddrDetail = IpAddr.process(req.ip);
+
+        if (IpAddr.IPv4.isValid(IpAddrDetail)) {
+            req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
+            info_log(`Got A Visit From ${req.IPv4}`);
+        }
+        res.locals.nonce = randomBytes(16).toString("hex");
+        next();
+    } else {
+        debug_log("redirecting request from user to https");
+        return res.redirect('https://' + process.env.PIWAN_DOMAIN + req.url);
+    }
+});
 
 app.use( (req, res, next) => {
     const allowedOrigins = ["piwan.net","minepi.com","sandbox.minepi.com","fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"];
@@ -82,7 +92,7 @@ let headerData = `
 
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://${process.env.PIWAN_DOMAIN}/assets/mdl/material.css">
+    <link rel="stylesheet" href="https://${process.env.PIWAN_DOMAIN}/assets/mdl/material.min.css">
     <link rel="stylesheet" href="https://${process.env.PIWAN_DOMAIN}/assets/piwan.css">
     <script src="https://${process.env.PIWAN_DOMAIN}/assets/mdl/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -165,22 +175,6 @@ hbs.registerPartial('footer', dataFooter);
 
 let AssetsDirs = "/" + PROJECT_DIR + "/assets";
 let JavaScriptDirs = "/" + PROJECT_DIR + "/js";
-
-
-app.use((req, res, next) => {
-    if (req.secure) {
-        let IpAddrDetail = IpAddr.process(req.ip);
-
-        if (IpAddr.IPv4.isValid(IpAddrDetail)) {
-            req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
-            info_log(`Got A Visit From ${req.IPv4}`);
-        }
-        next();
-    } else {
-        debug_log("redirecting request from user to https");
-        return res.redirect('https://' + process.env.PIWAN_DOMAIN + req.url);
-    }
-});
 
 app.use("/assets", express.static(AssetsDirs));
 app.use("/js", express.static(JavaScriptDirs));
