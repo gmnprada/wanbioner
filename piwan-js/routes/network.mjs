@@ -20,7 +20,7 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 */
 
 import { BasePacket } from "../core/packet.mjs";
-import PITM from "../core/timeservice/timeservice.mjs";
+import PITM from "../core/pitm/pitm.mjs";
 
 var tms_running = false;
 PITM.NetworkTimeServiceEmitter.on("running",(status)=>{

@@ -1,5 +1,5 @@
 import { WebSocketServer } from 'ws';
-import PITM from '../../core/timeservice/timeservice.mjs';
+import PITM from '../../core/pitm/pitm.mjs';
 import { error_log,info_log,debug_log } from '../../log.mjs';
 
 export default class PiwanWS {

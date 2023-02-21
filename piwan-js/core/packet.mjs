@@ -6,7 +6,7 @@ PiOS License
 Copyright (C) <2023> <gdemadenovanpriambhada>
 
 Developer
-
+GMNP
 
 Contributor
 
@@ -19,10 +19,10 @@ import os from 'os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';
-import TIME_SERVICE from './timeservice/timeservice.mjs';
+import PITM from './pitm/pitm.mjs';
 
 var time_now = BigInt(new Date().getTime());
-TIME_SERVICE.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
+PITM.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
     time_now = ut;
 });
 

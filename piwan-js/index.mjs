@@ -11,7 +11,7 @@ import hbs from 'hbs';
 import { RouteIndex } from './routes/index.mjs';
 import { RouteAbout } from './routes/about.mjs';
 import { RouteNetwork } from './routes/network.mjs';
-import PITM from './core/timeservice/timeservice.mjs';
+import PITM from './core/pitm/pitm.mjs';
 import { RouteDocs } from './routes/docs.mjs';
 import { RouteAuth } from './routes/auth.mjs';
 import helmet from 'helmet';
@@ -172,9 +172,9 @@ let dir = "/" + PROJECT_DIR + "/assets";
 
 app.use((req, res, next) => {
     if (req.secure) {
-        debug_log(`Express Got A Visit From ${req.ip}`);
-        debug_log(`Socket Ip  From ${req.socket?.remoteAddress}`);
-        debug_log(IpAddr.process(req.ip));
+        const IpAddrDetail = IpAddr.process(req.ip);
+
+        req.IPv4 = IpAddrDetail.toIPv4Address();
         next();
     } else {
         debug_log("redirecting request from user to https");

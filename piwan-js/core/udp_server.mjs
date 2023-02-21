@@ -19,7 +19,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 import dgram from 'node:dgram';
 
-import TIME_SERVICE from './timeservice/timeservice.mjs';
+import PITM from './pitm/pitm.mjs';
 
 export var PIWAN_UDP_RUNNING = false;
 
