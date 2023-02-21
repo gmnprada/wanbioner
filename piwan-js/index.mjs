@@ -62,21 +62,7 @@ app.use((req, res, next) => {
 })
 
 //set cors policy
-app.use( (req, res, next) => {
-    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    next();
-});
-
 // set csp policy
-app.use(helmet.frameguard({ action: "sameorigin" }));
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'", "piwan.net", "minepi.com", "sandbox.minepi.com", "sdk.minepi.com"],
@@ -110,6 +96,21 @@ app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "by-content-typ
 app.use(helmet.noSniff());
 app.use(helmet.xssFilter());
 app.disable('x-powered-by');
+
+app.use( (req, res, next) => {
+    const allowedOrigins = ['https://piwan.net',"pi://piwan.net","https://minepi.com","https://sandbox.minepi.com","https://fonts.googleapis.com", "https://fonts.gstatic.com"];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header("Cross-Origin-Embedder-Policy", "cross-origin")
+    next();
+});
+
 
 let headerData = `
 <!DOCTYPE html>
