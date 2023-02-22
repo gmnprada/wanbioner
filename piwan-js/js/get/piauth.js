@@ -14,7 +14,7 @@ function bootStrapAll() {
             const INFO = document.querySelector('#info');
             INFO.innerHTML = "Trying Do authentication to Pi networks ....";
             const Pi = window.Pi;
-            await Pi.init({ version: "2.0", sandbox: false });
+            await Pi.init({ version: "2.0"});
             const scopes = ['username', 'payments'];
             let data = await window.Pi.authenticate(scopes, onIncompletePayment);
             INFO.innerHTML = data;
@@ -22,7 +22,7 @@ function bootStrapAll() {
             return data;
         } catch (e) {
             const INFO = document.querySelector('#info');
-            INFO.innerHTML = e;
+            INFO.innerHTML = e.message;
         }
     }
 
@@ -30,7 +30,6 @@ function bootStrapAll() {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
         btn.addEventListener('click', Auth);
-        console.log("dom fully loaded");
     });
 
 
@@ -40,14 +39,4 @@ try {
     bootStrapAll();
 } catch (e) {
 
-}
-
-if (window) {
-    window.onload((ev) => {
-        try {
-            bootStrapAll();
-        } catch (e) {
-
-        }
-    });
 }
