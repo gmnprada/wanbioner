@@ -39,8 +39,7 @@
             console.log("Document Fully Loaded");
             try {
                 const Pi = window.Pi;
-                let LoadPi = await Pi.init({ version: "2.0", sandbox: true });
-                let User = await Auth();
+                let LoadPi = await Pi.init({ version: "2.0", sandbox: false });
                 const user = await Auth();
                 INFO.innerHTML(user);
                 console.log(User);
@@ -54,7 +53,11 @@
         }
 
         async function Auth() {
-            return await window.Pi.authenticate(scopes, onIncompletePayment);
+            try{
+                return await window.Pi.authenticate(scopes, onIncompletePayment);
+            }catch(e){
+                console.log(e);
+            }
         }
     };
 
