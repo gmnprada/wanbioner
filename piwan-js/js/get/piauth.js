@@ -1,5 +1,5 @@
 var isBrowser = new Function("try {return this===window;}catch(e){ return false;}");
-async function init() {
+function init() {
 
     if (!isBrowser()) throw Error("This is not browser environment");
 
