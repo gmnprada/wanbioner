@@ -70,7 +70,7 @@ app.use((req, res, next) => {
 });
 
 app.use( (req, res, next) => {
-    const allowedOrigins = ["piwan.net","minepi.com","sandbox.minepi.com","fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com"];
+    const allowedOrigins = ["piwan.net","minepi.com","sandbox.minepi.com","fonts.googleapis.com", "fonts.gstatic.com","app-cdn.minepi.com","sdk.minepi.com"];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
