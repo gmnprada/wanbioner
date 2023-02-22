@@ -27,3 +27,9 @@ async function init(){
         return await Pi.authenticate(scopes,onIncompletePayment);
     }
 };
+
+try{
+    init();
+}catch(e){
+    console.error(e);
+}
