@@ -1,7 +1,8 @@
 PIWAN development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer as software developer at it is according to the license.
 
 Introduction
-There is a substansial difference of a ROUTER and Your Mobile Phone , Router is not moving while your phone is mobile its can be anywhere. essentialy it has same chips and wireless receiver and transmitter but it handling a different purpose. in Peer To Peer Application this PIWAN will not charge any balance and Fee just like you use local networks. its difference scenario if its intermediated by DEVICE across intenet its need a stationary place to be there. you can read what problem this project address at the ROOT FOLDER so its make sense why we need to PAY for DATA EXCHANGE. If you did not has A HOME TO guard you from WEATHER there is 3 possible solutions.
+
+There is a substansial difference of a ROUTER and Your Mobile Phone , Router is not moving while your phone is mobile its can be anywhere. essentialy it has same chips and wireless receiver and transmitter but it handling a different purpose. in Peer To Peer Application this PIWAN will not charge any balance and Fee just like you use local networks. its difference scenario if its intermediated by DEVICE across internet its need a stationary place to be there. you can read what problem this project address at the ROOT FOLDER so its make sense why we need to PAY for DATA EXCHANGE. If you did not has A HOME TO guard you from WEATHER there is 3 possible solutions.
 
 - Go To PUBLIC PLACE that has free STAY or STAYING OUTDOOR.
 - Rent A Home
