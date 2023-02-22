@@ -33,3 +33,9 @@ async function init() {
     });
 
 };
+
+try{
+    init();
+}catch(e){
+
+}
