@@ -6,13 +6,13 @@ function init() {
     function onIncompletePayment(payment) {
         const INFO = document.querySelector('#info');
         INFO.innerHTML = payment;
-        
+
     }
-    
+
     async function Auth() {
         try {
             const INFO = document.querySelector('#info');
-            INFO.innerHTML = "Trying Do authentication to Pi networks ...." ;
+            INFO.innerHTML = "Trying Do authentication to Pi networks ....";
             const Pi = window.Pi;
             await Pi.init({ version: "2.0", sandbox: false });
             const scopes = ['username', 'payments'];
@@ -33,10 +33,21 @@ function init() {
         console.log("dom fully loaded");
     });
 
+
 };
 
-try{
+try {
     init();
-}catch(e){
+} catch (e) {
 
+}
+
+if (window) {
+    window.onload((ev) => {
+        try {
+            init();
+        } catch (e) {
+
+        }
+    });
 }
