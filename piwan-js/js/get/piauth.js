@@ -3,7 +3,6 @@ async function init() {
 
     if (!isBrowser()) throw Error("This is not browser environment");
 
-
     function onIncompletePayment(payment) {
         const INFO = document.querySelector('#info');
         INFO.innerHTML = payment;
@@ -12,9 +11,12 @@ async function init() {
     
     async function Auth() {
         try {
+            const INFO = document.querySelector('#info');
+            INFO.innerHTML = "Trying Do authentication to Pi networks ...." ;
+            const Pi = window.Pi;
+            await Pi.init({ version: "2.0", sandbox: false });
             const scopes = ['username', 'payments'];
             let data = await window.Pi.authenticate(scopes, onIncompletePayment);
-            const INFO = document.querySelector('#info');
             INFO.innerHTML = data;
 
             return data;
@@ -24,27 +26,10 @@ async function init() {
         }
     }
 
-
     window.addEventListener('DOMContentLoaded', async (evt) => {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
         btn.addEventListener('click', Auth);
-        try {
-            const Pi = window.Pi;
-            await Pi.init({ version: "2.0", sandbox: false });
-        } catch (e) {
-            INFO.innerHTML(e);
-        }
     });
 
-
 };
-
-try {
-    init();
-} catch (e) {
-
-    const INFO = document.querySelector('#info');
-    INFO.innerHTML = e;
-    console.error(e);
-}
