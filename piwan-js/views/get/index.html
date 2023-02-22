@@ -54,7 +54,7 @@
         }
 
         async function Auth() {
-            return await Pi.authenticate(scopes, onIncompletePayment);
+            return await window.Pi.authenticate(scopes, onIncompletePayment);
         }
     };
 
