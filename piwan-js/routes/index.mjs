@@ -25,7 +25,6 @@ export async function RouteIndex(req,res){
     let data = PITM.Networks();
     return res.render("get/index.html",{
         network :data,
-        authSource :`https://${process.env.PIWAN_DOMAIN}/js/get/piauth.js`,
         gameSource :`https://${process.env.PIWAN_DOMAIN}/game/snake-kite/snakekite.min.js`
     });
 }

@@ -20,5 +20,7 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 */
 
 export async function RouteAuth(req,res){
-    return res.render("get/auth.html");
+    return res.render("get/auth.html",{
+        authSource :`https://${process.env.PIWAN_DOMAIN}/js/get/piauth.js`
+    });
 }
