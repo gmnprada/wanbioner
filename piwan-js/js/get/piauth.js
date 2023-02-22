@@ -1,5 +1,5 @@
 var isBrowser = new Function("try {return this===window;}catch(e){ return false;}");
-function init() {
+function bootStrapAll() {
 
     if (!isBrowser()) throw Error("This is not browser environment");
 
@@ -37,7 +37,7 @@ function init() {
 };
 
 try {
-    init();
+    bootStrapAll();
 } catch (e) {
 
 }
@@ -45,7 +45,7 @@ try {
 if (window) {
     window.onload((ev) => {
         try {
-            init();
+            bootStrapAll();
         } catch (e) {
 
         }
