@@ -3,34 +3,38 @@ async function init() {
 
     if (!isBrowser()) throw Error("This is not browser environment");
 
+
+    function onIncompletePayment(payment) {
+        const INFO = document.querySelector('#info');
+        INFO.innerHTML = payment;
+        
+    }
+    
     async function Auth() {
         try {
             const scopes = ['username', 'payments'];
             let data = await window.Pi.authenticate(scopes, onIncompletePayment);
+            const INFO = document.querySelector('#info');
+            INFO.innerHTML = data;
+
             return data;
         } catch (e) {
-            console.log(e);
+            const INFO = document.querySelector('#info');
+            INFO.innerHTML = e;
         }
     }
 
-    function onIncompletePayment(payment) {
-        console.log("Auth User", payment);
-    }
 
     window.addEventListener('DOMContentLoaded', async (evt) => {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
         btn.addEventListener('click', Auth);
-        console.log("Document Fully Loaded");
         try {
             const Pi = window.Pi;
             await Pi.init({ version: "2.0", sandbox: false });
-            console.log(User);
         } catch (e) {
             INFO.innerHTML(e);
         }
-
-
     });
 
 
@@ -39,5 +43,8 @@ async function init() {
 try {
     init();
 } catch (e) {
+
+    const INFO = document.querySelector('#info');
+    INFO.innerHTML = e;
     console.error(e);
 }
