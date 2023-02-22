@@ -26,7 +26,7 @@ async function init() {
         }
     }
 
-    window.addEventListener('DOMContentLoaded', async (evt) => {
+    document.addEventListener('DOMContentLoaded', async (evt) => {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
         btn.addEventListener('click', Auth);
