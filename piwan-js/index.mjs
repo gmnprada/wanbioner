@@ -69,30 +69,32 @@ app.use((req, res, next) => {
     }
 });
 
-app.use((req, res, next) => {
-    const allowedOrigins = [
-        "piwan.net",
-        "minepi.com",
-        "sandbox.minepi.com",
-        "fonts.googleapis.com",
-        "fonts.gstatic.com",
-        "app-cdn.minepi.com",
-        "sdk.minepi.com",
-        "https://piwan.net",
-        "https://sdk.minepi.com",
-        "https://minepi.com",
-        "https://sandbox.minepi.com",
-        "https://app-cdn.minepi.com",
-        "https://fonts.googleapis.com",
-        "https://fonts.gstatic.com",
-    ];
-    const origin = req.headers.origin;
-    res.setHeader('Access-Control-Allow-Origin', origin);
+app.use( (req, res, next) => {
+    // const allowedOrigins = [
+    //     "piwan.net",
+    //     "minepi.com",
+    //     "sandbox.minepi.com",
+    //     "fonts.googleapis.com", 
+    //     "fonts.gstatic.com",
+    //     "app-cdn.minepi.com",
+    //     "sdk.minepi.com",
+    //     "https://piwan.net",
+    //     "https://sdk.minepi.com",
+    //     "https://minepi.com",
+    //     "https://sandbox.minepi.com",
+    //     "https://app-cdn.minepi.com",
+    //     "https://fonts.googleapis.com", 
+    //     "https://fonts.gstatic.com",
+    // ];
+    // const origin = req.headers.origin;
+    // if (allowedOrigins.includes(origin)) {
+    //      res.setHeader('Access-Control-Allow-Origin', origin);
+    // }
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader("X-Frame-Options", 'SAMEORIGIN');
-    res.setHeader("Strict-Transport-Security", 'max-age=63072000');
     next();
 });
 
@@ -194,7 +196,7 @@ let GameRepoDirs = "/" + PROJECT_DIR + "/game";
 
 app.use("/assets", express.static(AssetsDirs));
 app.use("/js", express.static(JavaScriptDirs));
-app.use("/game", express.static(GameRepoDirs));
+app.use("/game",express.static(GameRepoDirs));
 
 app.set('view engine', 'html');
 
@@ -281,15 +283,15 @@ if (os.hostname() == "piwan.net") {
 } else {
     warn_log(`Try To Run at https://${process.env.PIWAN_DOMAIN} Not Tested yet`);
 
-    const privateKey = readFileSync(ROOT_DIR + '/dev/localhost-key.pem', 'utf8');
-    const certificate = readFileSync(ROOT_DIR + '/dev/localhost.pem', 'utf8');
+    const privateKey = readFileSync(ROOT_DIR+'/dev/localhost-key.pem', 'utf8');
+    const certificate = readFileSync(ROOT_DIR+'/dev/localhost.pem', 'utf8');
     const credentials = {
         key: privateKey,
         cert: certificate
     };
     var devhttpServer = http.createServer(app);
     devhttpServer.listen(json.PWAN_HTTP_PORT);
-    var devServer = https.createServer(credentials, app);
+    var devServer = https.createServer(credentials,app);
     devServer.listen(json.PIWAN_HTTPS_PORT);
     devServer.on('upgrade', (request, socket, head) => {
         wss.handleUpgrade(request, socket, head, socket => {
