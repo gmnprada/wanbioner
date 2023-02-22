@@ -30,6 +30,7 @@ async function init() {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
         btn.addEventListener('click', Auth);
+        console.log("dom fully loaded");
     });
 
 };
