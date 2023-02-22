@@ -18,7 +18,6 @@ import { debug_log, info_log, warn_log } from './log.mjs';
 import { RouteTos } from './routes/tos.mjs';
 import { RoutePrivacy } from './routes/privacy.mjs';
 const { randomBytes } = await import('node:crypto');
-import cors from 'cors';
 
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
 let DocsHtmlDir = SUPER_REPO_DIR + "/docs/html";
@@ -54,6 +53,33 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 PITM.Start();
 const app = express();
 
+app.use( (req, res, next) => {
+    const allowedOrigins = [
+        "https://piwan.net",
+        "https://sdk.minepi.com",
+        "https://minepi.com",
+        "https://sandbox.minepi.com",
+        "https://app-cdn.minepi.com",
+        "https://fonts.googleapis.com", 
+        "https://fonts.gstatic.com",
+    ];
+    const origin = req.headers.origin;
+    const fapool = allowedOrigins.join(" ");
+    if (allowedOrigins.includes(origin)) {
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Max-Age',86400);
+    res.setHeader('Cache-control','no-cache');
+    //res.setHeader('Content-Security-Policy',`default-src 'self' 'unsafe-inline' 'unsafe-eval' ${fapool};frame-src ${fapool};frame-ancestors 'self' ${fapool};upgrade-insecure-requests`);
+    res.setHeader('Strict-Transport-Security','max-age=63072000; includeSubDomains; preload');
+
+    next();
+});
+
 app.use((req, res, next) => {
     if (req.secure) {
         let IpAddrDetail = IpAddr.process(req.ip);
@@ -69,60 +95,6 @@ app.use((req, res, next) => {
         return res.redirect('https://' + process.env.PIWAN_DOMAIN + req.url);
     }
 });
-
-// app.use( (req, res, next) => {
-//     // const allowedOrigins = [
-//     //     "piwan.net",
-//     //     "minepi.com",
-//     //     "sandbox.minepi.com",
-//     //     "fonts.googleapis.com", 
-//     //     "fonts.gstatic.com",
-//     //     "app-cdn.minepi.com",
-//     //     "sdk.minepi.com",
-//     //     "https://piwan.net",
-//     //     "https://sdk.minepi.com",
-//     //     "https://minepi.com",
-//     //     "https://sandbox.minepi.com",
-//     //     "https://app-cdn.minepi.com",
-//     //     "https://fonts.googleapis.com", 
-//     //     "https://fonts.gstatic.com",
-//     // ];
-//     // const origin = req.headers.origin;
-//     // if (allowedOrigins.includes(origin)) {
-//     //      res.setHeader('Access-Control-Allow-Origin', origin);
-//     // }
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-//     res.setHeader('Access-Control-Max-Age',86400);
-//     res.setHeader("X-Frame-Options", 'SAMEORIGIN');
-//     res.set('Cache-control','no-cache');
-//     next();
-// });
-
-
-// var allowList = [
-//     "https://piwan.net",
-//     "https://sdk.minepi.com",
-//     "https://minepi.com",
-//     "https://sandbox.minepi.com",
-//     "https://app-cdn.minepi.com",
-//     "https://fonts.googleapis.com",
-//     "https://fonts.gstatic.com",
-// ];
-
-// var corsOptionsDelegate = (req, callback) => {
-//     var corsOptions;
-//     if (allowList.indexOf(req.header('Origin')) !== -1) {
-//         corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-//     } else {
-//         corsOptions = { origin: false } // disable CORS for this request
-//     }
-//     callback(null, corsOptions) // callback expects two parameters: error and options
-// }
-
-app.use(cors());
 
 
 app.disable('x-powered-by');

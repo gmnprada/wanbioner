@@ -5,13 +5,12 @@ async function init(){
 
     window.addEventListener('DOMContentLoaded',async (evt)=>{
         const INFO = document.querySelector('#info');
-        const scopes = ['username','payments','wallet_address'];
+        const scopes = ['username','payments'];
         console.log("Document Fully Loaded");
         try{
             const Pi = window.Pi;
-            let LoadPi = await Pi.init({ version: "2.0",sandbox:true});
+            let LoadPi = await Pi.init({ version: "2.0",sandbox:false});
             let User = await Auth();
-            const user = await Auth();
             INFO.innerHTML(user);
             console.log(User);
         }catch(e){
@@ -24,7 +23,11 @@ async function init(){
     }
 
     async function Auth(){
-        return await Pi.authenticate(scopes,onIncompletePayment);
+        try{
+            return await Pi.authenticate(scopes,onIncompletePayment);
+        }catch(e){
+            console.error(e);
+        }
     }
 };
 
