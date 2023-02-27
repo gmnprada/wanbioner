@@ -82,12 +82,20 @@ app.use( (req, res, next) => {
 
 app.use((req, res, next) => {
     if (req.secure) {
-        let IpAddrDetail = IpAddr.process(req.ip);
 
-        if (IpAddr.IPv4.isValid(IpAddrDetail)) {
-            req.IPv4 = IpAddr.IPv4.parse(IpAddrDetail).toString();
+        let remoteIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress ;
+        console.log(remoteIp);
+        let IpAddrDetail = IpAddr.process(remoteIp);
+
+        console.log(IpAddrDetail);
+        if (IpAddrDetail.kind() == "ipv4") {
+            req.IPv4 = IpAddrDetail.toString();
             info_log(`Got A Visit From ${req.IPv4}`);
+        }else{
+            req.IPv4 = undefined,
+            req.IPv6 = IpAddrDetail.toString();
         }
+
         res.locals.nonce = randomBytes(16).toString("hex");
         next();
     } else {
@@ -95,8 +103,6 @@ app.use((req, res, next) => {
         return res.redirect('https://' + process.env.PIWAN_DOMAIN + req.url);
     }
 });
-
-
 app.disable('x-powered-by');
 
 

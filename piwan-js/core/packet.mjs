@@ -3,7 +3,7 @@
 
 PiOS License
 
-Copyright (C) <2023> <gdemadenovanpriambhada>
+Copyright (C) 2023 by Gde Made Novan Priambhada and Contributor
 
 Developer
 GMNP
@@ -15,7 +15,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 */
 
-import os from 'os';
+import os from 'node:os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';

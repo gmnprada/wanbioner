@@ -22,19 +22,18 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 import { BasePacket } from "../core/packet.mjs";
 import PITM from "../core/pitm/pitm.mjs";
 
-var tms_running = false;
+var PiTM_Running = false;
 PITM.NetworkTimeServiceEmitter.on("running",(status)=>{
-    tms_running = status;
-})
-export async function RouteNetwork(req,res){
-    let ips = (
-        req.headers['cf-connecting-ip'] ||
-        req.headers['x-real-ip'] ||
-        req.headers['x-forwarded-for'] ||
-        req.connection.remoteAddress || ''
-    ).split(',');
+    PiTM_Running = status;
+});
 
+export async function RouteNetwork(req,res){
     
+    let ip4 = req.IPv4;
+    let ip6 = req.IPv6;
+    if(!ip4){
+        ip4 = "IPv6 Detected";
+    }
     try{
         let packet = new BasePacket();
         await packet.Encode();
@@ -44,9 +43,11 @@ export async function RouteNetwork(req,res){
     }
 
     return res.render("get/network.html",{
-        client_ip : ips[0],
+        IPv4_client : ip4,
+        IPv6_client : ip6,
         udp_running : false,
-        tms_running : tms_running,
+        PiTM_Running : PiTM_Running,
+        PiTM_Network : PITM.Networks(),
         jsSource :`https://${process.env.PIWAN_DOMAIN}/js/get/network.js` 
     });
 }
