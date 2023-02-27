@@ -1,3 +1,20 @@
+/*
+***** THIS FILE IS PART OF Piwan Project *****
+
+PiOS License
+
+Copyright (C) 2023 by Gde Made Novan Priambhada and Contributor
+
+Developer
+GMNP
+
+Contributor
+
+
+See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
+
+*/
+
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";

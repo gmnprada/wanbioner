@@ -1,6 +1,6 @@
 # PIWAN 
 
-development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer as software developer as it is according to the license.
+development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer and software developer as it is according to the license.
 
 ## Introduction
 
@@ -20,17 +20,32 @@ which one is your choice let the worlds see it!
 
 ### Local Machine Communication
 ```
-- RAW , , signaling 
+- RAW , , init and signaling with unknown protocol 
+- DEV , , Reserved and TBD
 - NOP , , ignore signal
 - NUL , , delete signal
-- MEM , , filesystem , memory cache , storage , ram , shared memory
+- MEM , , memory cache , storage , ram , shared memory
 - IPC , , Inter Process Communication
-- SYS , , System based communication
-- EVT , , Event Base and Runtime communcation
-- DEV , , Reserved and TBD
+- SYS , , Cross system communication
+- EVT , , Event Based , Runtime communication
+- WFS , , Windows File System
+- UFS , , Unix File System
+- LFS , , Linux File System
+- AFS , , Arm Architecture Based File System
+- XFS , , x86 or x64 Based File System
+- MFS , , Mips Architecture Based File System
+- BFS , , Bsd File System
+- VFS , , Virtual File System or VM based files system
+- CFS , , Cloud Based File System
+- ZFS , , Reserved and TBD
+- XFS , , Reserved and TBD
+- EFS , , Encrypted File System
+- SFS , , Storage File System Either SSD , HDD , or Flash Drive communication
+- UNK , , Reserved Which Means new protocol cannot be determined yet
+- ANY , , Reserved Which Means we got the data from anonym maybe allien trying to communicate.
 ```
 
-### Passing Wire Communication
+### Passing Wire , Radio Frequency , Over The Air Communication
 ```
 - ETH , , Ethernet Cable , Hub protocol
 - UDP , , Datagram protocol
@@ -41,13 +56,28 @@ which one is your choice let the worlds see it!
 - SAT , , Reserved for satelite based system
 - WSS , , Web Socket Server
 - WSC , , Web Socket Client
-- WEB , , HTML To HTML scraping do we really need it?
+- WEB , , If It Transfer packet through Web Polling or anything
+- RTC , , Web Rtc based Communciation
+- RTM , , Real Time Messaging Protocol (RTMP) just make it shoter here
+- BTH , , Bluetooth Based Protocol
+- AIR , , Reserved and TBD
 - SMB , , Reserved and TBD
 - IRC , , Reserved and TBD
 - TEL , , Reserved and TBD
 - FTP , , Reserved and TBD
 - IOT , , Reserved and TBD
 - NET , , Reserved and TBD
+- IP4 , , Internet Protocol 4
+- IP6 , , Internet Protocol 6
+- WB3 , , Web 3 based protocol
+- TLS , , Reserved and TBD
+- ARF , , Analog based Radio Frequency
+- DRF , , Digital Format Based Radio Frequency
+- FOC , , Fiber Optic Cables
+- SOC , , Reserved for socket base communication
+- IFR , , Infra Red based Communication
+- SRL , , Serial based Communication
+- USB , , Universal Serial Bus
 ```
 
 
@@ -115,13 +145,14 @@ Base Packet
 - PROMISE FLIGHT TIMESTAMP 8 bytes , u64 time stamp of this packet flight or sended
 - PROMISE INTERMEDIATE TIMESTAMP 8 bytes , u64 timestamp of this packet arrived 
 - PROMISE RECEIVED TIMESTAMP 8 bytes , u64 time stamp of this packet arrived at recipient
+- TIME TO LIVE 1 bytes , u8 this need to be decremented on each of broker and router
 ```
 
 
 
 ### COMPRESSED PACKET STRUCTURE
 
-- Still on Development
+- Still on Development TBD
 
 PIWAN base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
 

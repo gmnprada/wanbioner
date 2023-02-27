@@ -19,47 +19,12 @@ import os from 'node:os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';
-import PITM from './pitm/pitm.mjs';
+import PITM from '../pitm/pitm.mjs';
 
 var time_now = BigInt(new Date().getTime());
 PITM.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
     time_now = ut;
 });
-
-// PACKET OPCODE
-const OPCODE_PING = 0x00;
-const OPCODE_CONSTRUCT = 0x01;
-const OPCODE_ENCODE = 0x02;
-const OPCODE_FLIGHT = 0x03;
-const OPCODE_DECODE = 0x04;
-const OPCODE_INTERMEDIATE = 0x05;
-const OPCODE_FORWARD = 0x06;
-const OPCODE_RECEIVED = 0x07;
-const OPCODE_AUDIT = 0x08;
-
-const OPCODE_CONTROL_PING_ADD = 0x09;
-const OPCODE_CONTROL_UDP_START = 0x10;
-const OPCODE_CONTROL_UDP_STOP = 0x11;
-const OPCODE_CONTROL_TCP_START = 0x12;
-const OPCODE_CONTROL_TCP_STOP = 0x13;
-
-
-export class ControlPacket {
-    constructor() {
-        this.packet = Buffer.alloc(8).fill(0);
-        this.packet.write("ΠWN", "utf-8");
-    }
-
-    DoOpcodeUdpStart() {
-        //opc
-        this.packet[5] = OPCODE_CONTROL_UDP_START;
-        this.packet[6] = 0x85;
-        this.packet[7] = 0x68;
-        this.packet[8] = 0x80;
-        console.log(this.packet);
-        console.log(this.packet.toString('utf-8'));
-    }
-}
 
 export class BasePacket {
     constructor(appid = "ΠWN", data = [0x00], r_hostname = "", r_timeout = 1, c_ipv4 = "", c_ipv6 = "", r_ipv4 = "", r_ipv6 = "") {
