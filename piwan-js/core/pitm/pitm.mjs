@@ -3,7 +3,7 @@
 
 PiOS License
 
-Copyright (C) <2023> <gdemadenovanpriambhada>
+Copyright (C) 2023 by Gde Made Novan Priambhada and Contributor
 
 Developer
 GMNP
@@ -24,6 +24,10 @@ import { debug_log, error_log, info_log } from '../../log.mjs';
 class NetworkTimeService extends EventEmitter { };
 
 const NetworkTimeServiceEmitter = new NetworkTimeService();
+
+class PITMService extends EventEmitter{};
+
+const PITMServiceEmitter = new PITMService();
 
 const OPCODE_PING = 0x00;
 const OPCODE_FLIGHT = 0x01;
@@ -50,7 +54,7 @@ const _datagram_host = { address: '0.0.0.0', family: 'IPv4', port: process.env.P
 var PiTM_Running = false;
 
 
-// Its a must to see domain ownership is still there
+// Its a must to see domain ownership is still there maitained by piwan team
 dns.resolve4("piwan.net", (err, addrs) => {
     if (err) {
         error_log(`ΠTM Cannot Resolve The Main Net`, err);
@@ -164,6 +168,27 @@ function _onMessage(message, remote_info) {
                     NetworkTimeServiceEmitter.emit("unixsync", localnow);
                     NetworkTimeServiceEmitter.emit("datesync", new Date(Number(localnow)));
 
+                    let pitmsync = Buffer.allocUnsafe(16);
+                    // HEADER
+                    pitmsync[0] = 0xcf;
+                    pitmsync[1] = 0x80;
+                    pitmsync[2] = 0x54;
+                    pitmsync[3] = 0x4d;
+                    
+                    // OPCODE
+                    pitmsync[4] = OPCODE_PING;
+
+                    // PROTOCOL 3 character UDP
+                    pitmsync[5] = 0x85;
+                    pitmsync[6] = 0x68;
+                    pitmsync[7] = 0x80;
+
+                    // write time
+                    pitmsync.write(localnow,8);
+
+                    PITMServiceEmitter.emit("pitmsync",pitmsync);
+
+
                     let PITM = {
                         pitm_host: from_hostname.toString('utf-8').substring(0, from_hostname.indexOf(0x00)),
                         pitm_addr: remote_info.address,
@@ -175,7 +200,7 @@ function _onMessage(message, remote_info) {
                         pitm_client_offset: time_client_offset,
                         pitm_server_offset: time_server_offset,
                     }
-                    NetworkTimeServiceEmitter.emit("PITM", PITM);
+                    PITMServiceEmitter.emit("PITM", PITM);
                     //info_log(`PITM`,PITM);
 
                     if (delta <= BigInt(_droptime)) {
@@ -183,7 +208,20 @@ function _onMessage(message, remote_info) {
                         if (!networks.includes(remote_info.address)) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
                             if (from != os.hostname()) {
-                                info_log(`ΠTM : ${from_hostname.toString()} is cappable to be broker with IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
+                                info_log(`ΠTM : ${from_hostname.toString()} is cappable to be broker : IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
+                                networks.push(remote_info.address);
+                                PITMServiceEmitter.emit("pitm-add-peers",(remote_info.address));
+                            }
+                        }
+                    }else  if(delta >= BigInt(_droptime)){
+                        // Consider Dropping the late peers
+                        if(networks.includes(remote_info.address)){
+                            let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
+                            if (from != os.hostname()) {
+                                info_log(`ΠTM : ${from_hostname.toString()} is late more than 30ms Dropping :  with IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
+                                const index = networks.indexOf(remote_info.address);
+                                networks.slice(index,1);
+                                PITMServiceEmitter.emit("pitm-del-peers",(remote_info.address));
                             }
                         }
                     }
