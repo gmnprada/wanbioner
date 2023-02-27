@@ -26,6 +26,7 @@ which one is your choice let the worlds see it!
 - MEM , , filesystem , memory cache , storage , ram , shared memory
 - IPC , , Inter Process Communication
 - SYS , , System based communication
+- EVT , , Event Base and Runtime communcation
 - DEV , , Reserved and TBD
 - NET , , Reserved and TBD
 - TEL , , Reserved and TBD
