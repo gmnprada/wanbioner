@@ -1,6 +1,6 @@
 # PIWAN 
 
-development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer as software developer at it is according to the license.
+development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer as software developer as it is according to the license.
 
 ## Introduction
 
