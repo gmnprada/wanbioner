@@ -14,9 +14,9 @@ There is a substansial difference of a ROUTER and Your Mobile Phone , Router is 
 
 which one is your choice let the worlds see it!
 
-## Piwan Documentations
+# Piwan Documentations
 
-## The Reserved Bytes is used to detect protocol of the transport Valid Value
+### The Reserved Bytes is used to detect protocol of the transport Valid Value
 
 ### Local Machine Communication
 ```
@@ -28,10 +28,6 @@ which one is your choice let the worlds see it!
 - SYS , , System based communication
 - EVT , , Event Base and Runtime communcation
 - DEV , , Reserved and TBD
-- NET , , Reserved and TBD
-- TEL , , Reserved and TBD
-- FTP , , Reserved and TBD
-- IOT , , Reserved and TBD
 ```
 
 ### Passing Wire Communication
@@ -42,12 +38,16 @@ which one is your choice let the worlds see it!
 - WRL , , Wireless Transmitter and Receiver base transport
 - GSM , , Use GSM Based Transport
 - LTE , , Use LTE Based Transport
-- SAT , , Reserved for sattelite based system
+- SAT , , Reserved for satelite based system
 - WSS , , Web Socket Server
 - WSC , , Web Socket Client
 - WEB , , HTML To HTML scraping do we really need it?
 - SMB , , Reserved and TBD
 - IRC , , Reserved and TBD
+- TEL , , Reserved and TBD
+- FTP , , Reserved and TBD
+- IOT , , Reserved and TBD
+- NET , , Reserved and TBD
 ```
 
 
