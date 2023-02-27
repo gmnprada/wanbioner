@@ -80,7 +80,7 @@ Packet Structure
 |  PITM_ADD           |         0x05          |
 |  PITM_DEL           |         0x06          |
 
-8 Bytes BIGUINT64LE Timestamp of the date now is assigned by the loop
+8 Bytes BIGUINT64LE Timestamp of the date now is assigned by the loop of opcode every audit step
 
 ### π-tm Time Message Structure,
 
