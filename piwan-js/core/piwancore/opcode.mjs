@@ -24,12 +24,12 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
     under 10 step the procedure and operation has too many step
     1 step usually is optional for the operation to be performed but it must be there for observer , monitor , auditor , encyrption and security purpose
 
-    consider to reduce the step of perfoming process on pid if its not complete on 9 step and 1 optional step
+    consider to reduce the step of perfoming core process on pid if its not complete on 9 step and 1 optional step
 
     the documentation of opcode is important for agreement on same symbol we use to do operation
     do not use same symbol on the opcode to avoid confusion between interacting system on the wire
 
-    this opcode should must be universal without
+    this opcode should and must be universal without
     agreeing on specific protocol implementation or programming language implementation
 
     do not include any authentication as its depends on specific implementation on each platform
@@ -41,16 +41,16 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 export const OPCODE_USIZE = 1;
 
 // PITM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
-export const OPCODE_PITM_PING               = 0x00;
-export const OPCODE_PITM_FLIGHT             = 0x01;
-export const OPCODE_PITM_FLIGHT_RECEIVED    = 0x02;
-export const OPCODE_PITM_FLIGHT_BACK        = 0x03;
-export const OPCODE_PITM_FLIGHT_AUDIT       = 0x04;
-export const OPCODE_PITM_ADD                = 0x05;
-export const OPCODE_PITM_DEL                = 0x06;
-export const OPCODE_PITM_MUT                = 0x07;
-export const OPCODE_PITM_STA                = 0x08;
-export const OPCODE_PITM_PONG               = 0x09;
+export const OPCODE_PITM_PING               = 0x00;  // Ping Arounds by saying [PING] means node alive
+export const OPCODE_PITM_FLIGHT             = 0x01;  // Flight and broadcast around   Fill T0
+export const OPCODE_PITM_FLIGHT_RECEIVED    = 0x02;  // Receive packet from around    Fill T1
+export const OPCODE_PITM_FLIGHT_BACK        = 0x03;  // Send packet back from around  Fill T2
+export const OPCODE_PITM_FLIGHT_AUDIT       = 0x04;  // Measure RTT , LATENCY , TTL , DELTA , THETA 
+export const OPCODE_PITM_ADD                = 0x05;  // A Add    something [address,ip,mac,serial]
+export const OPCODE_PITM_DEL                = 0x06;  // D Delete something [address,ip,mac,serial]
+export const OPCODE_PITM_MUT                = 0x07;  // M Mutate something [address,ip,mac,serial]
+export const OPCODE_PITM_STA                = 0x08;  // S Stamp  something [address,ip,mac,serial] add hostname
+export const OPCODE_PITM_PONG               = 0x09;  // Pong Back by saying [PONG] means there is someone
 
 // OPCODE OF Piwan CONTROL PANEL MESSAGE Reserve 10-19 decimal opcode 
 export const OPCODE_PWAN_CTRL_AUTH          = 0x10;
