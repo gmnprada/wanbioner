@@ -87,6 +87,7 @@ if (document) {
             };
 
             ws.onmessage = (event) => {
+                clearTimeout(this.pingTimeout);
                 let buf = hexToBytes(String(event.data));
                 let header = new Uint8Array(4);
                 for (let i = 0; i < 4; i++) {
@@ -106,7 +107,6 @@ if (document) {
             };
 
             ws.onclose = (event) => {
-                clearTimeout(this.pingTimeout);
                 if (event.wasClean) {
                     console.log("Ws closed", event);
                 } else {
