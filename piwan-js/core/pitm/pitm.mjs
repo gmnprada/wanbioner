@@ -82,7 +82,7 @@ const interfaces = os.networkInterfaces();
 Object.values(interfaces).forEach((iface) => {
     for (let ip of iface) {
         info_log(ip);
-        if (ip.family == 'IPv4' && !ip.internal) {
+        if (ip.family == 'IPv4' &&  ip.internal === false) {
             info_log(`ΠTM Add Interface IPv4 : ${ip.address} to networks`);
             networks.push(ip.address);
         }
