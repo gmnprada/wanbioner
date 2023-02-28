@@ -112,7 +112,7 @@ if (document) {
                 } else {
                     // e.g. server process killed or network down
                     // event.code is usually 1006 in this case
-                    console.log("Ws Terminated unclean");
+                    console.log("Ws Terminated unclean",event);
                 }
             };
 
