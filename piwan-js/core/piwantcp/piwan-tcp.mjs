@@ -15,7 +15,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 */
 
-// The Focus Of This File Should Implement Piwan on Transmission Controll Protocol
+// The Focus Of This File Should Implement Piwan on Transmission Control Protocol [TCP]
 
 
 import net from "node:net";

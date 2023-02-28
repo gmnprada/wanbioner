@@ -1,6 +1,6 @@
 # PIWAN 
 
-development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer and software developer as it is according to the license.
+Development is subject to change according to problem ,issues and solution provided in the future this documentation is provided by network engineer and software developer as it is according to the license.
 
 ## Introduction
 
@@ -20,13 +20,13 @@ which one is your choice let the worlds see it!
 
 ### Local Machine Communication
 ```
-- RAW , , init and signaling with unknown protocol 
-- DEV , , Reserved and TBD
-- NOP , , ignore signal
-- NUL , , delete signal
-- MEM , , memory cache , storage , ram , shared memory
-- IPC , , Inter Process Communication
-- SYS , , Cross system communication
+- RAW , , init and signaling with raw socket 
+- DEV , , Reserved and TBD for developer
+- NOP , , ignore signal this is costly operation from another machine 
+- NUL , , delete signal and data make it null (deletion , Gargabe Collector, Recyle)
+- MEM , , cache , storage , ram , shared memory
+- IPC , , Inter Process communication
+- SYS , , System Kernel Based communication
 - EVT , , Event Based , Runtime communication
 - WFS , , Windows File System
 - UFS , , Unix File System
@@ -34,31 +34,36 @@ which one is your choice let the worlds see it!
 - AFS , , Arm Architecture Based File System
 - XFS , , x86 or x64 Based File System
 - MFS , , Mips Architecture Based File System
-- BFS , , Bsd File System
+- BFS , , Bsd Socket File System
 - VFS , , Virtual File System or VM based files system
 - CFS , , Cloud Based File System
 - ZFS , , Reserved and TBD
 - XFS , , Reserved and TBD
 - EFS , , Encrypted File System
-- SFS , , Storage File System Either SSD , HDD , or Flash Drive communication
-- UNK , , Reserved Which Means new protocol cannot be determined yet
-- ANY , , Reserved Which Means we got the data from anonym maybe allien trying to communicate.
+- SFS , , External Storage File System Either SSD , HDD , Flash Drive , And Disk communication
+- SQL , , Whatever database that use SQL to pass data
+- GQL , , Whatever database that use GQL to pass data
+- UNK , , Reserved Which Means new protocol cannot be determined on and given a name or namespace yet
+- ANY , , Which Means we got the data from anonym maybe allien trying to communicate over we didn't know yet
 ```
 
 ### Passing Wire , Radio Frequency , Over The Air Communication
 ```
 - ETH , , Ethernet Cable , Hub protocol
-- UDP , , Datagram protocol
+- UDP , , User Datagram protocol
 - TCP , , Transmission control protocol
-- WRL , , Wireless Transmitter and Receiver base transport
+- WLA , , Wireless Transmitter and Receiver base transport
+- WTA , , Wireless Transmitter 
+- WRA , , Wireless Receiver
 - GSM , , Use GSM Based Transport
 - LTE , , Use LTE Based Transport
 - SAT , , Reserved for satelite based system
+- API , , Application Programming Interface specific if you're restrict transport under specific platform
 - WSS , , Web Socket Server
 - WSC , , Web Socket Client
 - WEB , , If It Transfer packet through Web Polling or anything
-- RTC , , Web Rtc based Communciation
-- RTM , , Real Time Messaging Protocol (RTMP) just make it shoter here
+- RTC , , Real Time Communication (Web RTC) as example
+- RTM , , Real Time Messaging Protocol (RTMP) just make it shorter here
 - BTH , , Bluetooth Based Protocol
 - AIR , , Reserved and TBD
 - SMB , , Reserved and TBD
@@ -67,17 +72,25 @@ which one is your choice let the worlds see it!
 - FTP , , Reserved and TBD
 - IOT , , Reserved and TBD
 - NET , , Reserved and TBD
+- GPS , , Reserved ant TBD
 - IP4 , , Internet Protocol 4
 - IP6 , , Internet Protocol 6
 - WB3 , , Web 3 based protocol
 - TLS , , Reserved and TBD
-- ARF , , Analog based Radio Frequency
-- DRF , , Digital Format Based Radio Frequency
-- FOC , , Fiber Optic Cables
+- ARF , , Analog  Signal based Radio Frequency
+- DRF , , Digital Signal based Radio Frequency
+- FOC , , Fiber Optic Net Base
 - SOC , , Reserved for socket base communication
 - IFR , , Infra Red based Communication
 - SRL , , Serial based Communication
-- USB , , Universal Serial Bus
+- TTY , , Reserved and TBD
+- UPN , , Universal Plug and Play whatever it is make it shorter here
+- USB , , Universal Serial Bus whatever it is through usb 
+- PCI , , Use PCI based connector
+- WDN , , Use of USB Dongle Multicast
+- ADP , , Use of USB Adapter Multicast
+- HUB , , Use of Ethernet Hub Multicast
+- MOB , , Use of Custom motherboard driver
 ```
 
 
@@ -96,19 +109,19 @@ Packet Structure
 
 8 Bytes Table Breakdown
 
-| Header | Binary Value          |
+| Header | UTF-8 Hex Value       |
 | ------ | --------------------- |
 |  πtm   | [0xcf,0x80,0x54,0x4d] |
 
-| Opcode              | Binary Value          |
-| ------------------- | --------------------- |
-|  PING               |         0x00          |
-|  FLIGHT             |         0x01          |
-|  FLIGHT_RECEIVED    |         0x02          |
-|  FLIGHT_BACK        |         0x03          |
-|  FLIGHT_AUDIT       |         0x04          |
-|  PITM_ADD           |         0x05          |
-|  PITM_DEL           |         0x06          |
+| Opcode                | Binary Value          |
+| -------------------   | --------------------- |
+|  PITM_PING            |         0x00          |
+|  PITM_FLIGHT          |         0x01          |
+|  PITM_FLIGHT_RECEIVED |         0x02          |
+|  PITM_FLIGHT_BACK     |         0x03          |
+|  PITM_FLIGHT_AUDIT    |         0x04          |
+|  PITM_ADD             |         0x05          |
+|  PITM_DEL             |         0x06          |
 
 8 Bytes BIGUINT64LE Timestamp of the date now is assigned by the loop of opcode every audit step
 

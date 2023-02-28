@@ -20,14 +20,4 @@ export class ControlPacket {
         this.packet = Buffer.alloc(8).fill(0);
         this.packet.write("ΠWN", "utf-8");
     }
-
-    DoOpcodeUdpStart() {
-        //opc
-        this.packet[5] = OPCODE_CONTROL_UDP_START;
-        this.packet[6] = 0x85;
-        this.packet[7] = 0x68;
-        this.packet[8] = 0x80;
-        console.log(this.packet);
-        console.log(this.packet.toString('utf-8'));
-    }
 }

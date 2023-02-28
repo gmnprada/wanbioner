@@ -20,21 +20,27 @@ import os from 'node:os';
 import dns from 'node:dns';
 import { EventEmitter } from 'node:events';
 import { debug_log, error_log, info_log } from '../../log.mjs';
+import { 
+    OPCODE_PITM_PING, 
+    OPCODE_PITM_FLIGHT, 
+    OPCODE_PITM_FLIGHT_RECEIVED, 
+    OPCODE_PITM_FLIGHT_BACK,
+    OPCODE_PITM_FLIGHT_AUDIT,
+    OPCODE_PITM_ADD,
+    OPCODE_PITM_DEL,
+    OPCODE_PITM_UPD,
+    OPCODE_PITM_STA,
+    OPCODE_PITM_PONG
+} from '../piwancon/constant/opcode.mjs';
 
 class NetworkTimeService extends EventEmitter { };
 
 const NetworkTimeServiceEmitter = new NetworkTimeService();
 
-class PITMService extends EventEmitter{};
+class PITMService extends EventEmitter { };
 
 const PITMServiceEmitter = new PITMService();
 
-const OPCODE_PING = 0x00;
-const OPCODE_FLIGHT = 0x01;
-const OPCODE_FLIGHT_RECEIVED = 0x02;
-const OPCODE_FLIGHT_BACK = 0x03;
-const OPCODE_FLIGHT_AUDIT = 0x04;
-const OPCODE_PING_ADD = 0x5;
 
 // Here is the pool of IPv4 Address
 const networks = [];
@@ -65,7 +71,7 @@ dns.resolve4("piwan.net", (err, addrs) => {
     for (let A of addrs) {
         info_log(`ΠTM Add Main Net IPv4 : ${A} to networks`)
 
-        if(i === 0 ){
+        if (i === 0) {
             network_main_IPv4 = A;
         }
 
@@ -116,7 +122,7 @@ function _onMessage(message, remote_info) {
         let buf;
         switch (opcode) {
             case OPCODE_FLIGHT:
-                buf = formPacket(OPCODE_FLIGHT_RECEIVED, t0.readBigUint64LE(0));
+                buf = formPacket(OPCODE_PITM_PING, t0.readBigUint64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
@@ -124,7 +130,7 @@ function _onMessage(message, remote_info) {
                 });
                 break;
             case OPCODE_FLIGHT_RECEIVED:
-                buf = formPacket(OPCODE_FLIGHT_BACK, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
+                buf = formPacket(OPCODE_PITM_FLIGHT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
@@ -132,7 +138,7 @@ function _onMessage(message, remote_info) {
                 });
                 break;
             case OPCODE_FLIGHT_BACK:
-                buf = formPacket(OPCODE_FLIGHT_AUDIT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
+                buf = formPacket(OPCODE_PITM_FLIGHT_RECEIVED, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
@@ -174,7 +180,7 @@ function _onMessage(message, remote_info) {
                     pitmsync[1] = 0x80;
                     pitmsync[2] = 0x54;
                     pitmsync[3] = 0x4d;
-                    
+
                     // OPCODE
                     pitmsync[4] = OPCODE_PING;
 
@@ -184,9 +190,9 @@ function _onMessage(message, remote_info) {
                     pitmsync[7] = 0x80;
 
                     // write time
-                    pitmsync.write(localnow,8);
+                    pitmsync.write(localnow, 8);
 
-                    PITMServiceEmitter.emit("pitmsync",pitmsync);
+                    PITMServiceEmitter.emit("pitmsync", pitmsync);
 
 
                     let PITM = {
@@ -210,18 +216,18 @@ function _onMessage(message, remote_info) {
                             if (from != os.hostname()) {
                                 info_log(`ΠTM : ${from_hostname.toString()} is cappable to be broker : IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
                                 networks.push(remote_info.address);
-                                PITMServiceEmitter.emit("pitm-add-peers",(remote_info.address));
+                                PITMServiceEmitter.emit("pitm-add-peers", (remote_info.address));
                             }
                         }
-                    }else  if(delta >= BigInt(_droptime)){
+                    } else if (delta >= BigInt(_droptime)) {
                         // Consider Dropping the late peers
-                        if(networks.includes(remote_info.address)){
+                        if (networks.includes(remote_info.address)) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
                             if (from != os.hostname()) {
                                 info_log(`ΠTM : ${from_hostname.toString()} is late more than 30ms Dropping :  with IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
                                 const index = networks.indexOf(remote_info.address);
-                                networks.slice(index,1);
-                                PITMServiceEmitter.emit("pitm-del-peers",(remote_info.address));
+                                networks.slice(index, 1);
+                                PITMServiceEmitter.emit("pitm-del-peers", (remote_info.address));
                             }
                         }
                     }
@@ -342,10 +348,10 @@ _datagram.on('error', _onError);
 
 
 // return an array of PITM networks available 
-function Networks(){
+function Networks() {
     return networks;
 }
 
 // PITM = Pi Time Message Protocol
-export const PITM = {Start, Stop, NetworkTimeServiceEmitter, PiTM_Running , Networks,network_time,network_main_IPv4};
+export const PITM = { Start, Stop, NetworkTimeServiceEmitter, PiTM_Running, Networks, network_time, network_main_IPv4 };
 export default PITM;

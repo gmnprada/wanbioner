@@ -19,7 +19,7 @@ import os from 'node:os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';
-import PITM from '../pitm/pitm.mjs';
+import PITM from '../../pitm/pitm.mjs';
 
 var time_now = BigInt(new Date().getTime());
 PITM.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
@@ -27,9 +27,9 @@ PITM.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
 });
 
 export class BasePacket {
-    constructor(appid = "ΠWN", data = [0x00], r_hostname = "", r_timeout = 1, c_ipv4 = "", c_ipv6 = "", r_ipv4 = "", r_ipv6 = "") {
+    constructor(appid = "πWN", data = [0x00], r_hostname = "", r_timeout = 1, c_ipv4 = "", c_ipv6 = "", r_ipv4 = "", r_ipv6 = "") {
         //ΠWN Wide Network CAST
-        this.header = Buffer.from("ΠWN");
+        this.header = Buffer.from("πWN");
         // This Needed for chain of computation opcode state 
         this.p_opcode = Buffer.from([OPCODE_CONSTRUCT]);
         // reserved
