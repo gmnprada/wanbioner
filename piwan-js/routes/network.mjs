@@ -46,6 +46,8 @@ export async function RouteNetwork(req,res){
         IPv4_client : ip4,
         IPv6_client : ip6,
         udp_running : false,
+        tcp_running : false,
+        wss_running : false,
         PiTM_Running : PiTM_Running,
         PiTM_Network : PITM.Networks(),
         jsSource :`https://${process.env.PIWAN_DOMAIN}/js/get/network.js` 

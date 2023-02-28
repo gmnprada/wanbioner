@@ -19,14 +19,21 @@ function bootStrapAll() {
             let data = await window.Pi.authenticate(scopes, onIncompletePayment);
             //INFO.innerHTML = data;
 
-            let acces_token = data.access_token;
-            let userid = data.user.uid;
-            let username = data.username;
+            let username = data.user.username;
+            INFO.innerHTML = `Welcome to πwan network ${username}`;
 
-            document.cookie = `username=${username}`;
+            let  send = JSON.stringify({access_token:data.accessToken,uid:data.user.uid});
 
-            INFO.innerHTML = `Welcome to πwan network ${username} , a document cookie is written till you quit the usage of this web`;
-            return data;
+            sessionStorage.setItem('uid',data.user.uid);
+            await fetch('https://piwan.net/piusers',{
+                method:'POST',
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body:send
+            });
+            return;
         } catch (e) {
             const INFO = document.querySelector('#info');
             INFO.innerHTML = e.message;

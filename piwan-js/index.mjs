@@ -217,6 +217,10 @@ app.get('/validation-key.txt', (req, res) => {
     return res.sendFile(ROOT_DIR + "/validation-key.txt");
 });
 
+app.post('/piusers',express.json(),(req,res)=>{
+    info_log(`Got User Info `,req.body);
+});
+
 if (os.hostname() == "piwan.net") {
     debug_log(`Host name`, os.hostname());
     var httpServer = http.createServer(app);
