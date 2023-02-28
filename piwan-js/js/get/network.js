@@ -80,10 +80,16 @@ function setDate() {
 if (document) {
     document.addEventListener('DOMContentLoaded', () => {
         try {
-            const ws = new WebSocket('wss://piwan.net');
+
+            if(!window){
+                return;
+            }
+
+            let hostname = window.location.hostname;
+            const ws = new WebSocket(`wss://${hostname}`);
             ws.onopen = (e) => {
-                LOG_HTML(`Web Socket Initialized to piwan.net`);
-                console.log("Web Socket Initialized to piwan.net");
+                LOG_HTML(`Web Socket Initialized to ${hostname}`);
+                console.log(`Web Socket Initialized to ${hostname}`);
             };
 
             ws.onmessage = (event) => {

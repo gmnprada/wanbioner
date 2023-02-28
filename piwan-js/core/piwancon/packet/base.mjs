@@ -19,19 +19,23 @@ import os from 'node:os';
 import { Buffer } from 'node:buffer';
 import { xxHash32 } from 'js-xxhash';
 import { compress, uncompress } from 'snappy';
+import {OPCODE_PWAN_ENCODE, OPCODE_PWAN_FORM} from '../constant/opcode.mjs';
 import PITM from '../../pitm/pitm.mjs';
 
 var time_now = BigInt(new Date().getTime());
-PITM.NetworkTimeServiceEmitter.on('unixsync', (ut) => {
-    time_now = ut;
-});
 
+PITM.Service.on('pitmsync',(buffer)=>{
+    if(buffer instanceof Buffer){
+        let timeint = buffer.readBigUint64LE(8);
+        time_now = timeint;
+    }
+})
 export class BasePacket {
     constructor(appid = "πWN", data = [0x00], r_hostname = "", r_timeout = 1, c_ipv4 = "", c_ipv6 = "", r_ipv4 = "", r_ipv6 = "") {
         //ΠWN Wide Network CAST
         this.header = Buffer.from("πWN");
         // This Needed for chain of computation opcode state 
-        this.p_opcode = Buffer.from([OPCODE_CONSTRUCT]);
+        this.p_opcode = Buffer.from([OPCODE_PWAN_FORM]);
         // reserved
         this.p_reserved = Buffer.from([0x00, 0x00, 0x00]);
         // ipv4 ,ipv6 , hostname of the clients
@@ -71,7 +75,7 @@ export class BasePacket {
         Once Encoded a Packet cause we already timestamp it here
     */
     async Encode() {
-        this.p_opcode.writeUInt8(OPCODE_ENCODE, 0);
+        this.p_opcode.writeUInt8(OPCODE_PWAN_ENCODE, 0);
         this.p_flight_time.writeBigUInt64LE(BigInt(time_now));
         let t_calc = BigInt(this.p_timeout.readBigUInt64LE(0)) + BigInt(time_now);
         this.p_timeout.writeBigUint64LE(t_calc, 0);

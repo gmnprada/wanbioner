@@ -183,6 +183,11 @@ class AMULTIOS_LOG {
             stdout.write(msg);
         }    
     }
+
+    // this is a broadcast of logs to available networks!
+    audit_log(){
+
+    }
 }
 
 const LOG_INTERNAL = new AMULTIOS_LOG();

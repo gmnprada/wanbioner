@@ -35,7 +35,7 @@ const NetworkTimeServiceEmitter = new NetworkTimeService();
 
 class PITMService extends EventEmitter { };
 
-const PITMServiceEmitter = new PITMService();
+const Service = new PITMService();
 
 
 // Here is the pool of IPv4 Address
@@ -59,13 +59,13 @@ var PiTM_Running = false;
 // Its a must to see domain ownership is still there maitained by piwan team
 dns.resolve4("piwan.net", (err, addrs) => {
     if (err) {
-        error_log(`ΠTM Cannot Resolve The Main Net`, err);
+        error_log(`πTM Cannot Resolve The Main Net`, err);
         process.exit(1);
     }
 
     let i = 0;
     for (let A of addrs) {
-        info_log(`ΠTM Add Main Net IPv4 : ${A} to networks`)
+        info_log(`πTM Add Main Net IPv4 : ${A} to networks`)
 
         if (i === 0) {
             network_main_IPv4 = A;
@@ -193,7 +193,7 @@ function _onMessage(message, remote_info) {
 
                     // write time
                     pitmsync.writeBigUInt64LE(localnow,8);
-                    PITMServiceEmitter.emit("pitmsync", pitmsync);
+                    Service.emit("pitmsync", pitmsync);
 
                     if(from_hostname instanceof Buffer){
                         let PITM = {
@@ -207,7 +207,7 @@ function _onMessage(message, remote_info) {
                             pitm_client_offset: time_client_offset,
                             pitm_server_offset: time_server_offset,
                         }
-                        PITMServiceEmitter.emit("PITM", PITM);
+                        Service.emit("PITM", PITM);
                     }
 
 
@@ -220,7 +220,7 @@ function _onMessage(message, remote_info) {
                             if (from != os.hostname()) {
                                 info_log(`ΠTM : ${from_hostname.toString()} is cappable to be broker : IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
                                 networks.push(remote_info.address);
-                                PITMServiceEmitter.emit("pitm-add-peers", (remote_info.address));
+                                Service.emit("pitm-add-peers", (remote_info.address));
                             }
                         }
                     } else if (delta >= BigInt(_droptime) && from_hostname instanceof Buffer) {
@@ -231,7 +231,7 @@ function _onMessage(message, remote_info) {
                                 info_log(`ΠTM : ${from_hostname.toString()} is late more than 30ms Dropping :  with IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
                                 const index = networks.indexOf(remote_info.address);
                                 networks.slice(index, 1);
-                                PITMServiceEmitter.emit("pitm-del-peers", (remote_info.address));
+                                Service.emit("pitm-del-peers", (remote_info.address));
                             }
                         }
                     }
@@ -357,5 +357,5 @@ function Networks() {
 }
 
 // PITM = Pi Time Message Protocol
-export const PITM = { Start, Stop, NetworkTimeServiceEmitter, PiTM_Running, Networks, network_time, network_main_IPv4 };
+export const PITM = { Start, Stop, NetworkTimeServiceEmitter, PiTM_Running, Networks, network_time, network_main_IPv4,Service };
 export default PITM;
