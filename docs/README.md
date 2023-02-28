@@ -113,7 +113,7 @@ Packet Structure
 | ------ | --------------------- |
 |  πtm   | [0xcf,0x80,0x54,0x4d] |
 
-| Opcode                | Binary Value          |
+| Opcode                |    Hex Value          |
 | -------------------   | --------------------- |
 |  PITM_PING            |         0x00          |
 |  PITM_FLIGHT          |         0x01          |

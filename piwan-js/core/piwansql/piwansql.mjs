@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-// nothng need to be recorded
+// nothng need to be recorded yet avoid spam of logs
 function log(){
 
 }

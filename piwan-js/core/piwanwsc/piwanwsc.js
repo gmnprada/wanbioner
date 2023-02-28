@@ -1,6 +1,12 @@
 
-// 16Kbps / tick
+// Game Dev need to avoid sending large packet than protocol support for perfomance!
+
+// Maximum of 16Kbps / tick
 const udpMaxBufferSize = 65535;
+const tcpMaxBufferSize  = 65535;
+
+// Maximum of 1500 bytes default on so many interface before truncated into chunks
+const ipMaxBufferSize  = 1500;
 
 export default class PiwanWSC extends EventEmitter {
 
@@ -25,6 +31,9 @@ export default class PiwanWSC extends EventEmitter {
         if (!uid) {
             console.log("This Client did not has uid yet");
         }
+
+        // Bye Bye !
+        event.terminate();
     }
 
     async onError(event) {
@@ -37,10 +46,11 @@ export default class PiwanWSC extends EventEmitter {
 
         // push every bytes into array
         for(let bytes of buffer){
+            // ToDO need to complete our cross wire cross machine buffer util to make ease playing with dataTypes
             this.#piwanBuffer.push(bytes);
         }
 
-        
+
         this.emit('message', queuedBytes)
     }
 
