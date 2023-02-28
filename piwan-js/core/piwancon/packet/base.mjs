@@ -122,7 +122,7 @@ export class BasePacket {
     /*
         Once Uncompress Decode The Packet and Stamp
     */
-    async Decode(packet) {
-
+    async Decode(base_packet) {
+        
     }
 }

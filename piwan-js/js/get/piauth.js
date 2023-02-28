@@ -17,8 +17,15 @@ function bootStrapAll() {
             await Pi.init({ version: "2.0"});
             const scopes = ['username', 'payments'];
             let data = await window.Pi.authenticate(scopes, onIncompletePayment);
-            INFO.innerHTML = data;
+            //INFO.innerHTML = data;
 
+            let acces_token = data.access_token;
+            let userid = data.user.uid;
+            let username = data.username;
+
+            document.cookie = `username=${username}`;
+
+            INFO.innerHTML = `Welcome to πwan network ${username} , a document cookie is written till you quit the usage of this web`;
             return data;
         } catch (e) {
             const INFO = document.querySelector('#info');
@@ -29,6 +36,7 @@ function bootStrapAll() {
     document.addEventListener('DOMContentLoaded', async (evt) => {
         const INFO = document.querySelector('#info');
         const btn = document.querySelector('#piauth');
+        INFO.innerHTML = ``;
         btn.addEventListener('click', Auth);
     });
 
