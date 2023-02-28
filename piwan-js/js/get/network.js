@@ -52,7 +52,7 @@ function heartbeat() {
     clearTimeout(this.pingTimeout);
     this.pingTimeout = setTimeout(() => {
         this.terminate();
-    }, 1000 * 30000);
+    }, 1000 * 60000);
 }
 
 const secondHand = document.querySelector('.second-hand');
