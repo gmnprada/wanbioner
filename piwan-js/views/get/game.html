@@ -1,0 +1,29 @@
+{{> header title="Π Wide Area Network"}}
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">
+        <p>π Wide Area Network - Game Repository </p>
+    </div>
+
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">
+        <div id="info">
+
+        </div>
+    </div>
+
+
+    <div class="mdl-cell mdl-cell--12-col text-white center-items">
+        <div class="left-items">
+            <div>Available Piwan Node Open Curently on The Pools</div>
+            {{#network}}
+            <div>
+                IPv4 : {{.}}
+            </div>
+            {{/network}}
+
+            <div>
+                The Multiplayer Game that exhaust your Pi Credits is Still on Development
+            </div>
+        </div>
+    </div>
+</div>
+{{> footer}}

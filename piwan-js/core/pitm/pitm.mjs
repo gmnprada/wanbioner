@@ -81,7 +81,8 @@ dns.resolve4("piwan.net", (err, addrs) => {
 const interfaces = os.networkInterfaces();
 Object.values(interfaces).forEach((iface) => {
     for (let ip of iface) {
-        if (ip.family == 'IPv4') {
+        info_log(ip);
+        if (ip.family == 'IPv4' && !ip.internal) {
             info_log(`ΠTM Add Interface IPv4 : ${ip.address} to networks`);
             networks.push(ip.address);
         }
@@ -195,22 +196,25 @@ function _onMessage(message, remote_info) {
                     pitmsync.writeBigUInt64LE(localnow,8);
                     PITMServiceEmitter.emit("pitmsync", pitmsync);
 
-
-                    let PITM = {
-                        pitm_host: from_hostname.toString('utf-8').substring(0, from_hostname.indexOf(0x00)),
-                        pitm_addr: remote_info.address,
-                        pitm_now: localnow,
-                        pitm_at0: at0,
-                        pitm_at3: at3,
-                        pitm_theta: theta,
-                        pitm_delta: delta,
-                        pitm_client_offset: time_client_offset,
-                        pitm_server_offset: time_server_offset,
+                    if(from_hostname instanceof Buffer){
+                        let PITM = {
+                            pitm_host: from_hostname.toString('utf-8').substring(0, from_hostname.indexOf(0x00)),
+                            pitm_addr: remote_info.address,
+                            pitm_now: localnow,
+                            pitm_at0: at0,
+                            pitm_at3: at3,
+                            pitm_theta: theta,
+                            pitm_delta: delta,
+                            pitm_client_offset: time_client_offset,
+                            pitm_server_offset: time_server_offset,
+                        }
+                        PITMServiceEmitter.emit("PITM", PITM);
                     }
-                    PITMServiceEmitter.emit("PITM", PITM);
+
+
                     //info_log(`PITM`,PITM);
 
-                    if (delta <= BigInt(_droptime)) {
+                    if (delta <= BigInt(_droptime) && from_hostname instanceof Buffer) {
                         // consider add the peer to the networks
                         if (!networks.includes(remote_info.address) && from_hostname) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
@@ -220,7 +224,7 @@ function _onMessage(message, remote_info) {
                                 PITMServiceEmitter.emit("pitm-add-peers", (remote_info.address));
                             }
                         }
-                    } else if (delta >= BigInt(_droptime) && from_hostname) {
+                    } else if (delta >= BigInt(_droptime) && from_hostname instanceof Buffer) {
                         // Consider Dropping the late peers
                         if (networks.includes(remote_info.address)) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));

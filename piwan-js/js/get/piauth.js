@@ -1,4 +1,6 @@
 var isBrowser = new Function("try {return this===window;}catch(e){ return false;}");
+var isAuth = false;
+
 function bootStrapAll() {
 
     if (!isBrowser()) throw Error("This is not browser environment");
@@ -33,6 +35,8 @@ function bootStrapAll() {
                 },
                 body:send
             });
+            isAuth = true;
+            btn.disabled = isAuth ? false : true;
             return;
         } catch (e) {
             const INFO = document.querySelector('#info');
@@ -45,6 +49,14 @@ function bootStrapAll() {
         const btn = document.querySelector('#piauth');
         INFO.innerHTML = ``;
         btn.addEventListener('click', Auth);
+        let data = sessionStorage.getItem('uid');
+        if(!data){
+            isAuth = false;
+            btn.disabled = isAuth ? false : true;
+        }else{
+            isAuth = true;
+            btn.disabled = isAuth ? false : true;
+        }
     });
 
 

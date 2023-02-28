@@ -49,6 +49,10 @@ body {
   text-align: center;
 }
 
+.left-items{
+  text-align: left;
+}
+
 p {
   color: white;
 }

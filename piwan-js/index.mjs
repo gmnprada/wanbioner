@@ -17,6 +17,7 @@ import { RouteAuth } from './routes/auth.mjs';
 import { debug_log, info_log, warn_log } from './log.mjs';
 import { RouteTos } from './routes/tos.mjs';
 import { RoutePrivacy } from './routes/privacy.mjs';
+import { RouteGame } from './routes/game.mjs';
 const { randomBytes } = await import('node:crypto');
 
 let DocsTxtDir = SUPER_REPO_DIR + "/docs/txt";
@@ -53,29 +54,29 @@ process.env.PIWAN_DOMAIN = json.PIWAN_DOMAIN;
 PITM.Start();
 const app = express();
 
-app.use( (req, res, next) => {
+app.use((req, res, next) => {
     const allowedOrigins = [
         "https://piwan.net",
         "https://sdk.minepi.com",
         "https://minepi.com",
         "https://sandbox.minepi.com",
         "https://app-cdn.minepi.com",
-        "https://fonts.googleapis.com", 
+        "https://fonts.googleapis.com",
         "https://fonts.gstatic.com",
     ];
     const origin = req.headers.origin;
     const fapool = allowedOrigins.join(" ");
     if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Origin', origin);
     }
     //res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Max-Age',86400);
-    res.setHeader('Cache-control','no-cache');
+    res.setHeader('Access-Control-Max-Age', 86400);
+    res.setHeader('Cache-control', 'no-cache');
     //res.setHeader('Content-Security-Policy',`default-src 'self' 'unsafe-inline' 'unsafe-eval' ${fapool};frame-src ${fapool};frame-ancestors 'self' ${fapool};upgrade-insecure-requests`);
-    res.setHeader('Strict-Transport-Security','max-age=63072000; includeSubDomains; preload');
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
 
     next();
 });
@@ -83,7 +84,7 @@ app.use( (req, res, next) => {
 app.use((req, res, next) => {
     if (req.secure) {
 
-        let remoteIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress ;
+        let remoteIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
         //console.log(remoteIp);
         let IpAddrDetail = IpAddr.process(remoteIp);
 
@@ -91,9 +92,9 @@ app.use((req, res, next) => {
         if (IpAddrDetail.kind() == "ipv4") {
             req.IPv4 = IpAddrDetail.toString();
             info_log(`Got A Visit From IPv4 : ${req.IPv4}`);
-        }else{
+        } else {
             req.IPv4 = undefined,
-            req.IPv6 = IpAddrDetail.toString();
+                req.IPv6 = IpAddrDetail.toString();
             info_log(`Got A Visit From IPv6 : ${req.IPv6}`)
         }
 
@@ -217,8 +218,16 @@ app.get('/validation-key.txt', (req, res) => {
     return res.sendFile(ROOT_DIR + "/validation-key.txt");
 });
 
-app.post('/piusers',express.json(),(req,res)=>{
-    info_log(`Got User Info `,req.body);
+app.get('/games',RouteGame);
+
+app.post('/piusers', express.json(), (req, res) => {
+    info_log(`Got User Info `, req.body);
+
+    if (req.body) {
+        return res.json({ success: true });
+    } else {
+        return res.json({ success: false });
+    }
 });
 
 if (os.hostname() == "piwan.net") {
