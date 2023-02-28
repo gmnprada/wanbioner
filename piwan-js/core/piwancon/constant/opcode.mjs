@@ -47,16 +47,16 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 const OPCODE_USIZE = 1;
 
 // PITM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
-const OPCODE_PITM_PING = 0x00;  // Ping Arounds by saying PING means node alive code 0
-const OPCODE_PITM_FLIGHT = 0x01;  // Flight and broadcast around   Fill T0
-const OPCODE_PITM_FLIGHT_RECEIVED = 0x02;  // Receive packet from around    Fill T1
-const OPCODE_PITM_FLIGHT_BACK = 0x03;  // Send packet back from around  Fill T2
-const OPCODE_PITM_FLIGHT_AUDIT = 0x04;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
-const OPCODE_PITM_ADD = 0x05;  // A Add    something [address,ip,mac,serial,hostname,domain]
-const OPCODE_PITM_DEL = 0x06;  // D Delete something [address,ip,mac,serial,hostname,domain]
-const OPCODE_PITM_MUT = 0x07;  // M Mutate something [address,ip,mac,serial,hostname,domain]
-const OPCODE_PITM_STA = 0x08;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
-const OPCODE_PITM_PONG = 0x09;  // Pong Back by saying PONG means there is someone code 9
+export const OPCODE_PITM_PING = 0x00;  // Ping Arounds by saying PING means node alive code 0
+export const OPCODE_PITM_FLIGHT = 0x01;  // Flight and broadcast around   Fill T0
+export const OPCODE_PITM_FLIGHT_RECEIVED = 0x02;  // Receive packet from around    Fill T1
+export const OPCODE_PITM_FLIGHT_BACK = 0x03;  // Send packet back from around  Fill T2
+export const OPCODE_PITM_FLIGHT_AUDIT = 0x04;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
+export const OPCODE_PITM_ADD = 0x05;  // A Add    something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_PITM_DEL = 0x06;  // D Delete something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_PITM_MUT = 0x07;  // M Mutate something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_PITM_STA = 0x08;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_PITM_PONG = 0x09;  // Pong Back by saying PONG means there is someone code 9
 
 // OPCODE OF Piwan CONTROL PANEL MESSAGE Reserve 10-19 decimal number 
 const OPCODE_PWAN_CTRL_AUTH = 0x10;
@@ -115,7 +115,7 @@ const OPCODE_PITM = {
     OPCODE_PITM_FLIGHT_AUDIT,
     OPCODE_PITM_ADD,
     OPCODE_PITM_DEL,
-    OPCODE_PITM_UPD,
+    OPCODE_PITM_MUT,
     OPCODE_PITM_STA,
     OPCODE_PITM_PONG
 }
@@ -161,7 +161,7 @@ export default {
     OPCODE_PITM_FLIGHT_AUDIT,
     OPCODE_PITM_ADD,
     OPCODE_PITM_DEL,
-    OPCODE_PITM_UPD,
+    OPCODE_PITM_MUT,
     OPCODE_PITM_STA,
     OPCODE_PITM_PONG
 }

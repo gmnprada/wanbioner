@@ -26,12 +26,8 @@ import {
     OPCODE_PITM_FLIGHT_RECEIVED, 
     OPCODE_PITM_FLIGHT_BACK,
     OPCODE_PITM_FLIGHT_AUDIT,
-    OPCODE_PITM_ADD,
-    OPCODE_PITM_DEL,
-    OPCODE_PITM_UPD,
-    OPCODE_PITM_STA,
-    OPCODE_PITM_PONG
 } from '../piwancon/constant/opcode.mjs';
+import { HEADER_PITM,PROTOCOL_MEM } from '../piwancon/constant/protocol.mjs';
 
 class NetworkTimeService extends EventEmitter { };
 
@@ -121,31 +117,31 @@ function _onMessage(message, remote_info) {
         message.copy(from_hostname, 0, 40, 104);
         let buf;
         switch (opcode) {
-            case OPCODE_FLIGHT:
-                buf = formPacket(OPCODE_PITM_PING, t0.readBigUint64LE(0));
+            case OPCODE_PITM_FLIGHT:
+                buf = formPacket(OPCODE_PITM_FLIGHT_RECEIVED, t0.readBigUint64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
                 });
                 break;
-            case OPCODE_FLIGHT_RECEIVED:
-                buf = formPacket(OPCODE_PITM_FLIGHT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
+            case OPCODE_PITM_FLIGHT_RECEIVED:
+                buf = formPacket(OPCODE_PITM_FLIGHT_BACK, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
                 });
                 break;
-            case OPCODE_FLIGHT_BACK:
-                buf = formPacket(OPCODE_PITM_FLIGHT_RECEIVED, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
+            case OPCODE_PITM_FLIGHT_BACK:
+                buf = formPacket(OPCODE_PITM_FLIGHT_AUDIT, t0.readBigUInt64LE(0), t1.readBigUInt64LE(0), t2.readBigUInt64LE(0));
                 _datagram.send(buf, process.env.PITM_PORT, remote_info.address, (err, bytes) => {
                     if (err) {
                         return;
                     }
                 });
                 break;
-            case OPCODE_FLIGHT_AUDIT:
+            case OPCODE_PITM_FLIGHT_AUDIT:
                 let at0 = t0.readBigUInt64LE(0);
                 let at1 = t1.readBigUInt64LE(0);
                 let at2 = t2.readBigUInt64LE(0);
@@ -176,22 +172,27 @@ function _onMessage(message, remote_info) {
 
                     let pitmsync = Buffer.allocUnsafe(16);
                     // HEADER
-                    pitmsync[0] = 0xcf;
-                    pitmsync[1] = 0x80;
-                    pitmsync[2] = 0x54;
-                    pitmsync[3] = 0x4d;
+                    pitmsync[0] = HEADER_PITM[0];
+                    pitmsync[1] = HEADER_PITM[1];
+                    pitmsync[2] = HEADER_PITM[2];
+                    pitmsync[3] = HEADER_PITM[3];
 
-                    // OPCODE
-                    pitmsync[4] = OPCODE_PING;
+                    // Opcode Ping Other Node
+                    pitmsync[4] = OPCODE_PITM_PING;
 
                     // PROTOCOL 3 character UDP
-                    pitmsync[5] = 0x85;
-                    pitmsync[6] = 0x68;
-                    pitmsync[7] = 0x80;
+                    if(os.hostname() != from_hostname.toString('utf-8').substring(0, from_hostname.indexOf(0x00))){
+                        pitmsync[5] = 0x85;
+                        pitmsync[6] = 0x68;
+                        pitmsync[7] = 0x80;
+                    }else{
+                        pitmsync[5] = PROTOCOL_MEM[0];
+                        pitmsync[6] = PROTOCOL_MEM[1];
+                        pitmsync[7] = PROTOCOL_MEM[2];
+                    }
 
                     // write time
-                    pitmsync.write(localnow, 8);
-
+                    pitmsync.writeBigUInt64LE(localnow,8);
                     PITMServiceEmitter.emit("pitmsync", pitmsync);
 
 
@@ -211,7 +212,7 @@ function _onMessage(message, remote_info) {
 
                     if (delta <= BigInt(_droptime)) {
                         // consider add the peer to the networks
-                        if (!networks.includes(remote_info.address)) {
+                        if (!networks.includes(remote_info.address) && from_hostname) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
                             if (from != os.hostname()) {
                                 info_log(`ΠTM : ${from_hostname.toString()} is cappable to be broker : IPv4 ${remote_info.address} RTT : ${delta} : Auditor :${os.hostname()}`);
@@ -219,7 +220,7 @@ function _onMessage(message, remote_info) {
                                 PITMServiceEmitter.emit("pitm-add-peers", (remote_info.address));
                             }
                         }
-                    } else if (delta >= BigInt(_droptime)) {
+                    } else if (delta >= BigInt(_droptime) && from_hostname) {
                         // Consider Dropping the late peers
                         if (networks.includes(remote_info.address)) {
                             let from = from_hostname.substring(0, from_hostname.indexOf(0x00));
@@ -252,25 +253,25 @@ function formPacket(opcode, ft0, ft1, ft2) {
     reserved[0] = opcode;
     let t0 = Buffer.allocUnsafe(8);
     t0.fill(0);
-    if (opcode == OPCODE_FLIGHT) {
+    if (opcode == OPCODE_PITM_FLIGHT) {
         t0.writeBigUInt64LE(now);
     }
     let t1 = Buffer.allocUnsafe(8);
     t1.fill(0);
-    if (opcode == OPCODE_FLIGHT_RECEIVED) {
+    if (opcode == OPCODE_PITM_FLIGHT_RECEIVED) {
         t0.writeBigUint64LE(ft0);
         t1.writeBigUInt64LE(now);
     }
     let t2 = Buffer.allocUnsafe(8);
     t2.fill(0);
-    if (opcode == OPCODE_FLIGHT_BACK) {
+    if (opcode == OPCODE_PITM_FLIGHT_BACK) {
         t0.writeBigUint64LE(ft0);
         t1.writeBigUint64LE(ft1);
         t2.writeBigUInt64LE(now);
     }
     let t3 = Buffer.allocUnsafe(8);
     t3.fill(0);
-    if (opcode == OPCODE_FLIGHT_AUDIT) {
+    if (opcode == OPCODE_PITM_FLIGHT_AUDIT) {
         t0.writeBigUint64LE(ft0);
         t1.writeBigUint64LE(ft1);
         t2.writeBigUint64LE(ft2);
@@ -303,7 +304,7 @@ function _Tick() {
             NetworkTimeServiceEmitter.emit('tick', () => { return; });
 
             // FLIGHT a Packet To Every Interface so we know its up or not a Internal Loopback  and to piwan.net
-            let buf = formPacket(OPCODE_FLIGHT);
+            let buf = formPacket(OPCODE_PITM_FLIGHT);
             for (let addr of networks) {
                 _datagram.send(buf, process.env.PITM_PORT, addr, (err, bytes) => {
                     if (err) {

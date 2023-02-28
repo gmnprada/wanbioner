@@ -19,7 +19,7 @@ https://github.com/madepriambhada/piwan/blob/main/LICENSE
 
 */
 
-import { BasePacket } from "../core/packet.mjs";
+import { BasePacket } from "../core/piwancon/packet/base.mjs";
 import PITM from "../core/pitm/pitm.mjs";
 
 var PiTM_Running = false;

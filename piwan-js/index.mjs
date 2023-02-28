@@ -84,16 +84,17 @@ app.use((req, res, next) => {
     if (req.secure) {
 
         let remoteIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress ;
-        console.log(remoteIp);
+        //console.log(remoteIp);
         let IpAddrDetail = IpAddr.process(remoteIp);
 
-        console.log(IpAddrDetail);
+        //console.log(IpAddrDetail);
         if (IpAddrDetail.kind() == "ipv4") {
             req.IPv4 = IpAddrDetail.toString();
-            info_log(`Got A Visit From ${req.IPv4}`);
+            info_log(`Got A Visit From IPv4 : ${req.IPv4}`);
         }else{
             req.IPv4 = undefined,
             req.IPv6 = IpAddrDetail.toString();
+            info_log(`Got A Visit From IPv6 : ${req.IPv6}`)
         }
 
         res.locals.nonce = randomBytes(16).toString("hex");

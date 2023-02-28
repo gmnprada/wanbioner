@@ -16,10 +16,10 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 */
 
 // Header Size
-const HEADER_USIZE = 4;
+export const HEADER_USIZE = 4;
 
 // Protocol Identifier Size
-const PROTOCOL_USIZE = 3;
+export const PROTOCOL_USIZE = 3;
 
 // HEADER Greek Small Leter PI  π , UNICODE DEC 960 , UTF8-DEC [207,128], UTF-8 Hex [0xCF,0x80] , T ASCII HEX [0x54] , M ASCII HEX [0x4D]
 export const HEADER_PITM = Buffer.allocUnsafe(HEADER_USIZE).write("πTM");
