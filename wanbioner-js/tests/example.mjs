@@ -1,5 +1,5 @@
 /*
-***** THIS FILE IS PART OF Piwan Project *****
+***** THIS FILE IS PART OF Wanbioner Project *****
 
 PiOS License Copyright (C) <2023> <gdemadenovanpriambhada>
 
@@ -24,7 +24,7 @@ const { randomBytes} = await import('node:crypto');
 
 PITM.Start();
 PITM.NetworkTimeServiceEmitter.on('unixsync', () => {
-    console.log("ΠWN Packet : ",randomBytes(32).toString('hex'));
+    console.log(`ΠWN Packet : 1,randomBytes(32).toString('hex')`);
 });
 // run for 5 minutes
 setTimeout(PITM.Stop, 60 * 1000 * 5);

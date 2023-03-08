@@ -36,7 +36,7 @@ function bootStrapAll() {
                 body:send
             });
             isAuth = true;
-            btn.disabled = isAuth ? false : true;
+            //btn.disabled = isAuth ? false : true;
             return;
         } catch (e) {
             const INFO = document.querySelector('#info');
@@ -52,10 +52,10 @@ function bootStrapAll() {
         let data = sessionStorage.getItem('uid');
         if(!data){
             isAuth = false;
-            btn.disabled = isAuth ? false : true;
+            //btn.disabled = isAuth ? false : true;
         }else{
             isAuth = true;
-            btn.disabled = isAuth ? false : true;
+            //btn.disabled = isAuth ? false : true;
         }
     });
 

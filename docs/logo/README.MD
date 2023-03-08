@@ -1,3 +1,3 @@
 # Logo And Usage
 
-Use this logo if your router or broker support piwan protocol
+Use this logo if your router or broker support wanbioner protocol

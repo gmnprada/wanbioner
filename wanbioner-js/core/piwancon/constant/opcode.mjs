@@ -52,7 +52,7 @@ export const OPCODE_USIZE = 1;
 // PITM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
 export const OPCODE_PITM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
 export const OPCODE_PITM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
-export const OPCODE_PITM_FLIGHT_RECEIVED = 2;  // Receive packet from around    Fill T1
+export const OPCODE_PITM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
 export const OPCODE_PITM_FLIGHT_BACK = 3;  // Send packet back from around  Fill T2
 export const OPCODE_PITM_FLIGHT_AUDIT = 4;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
 export const OPCODE_PITM_ADD = 5;  // A Add    something [address,ip,mac,serial,hostname,domain]
