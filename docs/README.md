@@ -57,7 +57,7 @@ which one is your choice let the worlds see it!
 - WRA , , Wireless Receiver
 - GSM , , Use GSM Based Transport
 - LTE , , Use LTE Based Transport
-- SAT , , Reserved for satelite based system
+- SAT , , Reserved for satellite based system
 - API , , Application Programming Interface specific if you're restrict transport under specific platform
 - WSS , , Web Socket Server
 - WSC , , Web Socket Client
