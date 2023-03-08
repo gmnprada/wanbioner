@@ -115,17 +115,17 @@ Packet Structure
 
 | Opcode                |    Hex Value          |
 | -------------------   | --------------------- |
-|  PITM_PING            |         0x00          |
-|  PITM_FLIGHT          |         0x01          |
-|  PITM_FLIGHT_RECEIVED |         0x02          |
-|  PITM_FLIGHT_BACK     |         0x03          |
-|  PITM_FLIGHT_AUDIT    |         0x04          |
-|  PITM_ADD             |         0x05          |
-|  PITM_DEL             |         0x06          |
+|  WBTM_PING            |         0x00          |
+|  WBTM_FLIGHT          |         0x01          |
+|  WBTM_FLIGHT_RECEIVED |         0x02          |
+|  WBTM_FLIGHT_BACK     |         0x03          |
+|  WBTM_FLIGHT_AUDIT    |         0x04          |
+|  WBTM_ADD             |         0x05          |
+|  WBTM_DEL             |         0x06          |
 
 8 Bytes BIGUINT64LE Timestamp of the date now is assigned by the loop of opcode every audit step
 
-### π-tm Time Message Structure,
+### WBTM Message Structure,
 
 Purpose
 - clock sync between computer node (custom ntp)
@@ -136,7 +136,7 @@ Purpose
 
 Packet Structure
 ```
-const PITM_HEADER 4 bytes 
+const WBTM_HEADER 4 bytes 
 const MESSAGE_OPCODE 4 bytes
 var t0 8 bytes , u64 
 var t1 8 bytes , u64
@@ -146,7 +146,7 @@ var hostname , 64 bytes // Hostname of the Computer
 ```
 
 
-### πwan Base Packet for data exchange
+### Wanbioner Base Packet for data exchange message
 ```
 
 Base Packet 
