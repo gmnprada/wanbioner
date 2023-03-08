@@ -4,7 +4,7 @@ This Project Brainstrom address
 Visit it With Pi Browser on your mobile phone to Join the Team
 pi://brainstorm.pi/project/63e454a29c1c1218be3e15db
 
-This Super Repo is used for ahead of time development and the finish of hackathon periods
+This Super Repo is used for ahead of time development until finish of hackathon periods
 
 The Production build should be separated Git Submodule hosted under Wanbioner Developer and Team Github Account as sub module , need to refactor later as wanbioner goals is too far to complete yet!
 
