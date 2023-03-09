@@ -38,7 +38,7 @@ So the CONCLUSION IS Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR
 
 Sincere, Wanbioner Developer
 
-Gde Made Novan Priambhada -> sometimes people know me as (adenovan) or (shribrahmana)
+GMNPRADA -> sometimes people know me as (adenovan) or (shribrahmana)
 
 Official How to Get intouch with me
 
