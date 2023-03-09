@@ -1,6 +1,6 @@
 # Keep Internal Technical Stuff Here
 
-The Technical detail and documentation of a os, system ,hardware, software  often did not need to be forwarded to end users , so keep its like this ,
+The Technical Engineering detail and documentation of a os, system ,hardware, software  often did not need to be forwarded to end users , so keep its like this , it must can be opened in double format either ascii character or markdown syntax just by renaming the extensions.
 
 gen.mjs will not generate any docs inside of this folder and ignore it. only top level of the folder means to public to read it. this folder ahead contains many things and best practice how to make the system running and maintain its lifetime of the project. so learn it if you're on task of securing the project and running system as its crucial for people that use it.
 

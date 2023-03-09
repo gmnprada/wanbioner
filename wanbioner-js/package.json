@@ -1,7 +1,7 @@
 {
-  "name": "piwan",
+  "name": "wanbioner",
   "version": "0.0.5",
-  "description": "PIWAN Javascript Implementation",
+  "description": "Wanbioner Protocol Javascript Implementation",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "Network",
     "Networking",
     "Broker",
     "Wan",
