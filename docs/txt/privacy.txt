@@ -11,15 +11,15 @@ Written By     : GMNP
 Last Update On : 2023-02-18T08:54:17.476Z
 Last Update By : GMNP
 
-We re abide to Pi Network Privacy Policy so Technically if you do something that violate their Network, Service and Privacy Policy
+We re abide to Pi Network Privacy Policy so if you do something that violate their Network, Service and Privacy Policy
 This Privacy Policy has no much use cause your is not in PI Network.
 
 1. What Type of Data and Information We Collect From you
 
-- Public IPv4 Address you use to access to wanbioner domain such as piwan.net
+- Public IPv4 Address / IPv4 Address you use to access to wanbioner domain such as piwan.net
 - Anonymous Nickname you use to play game in the networks 
 - Pi Network Wallet Address
-- Pi Network Users Hash 
+- Pi Network Username
 - Pi Apps ID / App Hash
 - Operating System Hostname or Machine Name
 
@@ -34,7 +34,7 @@ This Privacy Policy has no much use cause your is not in PI Network.
 
 3. Disclosure Information
 
-Any Information you provide to us either by email or access wanbioner such as  piwan.net through your browser
+Any Information you provide to us either by email or access wanbioner such as piwan.net through your browser
 is stored through Wanbioner networks across trusted nodes it can be CLOUD SERVICE PROVIDER
 ISP or PERSONAL Maintaining the Distributed Database , so keep in mind please don't put IMPORTANT or
 Sensitive Information on this Service as the Database is secured by COLLECTIVE in the networks.

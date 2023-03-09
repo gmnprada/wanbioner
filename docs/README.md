@@ -4,7 +4,7 @@ Development is subject to change according to problem ,issues and solution provi
 
 ## Introduction
 
-There is a substansial difference of a ROUTER and Your Mobile Phone , Router is not moving while your phone is mobile its can be anywhere. essentialy it has same chips and wireless receiver and transmitter but it handling a different purpose. in Peer To Peer Application this PIWAN will not charge any balance and Fee just like you use local networks. its difference scenario if its intermediated by DEVICE across internet its need a stationary place to be there. you can read what problem this project address at the ROOT FOLDER so its make sense why we need to PAY for DATA EXCHANGE. If you did not has A HOME TO guard you from WEATHER there is 3 possible solutions.
+There is a substansial difference of a ROUTER and Your Mobile Phone , Router is not moving while your phone is mobile its can be anywhere. essentialy it has same chips and wireless receiver and transmitter but it handling a different purpose. in Peer To Peer Application this Wanbioner Network will not charge any balance and Fee just like you use local networks. its difference scenario if its intermediated by DEVICE across internet its need a stationary place to be there. you can read what problem this project address at the ROOT FOLDER so its make sense why we need to PAY for DATA EXCHANGE. If you did not has A HOME TO guard you from WEATHER there is 3 possible solutions.
 
 ```
 - Go To PUBLIC PLACE that has free STAY or STAYING OUTDOOR.
@@ -14,7 +14,32 @@ There is a substansial difference of a ROUTER and Your Mobile Phone , Router is 
 
 which one is your choice let the worlds see it!
 
-# Piwan Documentations
+# Wanbioner Documentations
+
+### Abbreviaton and Definitions
+
+In Data Transfering ofter we make a shorter abbreviations trim some long words to be used shorter to fit in the package buffer on data protocol buffer mechanism, here is the official abbreviations and definitions should be interpreted as in variable naming.
+
+Dictionary Based Abbreviation a common words registed on dictionary should be interpreted as is.
+
+|  Words                    |  4 Characters Ascii   | 3 Characters Ascii |
+| ------------------------- | --------------------- | ------------------ |
+|  Acknowledgment           |         ACKN          |        ACT         |
+|  Flight                   |         FLIG          |        FLT         |
+|  Network                  |         NETW          |        NET         |
+|  Event                    |         EVEN          |        EVT         |
+|  Port                     |         PORT          |        PRT         |
+|  Syncronize               |         SYNC          |        SYN         |
+|  Device                   |         DEVI          |        DVE         |
+|  Develop                  |         DEVE          |        DVP         |
+
+Specific Professional used terms words definition Application , Dependency , Project , Protocol, Software or Hardware dependencies is interpreted according on this table
+
+|  Sentence               |    4 Characters Ascii | 3 Characters Ascii |
+| ------------------------- | --------------------- | ------------------ |
+|  Wanbioner                |         WBON          |        WBR         |
+|  Wanbioner Time Message   |         WBTM          |        WTE         |
+
 
 ### The Reserved Bytes is used to detect protocol of the transport Valid Value
 

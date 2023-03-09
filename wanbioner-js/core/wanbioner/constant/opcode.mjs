@@ -49,112 +49,112 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 // determine the size must be u8 1 bytes 8 bit
 export const OPCODE_USIZE = 1;
 
-// PITM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
-export const OPCODE_PITM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
-export const OPCODE_PITM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
-export const OPCODE_PITM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
-export const OPCODE_PITM_FLIGHT_BACK = 3;  // Send packet back from around  Fill T2
-export const OPCODE_PITM_FLIGHT_AUDIT = 4;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
-export const OPCODE_PITM_ADD = 5;  // A Add    something [address,ip,mac,serial,hostname,domain]
-export const OPCODE_PITM_DEL = 6;  // D Delete something [address,ip,mac,serial,hostname,domain]
-export const OPCODE_PITM_MUT = 7;  // M Mutate something [address,ip,mac,serial,hostname,domain]
-export const OPCODE_PITM_STA = 8;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
-export const OPCODE_PITM_PONG = 9;  // Pong Back by saying PONG means there is someone code 9
+// WBTM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
+export const OPCODE_WBTM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
+export const OPCODE_WBTM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
+export const OPCODE_WBTM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
+export const OPCODE_WBTM_FLIGHT_BACK = 3;  // Send packet back from around  Fill T2
+export const OPCODE_WBTM_FLIGHT_AUDIT = 4;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
+export const OPCODE_WBTM_ADD = 5;  // A Add    something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_WBTM_DEL = 6;  // D Delete something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_WBTM_MUT = 7;  // M Mutate something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_WBTM_STA = 8;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
+export const OPCODE_WBTM_PONG = 9;  // Pong Back by saying PONG means there is someone code 9
 
 // OPCODE OF Piwan CONTROL PANEL MESSAGE Reserve 10-19 decimal number 
-export const OPCODE_PWAN_CTRL_AUTH = 10;
-export const OPCODE_PWAN_CTRL_START = 11;
-export const OPCODE_PWAN_CTRL_STOP = 12;
-export const OPCODE_PWAN_CTRL_SYNC = 13;
-export const OPCODE_PWAN_CTRL_MONITOR = 14;
-export const OPCODE_PWAN_CTRL_AUDITOR = 15;
-export const OPCODE_PWAN_CTRL_EXEC = 16;
-export const OPCODE_PWAN_CTRL_KILL = 17;
-export const OPCODE_PWAN_CTRL_REBOOT = 18;
-export const OPCODE_PWAN_CTRL_QUIT = 19;
+export const OPCODE_WBON_CTRL_AUTH = 10;
+export const OPCODE_WBON_CTRL_START = 11;
+export const OPCODE_WBON_CTRL_STOP = 12;
+export const OPCODE_WBON_CTRL_SYNC = 13;
+export const OPCODE_WBON_CTRL_MONITOR = 14;
+export const OPCODE_WBON_CTRL_AUDITOR = 15;
+export const OPCODE_WBON_CTRL_EXEC = 16;
+export const OPCODE_WBON_CTRL_KILL = 17;
+export const OPCODE_WBON_CTRL_REBOOT = 18;
+export const OPCODE_WBON_CTRL_QUIT = 19;
 
 // OPCODE OF PiWAN Protocol Reserve 20-39 decimal number according to step how its was performed
-export const OPCODE_PWAN_FORM = 20;
-export const OPCODE_PWAN_ENCODE = 21;
-export const OPCODE_PWAN_COMPRESS = 22;
+export const OPCODE_WBON_FORM = 20;
+export const OPCODE_WBON_ENCODE = 21;
+export const OPCODE_WBON_COMPRESS = 22;
 
-export const OPCODE_PWAN_READ = 23;
-export const OPCODE_PWAN_MUTATE = 24;
-export const OPCODE_PWAN_STAMP = 25;
+export const OPCODE_WBON_READ = 23;
+export const OPCODE_WBON_MUTATE = 24;
+export const OPCODE_WBON_STAMP = 25;
 
-export const OPCODE_PWAN_SIGN = 26;
-export const OPCODE_PWAN_FLIGHT = 27;
-export const OPCODE_PWAN_INTERMEDIATE = 28;
+export const OPCODE_WBON_SIGN = 26;
+export const OPCODE_WBON_FLIGHT = 27;
+export const OPCODE_WBON_INTERMEDIATE = 28;
 
-export const OPCODE_PWAN_RECEIVE = 29;
-export const OPCODE_PWAN_UNCOMPRESS = 30;
-export const OPCODE_PWAN_AUDIT = 31;
+export const OPCODE_WBON_RECEIVE = 29;
+export const OPCODE_WBON_UNCOMPRESS = 30;
+export const OPCODE_WBON_AUDIT = 31;
 
-export const OPCODE_PWAN_DECODE = 32;
-export const OPCODE_PWAN_DEFORM = 33;
-export const OPCODE_PWAN_ACKNOWLEDGE = 34;
+export const OPCODE_WBON_DECODE = 32;
+export const OPCODE_WBON_DEFORM = 33;
+export const OPCODE_WBON_ACKNOWLEDGE = 34;
 
 // OPCODE Of Piwan Text Transport Protocol its reserve decimal number of 40-59
-export const OPCODE_PWAN_TTP_CONNECT = 40;
-export const OPCODE_PWAN_TTP_SYN = 41;
-export const OPCODE_PWAN_TTP_ACK = 42;
+export const OPCODE_WBON_TTP_CONNECT = 40;
+export const OPCODE_WBON_TTP_SYN = 41;
+export const OPCODE_WBON_TTP_ACK = 42;
 
-export const OPCODE_PWAN_TTP_SOT = 43;
-export const OPCODE_PWAN_TTP_STX = 44;
-export const OPCODE_PWAN_TTP_EOT = 45;
+export const OPCODE_WBON_TTP_SOT = 43;
+export const OPCODE_WBON_TTP_STX = 44;
+export const OPCODE_WBON_TTP_EOT = 45;
 
-export const OPCODE_PWAN_TTP_SUB = 46;
-export const OPCODE_PWAN_TTP_PUB = 47;
-export const OPCODE_PWAN_TTP_CANCEL = 48;
+export const OPCODE_WBON_TTP_SUB = 46;
+export const OPCODE_WBON_TTP_PUB = 47;
+export const OPCODE_WBON_TTP_CANCEL = 48;
 
-export const OPCODE_PWAN_TTP_HOST = 49;
+export const OPCODE_WBON_TTP_HOST = 49;
 
 
 export default {
     OPCODE_USIZE,
-    OPCODE_PITM_PING,
-    OPCODE_PITM_FLIGHT,
-    OPCODE_PITM_FLIGHT_RECEIVED,
-    OPCODE_PITM_FLIGHT_BACK,
-    OPCODE_PITM_FLIGHT_AUDIT,
-    OPCODE_PITM_ADD,
-    OPCODE_PITM_DEL,
-    OPCODE_PITM_MUT,
-    OPCODE_PITM_STA,
-    OPCODE_PITM_PONG,
-    OPCODE_PWAN_CTRL_AUTH,
-    OPCODE_PWAN_CTRL_START,
-    OPCODE_PWAN_CTRL_STOP,
-    OPCODE_PWAN_CTRL_SYNC,
-    OPCODE_PWAN_CTRL_MONITOR,
-    OPCODE_PWAN_CTRL_AUDITOR,
-    OPCODE_PWAN_CTRL_EXEC,
-    OPCODE_PWAN_CTRL_KILL,
-    OPCODE_PWAN_CTRL_REBOOT,
-    OPCODE_PWAN_CTRL_QUIT,
-    OPCODE_PWAN_FORM,
-    OPCODE_PWAN_ENCODE,
-    OPCODE_PWAN_COMPRESS,
-    OPCODE_PWAN_READ,
-    OPCODE_PWAN_MUTATE,
-    OPCODE_PWAN_STAMP,
-    OPCODE_PWAN_SIGN,
-    OPCODE_PWAN_FLIGHT,
-    OPCODE_PWAN_INTERMEDIATE,
-    OPCODE_PWAN_RECEIVE,
-    OPCODE_PWAN_UNCOMPRESS,
-    OPCODE_PWAN_AUDIT,
-    OPCODE_PWAN_DECODE,
-    OPCODE_PWAN_DEFORM,
-    OPCODE_PWAN_ACKNOWLEDGE,
-    OPCODE_PWAN_TTP_CONNECT,
-    OPCODE_PWAN_TTP_SYN,
-    OPCODE_PWAN_TTP_ACK,
-    OPCODE_PWAN_TTP_SOT,
-    OPCODE_PWAN_TTP_STX,
-    OPCODE_PWAN_TTP_EOT,
-    OPCODE_PWAN_TTP_SUB,
-    OPCODE_PWAN_TTP_PUB,
-    OPCODE_PWAN_TTP_CANCEL,
-    OPCODE_PWAN_TTP_HOST
+    OPCODE_WBTM_PING,
+    OPCODE_WBTM_FLIGHT,
+    OPCODE_WBTM_FLIGHT_RECEIVED,
+    OPCODE_WBTM_FLIGHT_BACK,
+    OPCODE_WBTM_FLIGHT_AUDIT,
+    OPCODE_WBTM_ADD,
+    OPCODE_WBTM_DEL,
+    OPCODE_WBTM_MUT,
+    OPCODE_WBTM_STA,
+    OPCODE_WBTM_PONG,
+    OPCODE_WBON_CTRL_AUTH,
+    OPCODE_WBON_CTRL_START,
+    OPCODE_WBON_CTRL_STOP,
+    OPCODE_WBON_CTRL_SYNC,
+    OPCODE_WBON_CTRL_MONITOR,
+    OPCODE_WBON_CTRL_AUDITOR,
+    OPCODE_WBON_CTRL_EXEC,
+    OPCODE_WBON_CTRL_KILL,
+    OPCODE_WBON_CTRL_REBOOT,
+    OPCODE_WBON_CTRL_QUIT,
+    OPCODE_WBON_FORM,
+    OPCODE_WBON_ENCODE,
+    OPCODE_WBON_COMPRESS,
+    OPCODE_WBON_READ,
+    OPCODE_WBON_MUTATE,
+    OPCODE_WBON_STAMP,
+    OPCODE_WBON_SIGN,
+    OPCODE_WBON_FLIGHT,
+    OPCODE_WBON_INTERMEDIATE,
+    OPCODE_WBON_RECEIVE,
+    OPCODE_WBON_UNCOMPRESS,
+    OPCODE_WBON_AUDIT,
+    OPCODE_WBON_DECODE,
+    OPCODE_WBON_DEFORM,
+    OPCODE_WBON_ACKNOWLEDGE,
+    OPCODE_WBON_TTP_CONNECT,
+    OPCODE_WBON_TTP_SYN,
+    OPCODE_WBON_TTP_ACK,
+    OPCODE_WBON_TTP_SOT,
+    OPCODE_WBON_TTP_STX,
+    OPCODE_WBON_TTP_EOT,
+    OPCODE_WBON_TTP_SUB,
+    OPCODE_WBON_TTP_PUB,
+    OPCODE_WBON_TTP_CANCEL,
+    OPCODE_WBON_TTP_HOST
 }
