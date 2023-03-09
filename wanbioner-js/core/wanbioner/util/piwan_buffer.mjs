@@ -19,10 +19,10 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 // make sure to include only supported native function here !
 // cause of the sucks relations of availbility between what available on v8 , node , browser , ecmascript support
 // we need to make sure compability between binary data here if its primitive types
-// instead of performance we aim for precisison and easy to read data with standart human prefix
+// instead of performance we aim for precisison and easy to read data with standard human prefix
 // 0b for binary , 0x for hex for cross compability to ther programming lang
-// if youre working on string make sure to use unicode standart
-// if youre working on number make sure to use asm standart on data types and floating point
+// if youre working on string make sure to use unicode standard
+// if youre working on number make sure to use asm standard on data types and floating point
 
 
 // This Buffer is purely experimental with latest available browser support and nodejs api support!

@@ -7,6 +7,6 @@ dont underestimate how lazy i am if my hearts not want to work on specific task 
 
 so instead creating whitepaper and opening a tools to write book rather 
 i open IDE and write on the old format that every computer can read if they know
-standart encoding of ascii character or markdown syntax.
+standard encoding of ascii character or markdown syntax.
 
 if you want to make a book from it just make its be sure to include the original author name!
