@@ -119,7 +119,8 @@ Specific Professional used terms words definition Application , Dependency , Pro
 ```
 
 
-### π-tm Time Sync Structure, shortest packet to relay and analyze time on same machine
+### WBTM 
+Wanbioner Time Message Structure, shortest packet to relay and analyze time on same machine
 
 Purpose
 -  time for the client with no need of latency measurement
@@ -136,7 +137,7 @@ Packet Structure
 
 | Header | UTF-8 Hex Value       |
 | ------ | --------------------- |
-|  πtm   | [0xcf,0x80,0x54,0x4d] |
+|  WBTM   | [0xcf,0x80,0x54,0x4d] |
 
 | Opcode                |    Hex Value          |
 | -------------------   | --------------------- |
@@ -192,6 +193,6 @@ Base Packet
 
 - Still on Development TBD
 
-PIWAN base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
+Wanbioner base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
 
 The Specification also subject to change according to benchmark and test on the test net passed
