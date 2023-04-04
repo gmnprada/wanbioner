@@ -35,7 +35,7 @@ Dictionary Based Abbreviation a common words registed on dictionary should be in
 
 Specific Professional used terms words definition Application , Dependency , Project , Protocol, Software or Hardware dependencies is interpreted according on this table
 
-|  Sentence               |    4 Characters Ascii | 3 Characters Ascii |
+|  Sentence                 |    4 Characters Ascii | 3 Characters Ascii |
 | ------------------------- | --------------------- | ------------------ |
 |  Wanbioner                |         WBON          |        WBR         |
 |  Wanbioner Time Message   |         WBTM          |        WTE         |
@@ -135,9 +135,9 @@ Packet Structure
 
 8 Bytes Table Breakdown
 
-| Header | UTF-8 Hex Value       |
+| Header | Hex Format            |
 | ------ | --------------------- |
-|  WBTM   | [0xcf,0x80,0x54,0x4d] |
+|  WBTM  |                      |
 
 | Opcode                |    Hex Value          |
 | -------------------   | --------------------- |
@@ -174,7 +174,6 @@ var hostname , 64 bytes // Hostname of the Computer
 
 ### Wanbioner Base Packet for data exchange message
 ```
-
 Base Packet 
 - CONST HEADER 8 bytes , 4 bytes const header ,1 bytes packet opcode identifier, 3 bytes reserved  
 - REQUESTER 120 bytes , string or hash of requester aka host client machine
@@ -186,8 +185,6 @@ Base Packet
 - PROMISE RECEIVED TIMESTAMP 8 bytes , u64 time stamp of this packet arrived at recipient
 - TIME TO LIVE 1 bytes , u8 this need to be decremented on each of broker and router
 ```
-
-
 
 ### COMPRESSED PACKET STRUCTURE
 
