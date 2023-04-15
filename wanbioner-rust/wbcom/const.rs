@@ -78,21 +78,74 @@ const WBR_HEADER  : [u8;3]       = "WTM"  as u8;
 const WBR_HEADER_SIZE   = 4;
 const WBR_PROTOCOL_SIZE = 3;
 
-
 /* Wanbioner 4 character Naming Abbreviation Implementation */
+
 
 // 4 ascii character constant 32 bits
 const WBTM_HEADER : [u8;4]      = "WBTM" as u8;
 
-// Hex Format 
-const WBTM_PING            = 0x00;
-const WBTM_FLIGHT          = 0x01;
-const WBTM_FLIGHT_RECEIVED = 0x02;
-const WBTM_FLIGHT_BACK     = 0x03;
-const WBTM_FLIGHT_AUDIT    = 0x04;
-const WBTM_ADD             = 0x05;
-const WBTM_F
+// WBTM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
+const WBTM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
+const WBTM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
+const WBTM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
+const WBTM_FLIGHT_BACK = 3;  // Send packet back from around  Fill T2
+const WBTM_FLIGHT_AUDIT = 4;  // Fill T3 count and measure then Fill Data of TTL, DELTA , THETA , RTT , LATENCY , HOST , PEER , SCAN , NET
+const WBTM_ADD = 5;  // A Add    something [address,ip,mac,serial,hostname,domain]
+const WBTM_DEL = 6;  // D Delete something [address,ip,mac,serial,hostname,domain]
+const WBTM_MUT = 7;  // M Mutate something [address,ip,mac,serial,hostname,domain]
+const WBTM_STA = 8;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
+const WBTM_PONG = 9;  // Pong Back by saying PONG means there is someone code 9
 
 
+/// Header
 const WBON : [u8;4] = "WBON" as u8;
+//!experimental later use to parse 32 bits code into do , stop , or did i do it?
+const WBON_DIDIDO = 0xADEADE;
 
+// OPCODE OF Wanbioner CONTROL PANEL MESSAGE Reserve 10-19 decimal number 
+const WBON_CTRL_AUTH = 10;
+const WBON_CTRL_START = 11;
+const WBON_CTRL_STOP = 12;
+const WBON_CTRL_SYNC = 13;
+const WBON_CTRL_MONITOR = 14;
+const WBON_CTRL_AUDITOR = 15;
+const WBON_CTRL_EXEC = 16;
+const WBON_CTRL_KILL = 17;
+const WBON_CTRL_REBOOT = 18;
+const WBON_CTRL_QUIT = 19;
+
+// OPCODE OF Wanbioner Protocol Reserve 20-39 decimal number according to step how its was performed
+const WBON_FORM = 20;
+const WBON_ENCODE = 21;
+const WBON_COMPRESS = 22;
+
+const WBON_READ = 23;
+const WBON_MUTATE = 24;
+const WBON_STAMP = 25;
+
+const WBON_SIGN = 26;
+const WBON_FLIGHT = 27;
+const WBON_INTERMEDIATE = 28;
+
+const WBON_RECEIVE = 29;
+const WBON_UNCOMPRESS = 30;
+const WBON_AUDIT = 31;
+
+const WBON_DECODE = 32;
+const WBON_DEFORM = 33;
+const WBON_ACKNOWLEDGE = 34;
+
+// OPCODE Of Wanbioner Text Transport Protocol its reserve decimal number of 40-59
+const WBON_TTP_CONNECT = 40;
+const WBON_TTP_SYN = 41;
+const WBON_TTP_ACK = 42;
+
+const WBON_TTP_SOT = 43;
+const WBON_TTP_STX = 44;
+const WBON_TTP_EOT = 45;
+
+const WBON_TTP_SUB = 46;
+const WBON_TTP_PUB = 47;
+const WBON_TTP_CANCEL = 48;
+
+const WBON_TTP_HOST = 49;
