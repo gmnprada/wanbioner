@@ -1,6 +1,6 @@
-# A Place For You To Share Your Story 
+# A Place For You To Share Your Story and Tough
 
-as Author if you find this directory you're an author too , maintainer can also write whatever its is off topic in this folder. either you use your real name or anonym name we dont care.
+as Author if you find this directory you're an author too , maintainer can also write whatever its is off topic in this folder. either you use your real name or anonym name , pseudonym form we don't care as we only care for the result of the running system even if you're bloody enough to build it.
 
 why this txt is created , because i want to write my story on a book but to lazy opening words based program or office program.
 dont underestimate how lazy i am if my hearts not want to work on specific task i maybe just stall it for a long times till a capable person can handling the jobs and solve the problem.

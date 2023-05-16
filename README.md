@@ -25,7 +25,7 @@ Only the GAME PACKET allowed in with THEIR TOKEN and the TOPIC and packet TYPE t
 Essentialy this project also become A NET Of Shared Broker to use in the purpose of Multiplayer Game Only as Wide Area Network Route and integrated to your PI account.
 
 The Focus and Scheme of the PROJECT
-- The PIWAN NODE PROGRAM as HOST MUST RUN ON TOP PRIORITY (-20).
+- The Wanbioner NODE PROGRAM as HOST MUST RUN ON TOP PRIORITY (-20).
 - Entering and Connected as a CLIENT that PLAY ONLINE GAME must PAY using PI balance and get a ticket till the specified time that TICKET Expired , Use DEFINED Constant of Latency DESIRED BY THE GAME TOKEN for THIS data used and counted as PROMISE REQUEST, and PROOF OF SPEND in SMART CONTRACT. 
 - The Broker or HOST That Run Wanbioner Node with their public IP and HAD UNLIMITED OR SOME BANDWITH that acts as a Broker and transport facilitate as Online Game Sessions Service, Essentialy TRANSPORTING PROMISE REQUEST DATA to PEERS that play in the NETWORKS and deliver it succesfully with the specified PACKET LATENCY , EARN from THAT TICKET a PI Balance.
 - The Project also HAS IMPACT to the ECOSYSTEM and VALUE of PI  BY PI USER TRANSFERING ITS PI By PAYING AND PLAYING GAME with GOOD EXPERIENCE BECAUSE IN TOP PRIORITY NETWORK WITH SPECIFIED LATENCY NEEDED BY THE GAME , AND HOST EARN PI for Facilitating THEIR GAME SESSION with THEIR BANDWITH and NETWORK INFRASTRUCTURE.
