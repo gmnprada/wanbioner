@@ -27,9 +27,10 @@ export const HEADER_SIZE_3 = 3;
 
 // Safe Implementation in memory for 3 character length of Wanbioner 
 export const HEADER_WBR = Buffer.alloc(HEADER_SIZE_3).write("WBR");
+// Safe Implementation in memory for 2 character length of Wanbioner Core Common
+// 
 // Safe Implementation in memory for 3 character length of Wanbioner Time Message 
 export const HEADER_WTE = Buffer.alloc(HEADER_SIZE_3).write("WTE");
-// 
 
 
 // Header Size 4 Character ASCII
@@ -51,9 +52,11 @@ export const HEADER_WBTM = Buffer.allocUnsafe(HEADER_SIZE_4).write("WBTM");
 //!experimental Wanbioner Text Transport Protocol | WBTP | (Not Officialy in Docs Yet);
 export const HEADER_WBTP = Buffer.allocUnsafe(HEADER_SIZE_4).write("WBTP");
 
-export const HEADER_LOOKUP_TABLES = [
+// this look up table should implemented according to /docs/README,md
+// Arrange the compression level according Definitions > Compressed Form 
+// Raw Sentence Definition | 4 Length Char | 3 Length Char  | 2 Length Char | Binary / Numbering / Encoding Specific
+export const HEADER_KEY_TABLES = [
     ["Wanbioner","WBON","WBR","WB"],
-    ["Wanbioner Core Common","WBCC","WCC",]
-    ["Wanbioner Time Message","WBTM","WTE",""],
-    [""]
+    ["Wanbioner Core Common","WBCC","WCC","WC"],
+    ["Wanbioner Time Message","WBTM","WTE","WT"]
 ]

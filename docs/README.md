@@ -62,9 +62,30 @@ is interpreted according on this table , in this application Environment and Var
 |  Wanbioner Time Message   |         WBTM          |        WTE         |       WT      |
 
 
+The Core Application must be "Stand Alone" running system to be included as dependency
+
+### Reserved Well Known Protocol in the Past that we can build on and Experiment
+
+all of the implementation will be trimmed and make it shorter into 5 character ascii as it has dependency and standard to be used on implementation , the abbreviation can be found according to code snippet below as we still build the protocol on top of it!
+
+```
+Wanbioner Ethernet                       | WBETH
+Wanbioner Internet Protocol Version 4    | WBIP4
+Wanbioner Internet Protocol Version 6    | WBIP6
+Wanbioner Web Socket Client              | WBWSC
+Wanbioner Web Socket Server              | WBWSS
+Wanbioner Transmission Control Protocol  | WBTCP
+Wanbioner User Datagram Protocol         | WBUDP
+Wanbioner Structured Query Language      | WBSQL
+Wanbioner Hypertext Transport Protocol   | WBHTP
+
+```
+
+Secure version of it ? not implemented yet we will looking forward in usage , test and , benchmark on running version
+
 ### The Reserved Bytes is used to detect protocol of the transport Valid Value
 
-This Value is Still To Be Determined to use in specific already well known implementation of Operating System , Program , Kernel , Hardware , Software , Driver , Architecture .
+This Value is Still To Be Determined gathered through standard , various source from book or information across internet, to be use in specific already well known implementation of Operating System , Program , Kernel , Hardware , Software , Driver , Architecture .
 
 The information and link about this definition should be refrenced from a book , wikipedia, official project of foundation website, to be later included on git wiki as common information to newbies or professional who want to contribute into this project.
 
@@ -111,7 +132,7 @@ The information and link about this definition should be refrenced from a book ,
 - API , , Application Programming Interface specific if you're restrict transport under specific platform
 - WSS , , Web Socket Server
 - WSC , , Web Socket Client
-- WEB , , If It Transfer packet through Web Polling or anything
+- WEB , , If It Transfer packet through Web Polling or anything under HTTP
 - RTC , , Real Time Communication (Web RTC) as example
 - RTM , , Real Time Messaging Protocol (RTMP) just make it shorter here
 - BTH , , Bluetooth Based Protocol

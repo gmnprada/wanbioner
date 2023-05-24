@@ -95,19 +95,19 @@ export const OPCODE_WBON_DEFORM = 33;
 export const OPCODE_WBON_ACKNOWLEDGE = 34;
 
 // OPCODE Of Wanbioner Text Transport Protocol its reserve decimal number of 40-59
-export const OPCODE_WBON_TTP_CONNECT = 40;
-export const OPCODE_WBON_TTP_SYN = 41;
-export const OPCODE_WBON_TTP_ACK = 42;
+export const OPCODE_WBTP_CONNECT = 40;
+export const OPCODE_WBTP_SYN = 41;
+export const OPCODE_WBTP_ACK = 42;
 
-export const OPCODE_WBON_TTP_SOT = 43;
-export const OPCODE_WBON_TTP_STX = 44;
-export const OPCODE_WBON_TTP_EOT = 45;
+export const OPCODE_WBTP_SOT = 43;
+export const OPCODE_WBTP_STX = 44;
+export const OPCODE_WBTP_EOT = 45;
 
-export const OPCODE_WBON_TTP_SUB = 46;
-export const OPCODE_WBON_TTP_PUB = 47;
-export const OPCODE_WBON_TTP_CANCEL = 48;
+export const OPCODE_WBTP_SUB = 46;
+export const OPCODE_WBTP_PUB = 47;
+export const OPCODE_WBTP_CANCEL = 48;
 
-export const OPCODE_WBON_TTP_HOST = 49;
+export const OPCODE_WBTP_HOST = 49;
 
 
 export default {
@@ -147,14 +147,14 @@ export default {
     OPCODE_WBON_DECODE,
     OPCODE_WBON_DEFORM,
     OPCODE_WBON_ACKNOWLEDGE,
-    OPCODE_WBON_TTP_CONNECT,
-    OPCODE_WBON_TTP_SYN,
-    OPCODE_WBON_TTP_ACK,
-    OPCODE_WBON_TTP_SOT,
-    OPCODE_WBON_TTP_STX,
-    OPCODE_WBON_TTP_EOT,
-    OPCODE_WBON_TTP_SUB,
-    OPCODE_WBON_TTP_PUB,
-    OPCODE_WBON_TTP_CANCEL,
-    OPCODE_WBON_TTP_HOST
+    OPCODE_WBTP_CONNECT,
+    OPCODE_WBTP_SYN,
+    OPCODE_WBTP_ACK,
+    OPCODE_WBTP_SOT,
+    OPCODE_WBTP_STX,
+    OPCODE_WBTP_EOT,
+    OPCODE_WBTP_SUB,
+    OPCODE_WBTP_PUB,
+    OPCODE_WBTP_CANCEL,
+    OPCODE_WBTP_HOST
 }
