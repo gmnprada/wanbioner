@@ -16,6 +16,15 @@ which one is your choice let the worlds see it!
 
 # Wanbioner Documentations
 
+### Authoring The Documentations
+
+If you re editing this docs make sure following this rules of changes as we treat this docs primarily on source of truth in the environment and collective that run wanbioner protocol.
+
+- Language is the first artificial intelligence , its even exist as AI enemy back in old school game so make sure you had high focus to edit the source of truth and agreements!
+- Make Sure Its Keep Consistent and Less Breaking Changes if you authoring this one.
+- Make Sure the Variable Name and Abbreviation is unique and had no collision in the scope of docs for later use in programming languange implementation.
+
+
 ### Abbreviaton and Definitions
 
 In Data Transfering ofter we make a shorter abbreviations trim some long words to be used shorter to fit in the package buffer on data protocol buffer mechanism, here is the official abbreviations and definitions should be interpreted as in variable naming.
@@ -33,17 +42,33 @@ Dictionary Based Abbreviation a common words registed on dictionary should be in
 |  Device                   |         DEVI          |        DVE         |
 |  Develop                  |         DEVE          |        DVP         |
 
-Specific Professional used terms words definition Application , Dependency , Project , Protocol, Software or Hardware dependencies is interpreted according on this table
+Specific Professional used terms words definition it can be
 
-|  Sentence                 |    4 Characters Ascii | 3 Characters Ascii |
-| ------------------------- | --------------------- | ------------------ |
-|  Wanbioner                |         WBON          |        WBR         |
-|  Wanbioner Time Message   |         WBTM          |        WTE         |
+- Application 
+- Dependency
+- Project
+- Protocol
+- Software
+- Hardware 
+- Kernel Driver or Extension
+
+is interpreted according on this table , in this application Environment and Variable Name.
+
+
+|  Sentence                 |    4 Characters ASCII | 3 Characters ASCII | 2 Characters ASCII |
+| ------------------------- | --------------------- | ------------------ | ------------- |
+|  Wanbioner                |         WBON          |        WBR         |       WB      |
+|  Wanbioner Time Message   |         WBTM          |        WTE         |       WT      |
+|  Wanbioner Core Common    |         WBCC          |        WCN         |       WC      |
 
 
 ### The Reserved Bytes is used to detect protocol of the transport Valid Value
 
-### Local Machine Communication
+This Value is Still To Be Determined to use in specific already well known implementation of Operating System , Program , Kernel , Hardware , Software , Driver , Architecture .
+
+The information and link about this definition should be refrenced from a book , wikipedia, official project of foundation website, to be later included on git wiki as common information to newbies or professional who want to contribute into this project.
+
+#### Reserved an TBD Definition on Local Machine Communication on Private Network and Data Exchange
 ```
 - RAW , , init and signaling with raw socket 
 - DEV , , Reserved and TBD for developer
@@ -72,7 +97,7 @@ Specific Professional used terms words definition Application , Dependency , Pro
 - ANY , , Which Means we got the data from anonym maybe allien trying to communicate over we didn't know yet
 ```
 
-### Passing Wire , Radio Frequency , Over The Air Communication
+#### Reserverd and TBD Passing Wire , Radio Frequency , Over The Air Communication on Public Network and Data Exchange
 ```
 - ETH , , Ethernet Cable , Hub protocol
 - UDP , , User Datagram protocol
@@ -118,8 +143,41 @@ Specific Professional used terms words definition Application , Dependency , Pro
 - MOB , , Use of Custom motherboard driver
 ```
 
+### Wanbioner | WBON | WBR | WB
 
-### WBTM 
+The Main Application system , it build through many core system under the hood like WBCC, and WBTM , there is too many giant shoulder we rely on so read the docs as its is.
+
+
+Purpose
+- Address the problem in the root project.
+- Make Automation on Data Transferring Reward.
+- Make SDK to be used in game protocol.
+- Make Sure the SDK is Secure and Safe to use.
+
+#### Wanbioner Message Structure
+```
+Base Packet 
+- CONST HEADER 8 bytes , 4 bytes const header ,1 bytes packet opcode identifier, 3 bytes reserved  
+- REQUESTER 120 bytes , string or hash of requester aka host client machine
+- RECIPIENT 120 bytes , string or hash of requester aka host recipient machine
+- INTERMEDIATE 120 bytes , string or hash of intermediate NET aka host that transport the packet
+- PROMISE REQUEST TIMEOUT 8 bytes, u64 promise this packet should arrive in that time to acquire Pi Balance
+- PROMISE FLIGHT TIMESTAMP 8 bytes , u64 time stamp of this packet flight or sended
+- PROMISE INTERMEDIATE TIMESTAMP 8 bytes , u64 timestamp of this packet arrived 
+- PROMISE RECEIVED TIMESTAMP 8 bytes , u64 time stamp of this packet arrived at recipient
+- TIME TO LIVE 1 bytes , u8 this need to be decremented on each of broker and router
+```
+
+### Wanbioner Core Common | WBCC | WBN | WC
+Wanboner Core Common Structure , shortest Common Core abbreviation, header , variable and lookup table, packet and message structure to be used across OSI Layer , either secure network or unsecure network to be used as protocol agreements, consensus, and monitoring.
+
+Purpose
+- Make data persistent across wanbioner node
+- Make cross compability to be used as data agremeent, consensus , monitoring ,evaluation,  between different operating system, machine and programming language
+- Make Compressed format, encoding, decoding of data persistent on lookup table how its should be interpreted from human readable message into machine language , numbering system (binary, hex , octal, bit , qubit) , or other domain specific language system on encoding and decoding the message data.
+
+### Wanbioner Time Message | WBTM | WTE | WT
+
 Wanbioner Time Message Structure, shortest packet to relay and analyze time on same machine
 
 Purpose
@@ -137,7 +195,7 @@ Packet Structure
 
 | Header | Hex Format            |
 | ------ | --------------------- |
-|  WBTM  |                      |
+|  WBTM  |                       |
 
 | Opcode                |    Hex Value          |
 | -------------------   | --------------------- |
@@ -151,7 +209,7 @@ Packet Structure
 
 8 Bytes BIGUINT64LE Timestamp of the date now is assigned by the loop of opcode every audit step
 
-### WBTM Message Structure,
+#### Wanbioner Time Message Structure
 
 Purpose
 - clock sync between computer node (custom ntp)
@@ -172,19 +230,6 @@ var hostname , 64 bytes // Hostname of the Computer
 ```
 
 
-### Wanbioner Base Packet for data exchange message
-```
-Base Packet 
-- CONST HEADER 8 bytes , 4 bytes const header ,1 bytes packet opcode identifier, 3 bytes reserved  
-- REQUESTER 120 bytes , string or hash of requester aka host client machine
-- RECIPIENT 120 bytes , string or hash of requester aka host recipient machine
-- INTERMEDIATE 120 bytes , string or hash of intermediate NET aka host that transport the packet
-- PROMISE REQUEST TIMEOUT 8 bytes, u64 promise this packet should arrive in that time to acquire Π Balance
-- PROMISE FLIGHT TIMESTAMP 8 bytes , u64 time stamp of this packet flight or sended
-- PROMISE INTERMEDIATE TIMESTAMP 8 bytes , u64 timestamp of this packet arrived 
-- PROMISE RECEIVED TIMESTAMP 8 bytes , u64 time stamp of this packet arrived at recipient
-- TIME TO LIVE 1 bytes , u8 this need to be decremented on each of broker and router
-```
 
 ### COMPRESSED PACKET STRUCTURE
 
@@ -192,4 +237,4 @@ Base Packet
 
 Wanbioner base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
 
-The Specification also subject to change according to benchmark and test on the test net passed
+The Specification also subject to change according to benchmark and test on the test net passed also until separation of specific dependency completed as a running system
