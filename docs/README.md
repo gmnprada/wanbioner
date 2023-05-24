@@ -272,7 +272,7 @@ Use it with your own risk!
 - Don't change written on if you're not the source of the text,code and docs on what is written
 - Change last update if you modify the document by using your maintainer name on this root folder MAINTAINER so make sure your name there!
 - if the file is written by you use your maintainer name to keep single source of truth
-- Copy the time from official domain of wanbioner or wanbioner node that running WBTM protocol and change the hyperlink (url) on second lines , if you're not sure where to get the time visit the official starting domain of the project https://piwan.net
+- Copy the time from official domain of wanbioner or wanbioner node that running WBTM protocol and change the hyperlink (url) on second lines , if you're not sure where to get the time visit the official starting domain of the project https://piwan.net/network
 
 The Format is pure ASCII
 - Firstline is metadata of the protocol
@@ -280,7 +280,7 @@ The Format is pure ASCII
 - thirdline  Written On      : Time Value (Source Must Be from WBTM Node)
 - Fourthline Written By      : name from maintainer or author that write the file
 - Fifthline  Last Update On  : Time Value of The file last Updated (Source Must Be from WBTM Node) 
-- Sixthline  Last Update By  : name from maintainer or authoru that modify or update the file
+- Sixthline  Last Update By  : name from maintainer or author that modify or update the file
 
 Example 
 
