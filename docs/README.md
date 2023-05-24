@@ -16,7 +16,7 @@ which one is your choice let the worlds see it!
 
 # Wanbioner Documentations
 
-### Authoring The Documentations
+## Authoring The Documentations
 
 If you re editing this docs make sure following this rules of changes as we treat this docs primarily on source of truth in the environment and collective that run wanbioner protocol.
 
@@ -86,7 +86,7 @@ Wanbioner Transmission Control Protocol  | WBTCP
 Wanbioner User Datagram Protocol         | WBUDP
 Wanbioner Structured Query Language      | WBSQL
 Wanbioner Hypertext Transport Protocol   | WBHTP
-Wanbioner Tranport Layer Securiry        | WBTLS 
+Wanbioner Tranport Layer Security        | WBTLS 
 
 ```
 
@@ -258,14 +258,6 @@ var t2 8 bytes , u64
 var t3 8 bytes , u64 
 var hostname , 64 bytes // Hostname of the Computer
 ```
-
-
-
-### COMPRESSED PACKET STRUCTURE
-
-- Still on Development TBD this specific compression should be arranged on Wanbioner Core Common if we need a better compression algorithm later that not available publicly.
-- 
-
 
 ### NOTES!
 
