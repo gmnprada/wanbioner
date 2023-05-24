@@ -169,7 +169,7 @@ Base Packet
 ```
 
 ### Wanbioner Core Common | WBCC | WBN | WC
-Wanboner Core Common Structure , shortest Common Core abbreviation, header , variable and lookup table, packet and message structure to be used across OSI Layer , either secure network or unsecure network to be used as protocol agreements, consensus, and monitoring.
+Wanbioner Core Common Structure , shortest "Common Core" abbreviation, header , variable and lookup table, packet and message structure to be used across OSI Layer , either secure network or unsecure network to be used as protocol agreements, consensus, and monitoring.
 
 Purpose
 - Make data persistent across wanbioner node
@@ -233,8 +233,14 @@ var hostname , 64 bytes // Hostname of the Computer
 
 ### COMPRESSED PACKET STRUCTURE
 
-- Still on Development TBD
+- Still on Development TBD this speicific compression should be arranged on Wanbioner Core Common if we need a better compression algorithm later that not available publicly.
+
+
+
+### NOTES!
 
 Wanbioner base network is not contains any encryption at the moment so please do the encryption in the data layer if the the apps using this networks need a secure packet transfer.
 
 The Specification also subject to change according to benchmark and test on the test net passed also until separation of specific dependency completed as a running system
+
+Use it with your own risk!
