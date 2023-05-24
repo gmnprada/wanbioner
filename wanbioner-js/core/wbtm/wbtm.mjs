@@ -59,13 +59,13 @@ var PiTM_Running = false;
 // Its a must to see domain ownership is still there maitained by piwan team
 dns.resolve4("piwan.net", (err, addrs) => {
     if (err) {
-        error_log(`πTM Cannot Resolve The Main Net`, err);
+        error_log(`WBTM Cannot Resolve The Main Net`, err);
         process.exit(1);
     }
 
     let i = 0;
     for (let A of addrs) {
-        info_log(`πTM Add Main Net IPv4 : ${A} to networks`)
+        info_log(`WBTM Add Main Net IPv4 : ${A} to networks`)
 
         if (i === 0) {
             network_main_IPv4 = A;
@@ -82,7 +82,7 @@ const interfaces = os.networkInterfaces();
 Object.values(interfaces).forEach((iface) => {
     for (let ip of iface) {
         if (ip.family == 'IPv4' &&  ip.internal === false) {
-            info_log(`ΠTM Add Interface IPv4 : ${ip.address} to networks`);
+            info_log(`WBTM Add Interface IPv4 : ${ip.address} to networks`);
             networks.push(ip.address);
         }
     }
@@ -94,7 +94,7 @@ function _onMessage(message, remote_info) {
         let check_header = Buffer.allocUnsafe(4);
         message.copy(check_header, 0, 0, 4);
         if (!header.equals(check_header)) {
-            error_log(`ΠTM Not A ${header.toString()} Message Received Ignoring`);
+            error_log(`WBTM Not A ${header.toString()} Message Received Ignoring`);
             return;
         }
         let opcode = message[4];
@@ -351,11 +351,11 @@ _datagram.on('listening', _onListening);
 _datagram.on('error', _onError);
 
 
-// return an array of PITM networks available 
+// return an array of WBTM networks available 
 function Networks() {
     return networks;
 }
 
-// PITM = Pi Time Message Protocol
-export const PITM = { Start, Stop, NetworkTimeServiceEmitter, PiTM_Running, Networks, network_time, network_main_IPv4,Service };
-export default PITM;
+// WBTM = Wanbioner Time Message Protocol
+export const WBTM = { Start, Stop, NetworkTimeServiceEmitter, PiTM_Running, Networks, network_time, network_main_IPv4,Service };
+export default WBTM;
