@@ -15,22 +15,10 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 */
 
-// Header Size
-export const HEADER_USIZE = 4;
-
 // Protocol Identifier Size
 export const PROTOCOL_USIZE = 3;
 
-// HEADER Greek Small Leter PI  π , UNICODE DEC 960 , UTF8-DEC [207,128], UTF-8 Hex [0xCF,0x80] , T ASCII HEX [0x54] , M ASCII HEX [0x4D]
-export const HEADER_WBTM = Buffer.allocUnsafe(HEADER_USIZE).write("WBTM");
-
-// HEADER Greek Small Leter PI  π , UNICODE DEC 960 , UTF8-DEC [207,128], UTF-8 Hex [0xCF,0x80] , W ASCII HEX [0x57] , N ASCII HEX [0x4E]
-export const HEADER_WBON = Buffer.allocUnsafe(HEADER_USIZE).write("WBON");
-
-export const HEADER_WBTP = Buffer.allocUnsafe(HEADER_USIZE).write("WBTP");
-
-
-// Underlying Transport Protocol Internal or Local machine available transport and allowed definition
+//!experimental should link into the valid definition on the wiki , books , or official project domain and resource if its not linkable means its common words in dictionary
 export const PROTOCOL_INT_VALUE = [
     "RAW",
     "DEV",

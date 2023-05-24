@@ -58,8 +58,8 @@ is interpreted according on this table , in this application Environment and Var
 |  Sentence                 |    4 Characters ASCII | 3 Characters ASCII | 2 Characters ASCII |
 | ------------------------- | --------------------- | ------------------ | ------------- |
 |  Wanbioner                |         WBON          |        WBR         |       WB      |
-|  Wanbioner Time Message   |         WBTM          |        WTE         |       WT      |
 |  Wanbioner Core Common    |         WBCC          |        WCN         |       WC      |
+|  Wanbioner Time Message   |         WBTM          |        WTE         |       WT      |
 
 
 ### The Reserved Bytes is used to detect protocol of the transport Valid Value
@@ -172,7 +172,7 @@ Base Packet
 Wanbioner Core Common Structure , shortest "Common Core" abbreviation, header , variable and lookup table, packet and message structure to be used across OSI Layer , either secure network or unsecure network to be used as protocol agreements, consensus, and monitoring.
 
 Purpose
-- Make data persistent across wanbioner node
+- Make data persistent across wanbioner node , machine , or system
 - Make cross compability to be used as data agremeent, consensus , monitoring ,evaluation,  between different operating system, machine and programming language
 - Make Compressed format, encoding, decoding of data persistent on lookup table how its should be interpreted from human readable message into machine language , numbering system (binary, hex , octal, bit , qubit) , or other domain specific language system on encoding and decoding the message data.
 
@@ -233,8 +233,8 @@ var hostname , 64 bytes // Hostname of the Computer
 
 ### COMPRESSED PACKET STRUCTURE
 
-- Still on Development TBD this speicific compression should be arranged on Wanbioner Core Common if we need a better compression algorithm later that not available publicly.
-
+- Still on Development TBD this specific compression should be arranged on Wanbioner Core Common if we need a better compression algorithm later that not available publicly.
+- 
 
 
 ### NOTES!

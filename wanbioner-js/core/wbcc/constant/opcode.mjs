@@ -49,7 +49,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 // determine the size must be u8 1 bytes 8 bit
 export const OPCODE_USIZE = 1;
 
-// WBTM COMMUNICATION OPCODE 0-9 Reserve decimal opcode
+// Opcode Of Wanbioner Time Message 0-9 Reserve decimal opcode
 export const OPCODE_WBTM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
 export const OPCODE_WBTM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
 export const OPCODE_WBTM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
@@ -61,7 +61,7 @@ export const OPCODE_WBTM_MUT = 7;  // M Mutate something [address,ip,mac,serial,
 export const OPCODE_WBTM_STA = 8;  // S Stamp  something [address,ip,mac,serial,hostname,domain]
 export const OPCODE_WBTM_PONG = 9;  // Pong Back by saying PONG means there is someone code 9
 
-// OPCODE OF Piwan CONTROL PANEL MESSAGE Reserve 10-19 decimal number 
+// OPCODE OF Wanbioner Control Panel MESSAGE Reserve 10-19 decimal number 
 export const OPCODE_WBON_CTRL_AUTH = 10;
 export const OPCODE_WBON_CTRL_START = 11;
 export const OPCODE_WBON_CTRL_STOP = 12;
@@ -73,7 +73,7 @@ export const OPCODE_WBON_CTRL_KILL = 17;
 export const OPCODE_WBON_CTRL_REBOOT = 18;
 export const OPCODE_WBON_CTRL_QUIT = 19;
 
-// OPCODE OF PiWAN Protocol Reserve 20-39 decimal number according to step how its was performed
+// OPCODE OF Wanbioner Protocol Reserve 20-39 decimal number according to step how its was performed
 export const OPCODE_WBON_FORM = 20;
 export const OPCODE_WBON_ENCODE = 21;
 export const OPCODE_WBON_COMPRESS = 22;
@@ -94,7 +94,7 @@ export const OPCODE_WBON_DECODE = 32;
 export const OPCODE_WBON_DEFORM = 33;
 export const OPCODE_WBON_ACKNOWLEDGE = 34;
 
-// OPCODE Of Piwan Text Transport Protocol its reserve decimal number of 40-59
+// OPCODE Of Wanbioner Text Transport Protocol its reserve decimal number of 40-59
 export const OPCODE_WBON_TTP_CONNECT = 40;
 export const OPCODE_WBON_TTP_SYN = 41;
 export const OPCODE_WBON_TTP_ACK = 42;

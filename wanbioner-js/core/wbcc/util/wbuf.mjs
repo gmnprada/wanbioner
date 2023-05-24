@@ -27,8 +27,9 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 // This Buffer is purely experimental with latest available browser support and nodejs api support!
 // DWYOR ok if its not battle tested on large network yet!
+// !experimental this util name will be included in docs as WBUF 
 
-export class PiwanBuffer {
+export class WBUF {
     #maxSafeInteger;
     #minSafeInteger;
     #buffer = new Uint8Array();
@@ -191,4 +192,4 @@ export class PiwanBuffer {
     }
 }
 
-export default PiwanBuffer;
+export default WBUF;

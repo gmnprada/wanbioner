@@ -1,3 +1,11 @@
+# WBTM Network Time 
+This Time is copied from https://piwan.net/network
+Written On     : 2023-03-08
+Written By     : GMNP
+Last Update On : 2023-05-24T06:53:39.540Z
+Last Update By : GMNP
+
+
 # Maintainer Note For Security Best Practice 
 This Document can be either opened with ascii base character or Markdown format
 
@@ -56,7 +64,7 @@ if they want to password something in the machine let the maintainer
 or security officer do it as each person have different password in their muscle memory. 
 only public key need to be passed for every maintainer - maintainer works or security - security works.
 
-a legit node should must and be maitained to latest version of wanbioner software as update is crucial if we found something 
+a legit node should must and be maintained to latest version of wanbioner software as update is crucial if we found something 
 related to Vulnerability in the project like CVE Report and suchs from official trusted party.
 if its can be automated we will automate configuring somethings. but sometimes 
 manual maintenance is needed for better security for solving technical difficulties.
@@ -70,6 +78,7 @@ Thats all about securing server , if your ssh keys is listed on the server you c
 
 Have A Manner if you're accessing machine that not belongs to you , you should have a legal access right
 as illegal access to remote machine is regulated on some law in specific country. 
-always make sure you inform you want to access a machine remotely to the machine owner by email or message before accessing it, and have permission accessing the machine. 
+always make sure you inform you want to access a machine remotely to the machine owner by email or message before accessing it, and have permission accessing the machine.
+
 ssh access logs also need to be hooked to inform maintainer some maintainer or security officer accessing the machine remotely in the scope if they re obligated to do so.
 its considered good security Practice as no one want their home magically had a bomb in the area of their living space.
