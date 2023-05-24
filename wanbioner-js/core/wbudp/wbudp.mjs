@@ -20,18 +20,6 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
 import dgram from 'node:dgram';
 
-import PITM from '../pitm/pitm.mjs';
-
-export var PIWAN_UDP_RUNNING = false;
-
-// must be acgquired through PITM network time
-var PITM_TIME = null;
-
-// subscribe to network node time
-PITM.NetworkTimeServiceEmitter.on('unixsync',(time)=>{
-    PITM_TIME = time;
-})
-
 function _onListening(){
 
 }

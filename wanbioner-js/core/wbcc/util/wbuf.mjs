@@ -13,6 +13,8 @@ Contributor
 
 See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
+Focus
+transform on encoding or decoding the data into different format across protocol
 */
 
 // need to handle binary file for cross environment of javascript runtime so we need this
@@ -23,7 +25,6 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 // 0b for binary , 0x for hex for cross compability to ther programming lang
 // if youre working on string make sure to use unicode standard
 // if youre working on number make sure to use asm standard on data types and floating point
-
 
 // This Buffer is purely experimental with latest available browser support and nodejs api support!
 // DWYOR ok if its not battle tested on large network yet!

@@ -8,7 +8,7 @@ const tcpMaxBufferSize  = 65535;
 // Maximum of 1500 bytes default on so many interface before truncated into chunks
 const ipMaxBufferSize  = 1500;
 
-export default class PiwanWSC extends EventEmitter {
+export default class WBWSC extends EventEmitter {
 
     #piwanBuffer = new Array(udpMaxBufferSize);
     constructor(url) {

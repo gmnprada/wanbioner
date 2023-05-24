@@ -1,7 +1,9 @@
 import { WebSocketServer } from 'ws';
 import PITM from '../pitm/pitm.mjs';
 import { error_log, info_log } from '../../log.mjs';
-export default class PiwanWSS extends WebSocketServer {
+
+
+export default class WBWSS extends WebSocketServer {
     #now;
     constructor() {
         super({ noServer: true, clientTracking: true, backlog: 65535 });

@@ -22,18 +22,18 @@ If you re editing this docs make sure following this rules of changes as we trea
 
 - Language is the first artificial intelligence , its even exist as AI enemy back in old school game so make sure you had high focus to edit the source of truth and agreements!
 - Make Sure Its Keep Consistent and Less Breaking Changes if you authoring this one.
-- Make Sure the Variable Name and Abbreviation is unique and had no collision in the scope of docs for later use in programming languange implementation.
-
+- Make Sure the Variable Name and Abbreviation is unique and had no collision in the scope of docs for later use in programming language implementation.
 
 ### Abbreviaton and Definitions
 
 In Data Transfering ofter we make a shorter abbreviations trim some long words to be used shorter to fit in the package buffer on data protocol buffer mechanism, here is the official abbreviations and definitions should be interpreted as in variable naming.
 
-Dictionary Based Abbreviation a common words registed on dictionary should be interpreted as is.
+Dictionary Based Abbreviation a common words registered on dictionary should be interpreted as is according this table
 
 |  Words                    |  4 Characters Ascii   | 3 Characters Ascii |
 | ------------------------- | --------------------- | ------------------ |
-|  Acknowledgment           |         ACKN          |        ACT         |
+|  Acknowledgment           |         ACKN          |        ACK         |
+|  Action                   |         ACTI          |        ACT         |
 |  Flight                   |         FLIG          |        FLT         |
 |  Network                  |         NETW          |        NET         |
 |  Event                    |         EVEN          |        EVT         |
@@ -41,6 +41,14 @@ Dictionary Based Abbreviation a common words registed on dictionary should be in
 |  Syncronize               |         SYNC          |        SYN         |
 |  Device                   |         DEVI          |        DVE         |
 |  Develop                  |         DEVE          |        DVP         |
+|  Constant                 |         CONS          |        CON         |
+|  Utility                  |         UTIL          |        UTY         |
+
+Adding Definition to the table rules on editing this docs
+```
+4 Character ascii use the FIRST 4 Character of the words.
+3 Character ascii grab FIRST 2 character and use the end of character char, some special case apply on well know abbreviation that did not conflict in the table (NET,CON,ACK,ACT)
+```
 
 Specific Professional used terms words definition it can be
 
@@ -52,7 +60,7 @@ Specific Professional used terms words definition it can be
 - Hardware 
 - Kernel Driver or Extension
 
-is interpreted according on this table , in this application Environment and Variable Name.
+The Sentence is intepreted according on this table , in this application Environment and Variable Name.
 
 
 |  Sentence                 |    4 Characters ASCII | 3 Characters ASCII | 2 Characters ASCII |
@@ -78,10 +86,11 @@ Wanbioner Transmission Control Protocol  | WBTCP
 Wanbioner User Datagram Protocol         | WBUDP
 Wanbioner Structured Query Language      | WBSQL
 Wanbioner Hypertext Transport Protocol   | WBHTP
+Wanbioner Tranport Layer Securiry        | WBTLS 
 
 ```
 
-Secure version of it ? not implemented yet we will looking forward in usage , test and , benchmark on running version
+Secure version of it ? not implemented yet we will looking forward in usage , test and , benchmark on running version on latest encryption standard
 
 ### The Reserved Bytes is used to detect protocol of the transport Valid Value
 
@@ -269,9 +278,17 @@ Use it with your own risk!
 
 ### !important Handling Update on Information if you're officially in the team
 - Don't change written on if you're not the source of the text,code and docs on what is written
-- Change ;ast update if you modify the document by using your maintainer name on this root folder MAINTAINER so make sure your name there!
+- Change last update if you modify the document by using your maintainer name on this root folder MAINTAINER so make sure your name there!
 - if the file is written by you use your maintainer name to keep single source of truth
 - Copy the time from official domain of wanbioner or wanbioner node that running WBTM protocol and change the hyperlink (url) on second lines , if you're not sure where to get the time visit the official starting domain of the project https://piwan.net
+
+The Format is pure ASCII
+- Firstline is metadata of the protocol
+- Secondline is copy from machine that running on wbtm protocol or the root project
+- thirdline  Written On      : Time Value (Source Must Be from WBTM Node)
+- Fourthline Written By      : name from maintainer or author that write the file
+- Fifthline  Last Update On  : Time Value of The file last Updated (Source Must Be from WBTM Node) 
+- Sixthline  Last Update By  : name from maintainer or authoru that modify or update the file
 
 Example 
 
@@ -283,3 +300,12 @@ Written By     : GMNP
 Last Update On : 2023-05-24T09:08:16.314Z
 Last Update By : GMNP
 ```
+
+Append it on Last Section of Header , Comment , Or File , like text below is not an example but actually written by me the author!
+
+Wanbioner Time Message (WBTM)
+This Time is copied from https://piwan.net/network
+Written On     : 2023-02-18T05:30:04.195Z
+Written By     : GMNP
+Last Update On : 2023-05-24T09:30:57.588Z
+Last Update By : GMNP

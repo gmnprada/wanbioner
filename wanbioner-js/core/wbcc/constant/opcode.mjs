@@ -26,7 +26,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
     observer , monitor , auditor , encyrption and security purpose
     optional step operation must not affecting other machine on the networks
 
-    as example of opcode PONG in pitm , another example of opcode QUIT on Piwan CTRL
+    as example of opcode PONG in pitm , another example of opcode QUIT on Wanbioner CTRL
 
     consider to reduce the step of perfoming core process on pid if its not complete on 9 step and 1 optional step
 
@@ -50,7 +50,7 @@ See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 export const OPCODE_USIZE = 1;
 
 // Opcode Of Wanbioner Time Message 0-9 Reserve decimal opcode
-export const OPCODE_WBTM_PING = 0;  // Ping Arounds by saying PING means node alive code 0
+export const OPCODE_WBTM_PING = 0;    // Ping Arounds by saying PING means node alive code 0
 export const OPCODE_WBTM_FLIGHT = 1;  // Flight and broadcast around   Fill T0
 export const OPCODE_WBTM_FLIGHT_RECEIVED = 2;  // Receive packet from around Fill T1
 export const OPCODE_WBTM_FLIGHT_BACK = 3;  // Send packet back from around  Fill T2
@@ -98,15 +98,12 @@ export const OPCODE_WBON_ACKNOWLEDGE = 34;
 export const OPCODE_WBTP_CONNECT = 40;
 export const OPCODE_WBTP_SYN = 41;
 export const OPCODE_WBTP_ACK = 42;
-
 export const OPCODE_WBTP_SOT = 43;
 export const OPCODE_WBTP_STX = 44;
 export const OPCODE_WBTP_EOT = 45;
-
 export const OPCODE_WBTP_SUB = 46;
 export const OPCODE_WBTP_PUB = 47;
 export const OPCODE_WBTP_CANCEL = 48;
-
 export const OPCODE_WBTP_HOST = 49;
 
 
