@@ -3,14 +3,6 @@ Privacy Policy
 This Document is purely written on the format of old computer can read easily encoded on ascii character
 As Wanbioner Networks From its Developer , Collaborator , Contributor And Team
 
-WBTM Network Time
-This Time is copied from https://piwan.net/network
-
-Written On     : 2023-02-18T05:30:04.195Z
-Written By     : GMNP
-Last Update On : 2023-05-16T19:53:06.172Z
-Last Update By : GMNP
-
 We re abide to Pi Network Privacy Policy so if you do something that violate their Network, Service and Privacy Policy
 This Privacy Policy has no much use cause your is not in PI Network.
 
@@ -86,3 +78,10 @@ https://piwan.net/contact
 current available public address shared to Wanbioner Developer , Team , and Contributor
 
 Email : piwannet@gmail.com
+
+Wanbioner Time Message (WBTM)
+This Time is copied from https://piwan.net/network
+Written On     : 2023-02-18T05:30:04.195Z
+Written By     : GMNP
+Last Update On : 2023-05-24T09:08:16.314Z
+Last Update By : GMNP

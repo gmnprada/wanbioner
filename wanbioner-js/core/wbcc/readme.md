@@ -13,7 +13,14 @@ This Is Javascript Implementation Wanbioner Core Common
 copied from /docs how it should be threated
 
 
-
 ## Usage 
 
 - wbcc args
+
+
+Wanbioner Time Message (WBTM)
+This Time is copied from https://piwan.net/network
+Written On     : 2023-05-24T09:08:16.314Z
+Written By     : GMNP
+Last Update On : 2023-05-24T09:08:16.314Z
+Last Update By : GMNP

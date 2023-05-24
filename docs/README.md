@@ -265,3 +265,21 @@ Wanbioner base network is not contains any encryption at the moment so please do
 The Specification also subject to change according to benchmark and test on the test net passed also until separation of specific dependency completed as a running system
 
 Use it with your own risk!
+
+
+### !important Handling Update on Information if you're officially in the team
+- Don't change written on if you're not the source of the text,code and docs on what is written
+- Change ;ast update if you modify the document by using your maintainer name on this root folder MAINTAINER so make sure your name there!
+- if the file is written by you use your maintainer name to keep single source of truth
+- Copy the time from official domain of wanbioner or wanbioner node that running WBTM protocol and change the hyperlink (url) on second lines , if you're not sure where to get the time visit the official starting domain of the project https://piwan.net
+
+Example 
+
+```
+Wanbioner Time Message (WBTM)
+This Time is copied from https://piwan.net/network
+Written On     : 2023-02-18T05:30:04.195Z
+Written By     : GMNP
+Last Update On : 2023-05-24T09:08:16.314Z
+Last Update By : GMNP
+```
