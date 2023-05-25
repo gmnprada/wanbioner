@@ -73,4 +73,66 @@ So, GAN compression is like having magical friends who help you shrink your draw
 
 ```
 
+### Available Bit Level Algorithm
+
+```
+Here are some commonly used bit-level compression algorithms:
+
+1. Run-Length Encoding (RLE): Compresses data by replacing repeated consecutive bits with a count followed by the bit value.
+
+2. Huffman Coding: Assigns variable-length codes to different bit patterns based on their frequency of occurrence. Frequently appearing patterns are assigned shorter codes, while less common patterns receive longer codes.
+
+3. Arithmetic Coding: Encodes data using fractional values based on probability distributions. It allows for more efficient compression by encoding multiple bits in a single fraction.
+
+4. Burrows-Wheeler Transform (BWT): Rearranges the input data to group similar bits together, making it easier to compress using other techniques such as Huffman coding or arithmetic coding.
+
+5. Lempel-Ziv-Welch (LZW): Builds a dictionary of bit patterns while encoding the data. It replaces frequently occurring patterns with shorter codes, resulting in compression.
+
+6. Golomb Coding: A variable-length prefix code used for efficient compression of integer data. It encodes numbers by splitting them into quotient and remainder values.
+
+7. Delta Encoding: Stores the difference between consecutive bits instead of the actual values. It is useful for compressing data with predictable patterns or sequences.
+
+8. Transform Coding: Applies mathematical transforms such as Discrete Cosine Transform (DCT) or Wavelet Transform to the data, allowing for more efficient compression by concentrating the energy in fewer bits.
+
+9. Burrows-Wheeler Transform with Move-to-Front (BWT-MTF): Combines the BWT with a Move-to-Front (MTF) transform to rearrange the data and then apply compression techniques like Huffman coding.
+
+10. Entropy Coding: Utilizes the statistical properties of the data to achieve compression. Techniques like Huffman coding and arithmetic coding fall under this category.
+
+These are just a few examples of bit-level compression algorithms. Each algorithm has its own characteristics, advantages, and use cases. The choice of algorithm depends on factors such as the nature of the data, desired compression ratio, and computational complexity considerations.
+
+```
+
+Available byte level algorithm
+
+```
+There are various byte-level compression algorithms available. Here is a list of some commonly used ones:
+
+1. Deflate: Combines the LZ77 algorithm for finding repeated byte sequences with Huffman coding for encoding the data. It is widely used in formats like ZIP, gzip, and PNG.
+
+2. LZ77 (Lempel-Ziv-77): Identifies repeated byte sequences in the data and replaces them with references to previous occurrences, combined with the new data. It is the basis for many compression formats, including Deflate.
+
+3. LZ78 (Lempel-Ziv-78): Builds a dictionary of byte sequences while encoding the data. It replaces repeated sequences with references to the dictionary, resulting in compression.
+
+4. LZW (Lempel-Ziv-Welch): Similar to LZ78, but with some modifications. It builds a dictionary of byte sequences and replaces frequently occurring sequences with shorter codes. LZW is commonly used in formats like GIF and TIFF.
+
+5. RLE (Run-Length Encoding): Compresses data by replacing consecutive repeated bytes with a count followed by the byte value. It is particularly effective for data with long runs of repeated bytes.
+
+6. Arithmetic Coding: Encodes data using fractional values based on probability distributions. It provides efficient compression by encoding multiple bytes in a single fraction.
+
+7. Huffman Coding: Assigns variable-length codes to different byte patterns based on their frequency of occurrence. Frequently appearing patterns are assigned shorter codes, while less common patterns receive longer codes.
+
+8. Burrows-Wheeler Transform (BWT): Rearranges the input data to group similar bytes together, making it easier to compress using other techniques such as Huffman coding or arithmetic coding.
+
+9. Delta Encoding: Stores the difference between consecutive bytes instead of the actual values. It is useful for compressing data with predictable patterns or sequences.
+
+10. Transform Coding: Applies mathematical transforms like Discrete Cosine Transform (DCT) or Wavelet Transform to the data, allowing for more efficient compression by concentrating the energy in fewer bytes.
+
+11. Context Mixing: Utilizes the context or statistical properties of the data to achieve compression. It combines different techniques, such as prediction models and entropy coding, to reduce the data size.
+
+These are some of the popular byte-level compression algorithms available. Each algorithm has its own characteristics, advantages, and specific use cases. The choice of algorithm depends on factors such as the nature of the data, desired compression ratio, and computational complexity considerations.
+
+```
+
+
+
 #! This Q A is from Open AI , Open AI can write the api interface the implementation? lets pro create that or maybe its you after reading this!
