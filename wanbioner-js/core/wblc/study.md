@@ -49,7 +49,7 @@ When your friend receives the compressed message, they can use the same dictiona
 So, LZW is like a secret code language for data. It finds patterns in the data and replaces them with special codes, making the data smaller. This helps in saving space and making it easier to send or store the data.
 ```
 
-# Machine Learning GAN Compression (Primarily Used in Image)
+### Machine Learning GAN Compression (Primarily Used in Image)
 
 ```
 Q: explain me about GAN compression like im a baby
