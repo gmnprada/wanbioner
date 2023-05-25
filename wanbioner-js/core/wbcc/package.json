@@ -1,1 +1,28 @@
-{"note":"Change this into submodule"}
+{
+    "name": "wbcc",
+    "version": "0.0.6",
+    "description": "Wanbioner Core Common , The Core Foundation Program as it is for Wanbioner System and Protocol",
+    "type": "module",
+    "main": "lib.mjs",
+    "scripts": {
+        "start": "node lib.mjs",
+        "test": "jest lib.mjs"
+    },
+    "keywords": [
+        "Network",
+        "Networking",
+        "Broker",
+        "Wan",
+        "Packet",
+        "ISP",
+        "Pi Apps",
+        "IOT",
+        "Wide Area Network"
+    ],
+    "author": "Gde Made Novan Priambhada",
+    "license": "PiOS",
+    "devDependencies": {
+        "esm": "^3.2.25",
+        "jest": "^29.5.0"
+    }
+}

@@ -19,14 +19,26 @@ Focus
 Usage on Safe or Unsafe
 
 - Safe is used when we prioritize data safety,precision,security on host machine that run with various environment with other program (Shared Host Machine) the environment of running program cannot be trusted
-- Unsafe is used when we prioritize over speed and latency where the environment and behavior of running program and node is well guarded an throughly tested.
+- Unsafe is used when we prioritize over speed and latency where the environment and behavior of running program and node is well guarded an throughly tested (your own machine and private network)
 */
 
-// Header Extreme Byte Compression Level Bit Encoding Compression Size (Only Machine Code Readable) and must be encode / decode / transformed through application or algorithm
+// Header 1 Lenght Size 
+// Compression Level in Bit/Qubit/Numbering System Encoding Compression Size (Only Machine Code Readable) and must be encode / decode / transformed through application, machine or , algorithm
+// Extreme Compression Level see WBLC for specific usage
+// To Be Determined on docs for the implementation
 export const HEADER_SIZE   = 1;
 
-// Header High Chars (Human Readable Compressed by Shortening Char)
+// Header 2 Character ASCII Abbreviation Compression
+// Human Readable Compressed by Shortening Char into Abbreviation 
+// High Compression Level
 export const HEADER_SIZE_2 = 2;
+
+// Safe Implementation in memory for 2 character length of Wanbioner | WB
+export const HEADER_WB_S = Buffer.alloc(HEADER_SIZE_2).write("WB");
+// Safe Implementation in memory for 2 character length of Wanbioner Core Common | WC
+export const HEADER_WC_S = Buffer.alloc(HEADER_SIZE_2).write("WC");
+// Safe Implementation in memory for 2 character length of Wanbioner Time Message | WT
+export const HEADER_WT_S = Buffer.alloc(HEADER_SIZE_2).write("WT");
 
 // Header 3 Character ASCII Abbreviation Compression
 // Human Readable Compressed by Shortening Char into Abbreviation 
@@ -78,9 +90,10 @@ export const HEADER_KEYWORD_LOOKUP_TABLE = [
     ["Wanbioner Time Message","WBTM","WTE","WT"]
 ]
 
-// Format | Raw Sentence | 4 Char Binary | 3 Char Binary | 2 Char Binary | Bytes or bit raw data Big Endian and Little Endian
+// Format | Raw Sentence | 4 Char Bit | 3 Char Bit | 2 Char Bit | Bytes or bit raw data Big Endian and Little Endian in binary
 // enforce return data in number or encoding format (binary, octal , hex ) on either big endian or little endian format by wform util
 export const HEADER_MACHINE_CODE_UNSAFE = [
     ["Wanbioner",HEADER_WBON, HEADER_WBR,HEADER_WB],
     ["Wanbioner Core Common",HEADER_WBCC,HEADER_WCC,HEADER_WC],
+    ["Wanbioner Time Mesage"]
 ]

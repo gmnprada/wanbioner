@@ -8,19 +8,17 @@ Purpose
 
 ## Wanbioner Core Common Javascript Implementation
 
-This Is Javascript Implementation Wanbioner Core Common
-
-copied from /docs how it should be threated
-
+This Is Javascript Implementation Wanbioner Core Common currently only running on nodejs , browser or v8 runtime environment implementation later will be implemented as web worker in later time.
 
 ## Usage 
 
 - wbcc args
 
-
+```
 Wanbioner Time Message (WBTM)
 This Time is copied from https://piwan.net/network
 Written On     : 2023-05-24T09:08:16.314Z
 Written By     : GMNP
 Last Update On : 2023-05-24T09:08:16.314Z
 Last Update By : GMNP
+```

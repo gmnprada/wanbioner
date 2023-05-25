@@ -1,10 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-// nothng need to be recorded yet avoid spam of logs
-function log(){
-
-}
-
 export const sequelize = new Sequelize(process.env.PIWAN_DB_NAME, process.env.PIWAN_DB_USER, process.env.PIWAN_DB_PASS, {
     host: process.env.PIWAN_DB_HOST,
     dialect: 'sqlite',

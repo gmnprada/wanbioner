@@ -13,6 +13,10 @@ Contributor
 
 See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
+Focus 
+- Determine what a garbage load of shits means (just joking)
+- Define the Abbreviation and link into documentation on official source
+- Cross Compability int big shoulder we rely on for building the protocol on top of it
 */
 
 // Protocol Identifier Size

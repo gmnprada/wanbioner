@@ -13,7 +13,14 @@ Contributor
 
 See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
-Focus 
-- Detecting Environment in Host  Machine under the hoods the program running
-*/
+Focus
+- Re Export what is available in Wanbioner Core Common
 
+Folder Structure
+Constant 
+Util
+
+Todo
+- Implement Definitely Typed d.ts
+- Implmenet on Browser Environment
+*/

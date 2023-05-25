@@ -43,7 +43,7 @@ the command for it
 ```
 
 
-# Create Your Username and Wanbioner Maitainer User on Node Production Environment
+# Create Your Username and Wanbioner Maintainer User on Node Production Environment
 
 Linux or Unix is designed for multi users , no one should running account with root permissions except is on the root groups such as 
 the running system program, developer or trusted person in the ownership board, security or author that given writen consent, access right 

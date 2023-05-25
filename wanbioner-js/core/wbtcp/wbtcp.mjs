@@ -13,10 +13,10 @@ Contributor
 
 See The LICENSE DETAILS of the PROJECT Under PiOS license on the root directory
 
+Focus
+This File Should Implement Wanbioner on Transmission Control Protocol [TCP]
+
 */
-
-// The Focus Of This File Should Implement Piwan on Transmission Control Protocol [TCP]
-
 
 import net from "node:net";
 
