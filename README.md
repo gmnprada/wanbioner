@@ -38,12 +38,5 @@ So the CONCLUSION IS Instead of only use UNTAPPED RESOURCE ON MINING PI, IF YOUR
 
 Sincere, Wanbioner Developer
 
-GMNPRADA -> sometimes people know me as (adenovan) or (shribrahmana)
-
-Official How to Get intouch with me
-
-Instagram -> @gmnprada
-Youtube -> @gmnprada
-Mail me at -> madepriambhada@gmail.com 
-
-please dont contact above address if its not relevant to Code , Learning , Project that include me as  maintainer, collaborator, or Software Development.
+## Current Project Status
+- Stale the project , domain , and service (There is no certainty and interest in teams and internal employment)
